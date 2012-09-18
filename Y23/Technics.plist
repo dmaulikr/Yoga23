@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>Hands Warm-up</string>
+	<string>Legs Warm-up</string>
+	<string>Zero</string>
+	<string>Crest</string>
+	<dict>
+		<key>Breathing Exercises</key>
+		<array>
+			<string>Dissolving breathing</string>
+			<string>Forward and reverse ring together</string>
+			<string>Forward ring</string>
+			<string>Kapalabhati</string>
+			<string>Nadi Shodhana</string>
+			<string>Nadi Shodhana Five steps</string>
+			<string>Nadi Shodhana Three steps</string>
+			<string>Nadi Shodhana Two step</string>
+			<string>Reverse ring</string>
+			<string>S-s-s</string>
+			<string>Sh-h-h</string>
+			<string>Sitali, Sitakari</string>
+			<string>Volume breathing</string>
+			<string>Yoga Nidra</string>
+		</array>
+	</dict>
+	<dict>
+		<key>Breathing in asana</key>
+		<array>
+			<string>Arbitrary</string>
+			<string>Low</string>
+			<string>Low arbitrary</string>
+			<string>Low rithmic</string>
+			<string>Full</string>
+			<string>Full arbitrary</string>
+			<string>Full rythmic</string>
+			<string>Dissolving</string>
+			<string>Kapalabhati</string>
+		</array>
+	</dict>
+	<dict>
+		<key>Bandhas, Kriyas and Mudras</key>
+		<array>
+			<string>Udiyana Bandha</string>
+			<string>Agni Sara Dhauti Kriya</string>
+			<string>Nauli</string>
+			<string>Nauli Kriya</string>
+			<string>Agni Sara Nauli Kriya</string>
+			<string>Lower abdominal wall contraction</string>
+			<string>Ashvini Mudra</string>
+			<string>Ashvini Mudra Kriya</string>
+			<string>Vajroli Mudra</string>
+			<string>Vajroli Mudra Kriya</string>
+			<string>Mula Bandha</string>
+			<string>Sampurna Mula Bandha</string>
+			<string>Shambhavi Mudra</string>
+			<string>Vayu Nabhi Mudra</string>
+			<string>Vari Nabhi Mudra</string>
+			<string>Agni Nabhi Mudra</string>
+			<string>Khechari Mudra</string>
+			<string>Ujjayi</string>
+		</array>
+	</dict>
+	<string>Dynamic Eyes Exercises</string>
+	<dict>
+		<key>Static Eyes Exercises</key>
+		<array>
+			<string>Head Top</string>
+			<string>Between the eyebrows</string>
+			<string>On the basis of the nasal septum (inward along the spine)</string>
+			<string>Outermost side of the right</string>
+			<string>Outermost side of the left</string>
+		</array>
+	</dict>
+	<string>Eyes Water Massage</string>
+	<string>Tong Exercises</string>
+	<dict>
+		<key>Additional purifying techniques</key>
+		<array>
+			<string>Jala neti</string>
+			<string>Vari-sara-dhauti</string>
+			<string>Vamana dhauti</string>
+			<string>Prakshalana (short)</string>
+			<string>Prakshalana (long)</string>
+			<string>Basti Kriya</string>
+			<string>Jihva-dhauti</string>
+		</array>
+	</dict>
+</array>
+</plist>
