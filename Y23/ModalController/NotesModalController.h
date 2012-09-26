@@ -15,7 +15,7 @@
 
 @property (nonatomic, strong) IBOutlet UITextView *notesTextView;
 @property (nonatomic, assign) id delegate;
-@property (assign, nonatomic) NSMutableString *notesText;
+@property (strong, nonatomic) NSMutableString *notesText;
 
 -(IBAction)finishEditing;
 

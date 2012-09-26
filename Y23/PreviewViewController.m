@@ -11,7 +11,6 @@
 #import <CoreImage/CoreImage.h>
 #import "PreviewViewController.h"
 #import "NotesModalController.h"
-#import "PDFRenderer.h"
 #import "UIImage+Inverting.h"
 
 #define debug NSLog

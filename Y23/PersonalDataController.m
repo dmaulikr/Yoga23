@@ -20,7 +20,6 @@
     self.lastName  = nil;
     self.eMail = nil;
     self.notes = nil;
-    self.personalData = nil;
     [super viewDidUnload];
     
     // Release any retained subviews of the main view.
@@ -121,15 +120,7 @@
     }
 }
 
-- (void)textViewDidEndEditing:(UITextView *)textView {
-    NSString *theText = textView.text;
-    if (![theText isEqualToString:@""]) {
-        [self.personalData setObject:theText forKey:@"notes"];
-    }
-    
-    NSLog(@"%@", self.personalData);
-    //doneButton.enabled = NO;
-}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -151,7 +142,19 @@
     // do any setup you need for navController
     navController.modalTransitionStyle =  UIModalTransitionStyleFlipHorizontal;
     navController.modalPresentationStyle = UIModalPresentationFormSheet;
-    [self presentModalViewController:navController animated:YES];
+    
+    nmc.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+                                              initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                              target:self
+                                              action:@selector(notesDone)];
+    nmc.navigationItem.title = @"NOTES";
+    
+    if ([self respondsToSelector:@selector(presentModalViewController:animated:)]) {
+        [self presentModalViewController:navController animated:YES];
+    }else {
+        [self presentViewController:navController animated:YES completion:nil];
+    }
+    
     nmc.delegate = self;
     
     
@@ -159,7 +162,13 @@
 }
 
 -(void)notesDone {
-    [self dismissModalViewControllerAnimated:YES];
+    
+    if ([self respondsToSelector:@selector(dismissModalViewControllerAnimated:)]) {
+        [self dismissModalViewControllerAnimated:YES];
+    }else {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    
 }
 
 

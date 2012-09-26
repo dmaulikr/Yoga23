@@ -235,9 +235,6 @@ byLevel4 = _byLevel4, byLevel5 = _byLevel5, byLevel6 = _byLevel6, byLevel7 = _by
 
 - (void)viewDidUnload
 {
-    self.selectedAsanas = nil;
-    self.sequences = nil;
-    self.person = nil;
     self.byLevel1 = nil;
     self.byLevel2 = nil;
     self.byLevel3 = nil;
@@ -247,9 +244,6 @@ byLevel4 = _byLevel4, byLevel5 = _byLevel5, byLevel6 = _byLevel6, byLevel7 = _by
     self.byLevel7 = nil;
     self.main = nil;
     self.express = nil;
-    self.goMain = nil;
-    self.goExpress = nil;
-    self.goByLevel = nil;
     [super viewDidUnload];
 }
 

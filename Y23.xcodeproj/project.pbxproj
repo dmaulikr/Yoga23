@@ -753,7 +753,6 @@
 		78AE455C14ED7DF200A1176A /* 1044x768Chalkboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 78AE455A14ED7DF200A1176A /* 1044x768Chalkboard.png */; };
 		78C1548F158C750B005CCAD7 /* UIView+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 78C1548E158C750B005CCAD7 /* UIView+Animation.m */; };
 		78C154AA158C9C40005CCAD7 /* SetBreathDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78C154A8158C9C40005CCAD7 /* SetBreathDataController.m */; };
-		78CEFB7715B475B4005573B2 /* PDFRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 78CEFB7615B475B4005573B2 /* PDFRenderer.m */; };
 		78CFD92214E699FB00139CD1 /* AsanasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78CFD92114E699FB00139CD1 /* AsanasViewController.m */; };
 		78CFD92A14E6ACE200139CD1 /* DashboardController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78CFD92914E6ACE200139CD1 /* DashboardController.m */; };
 		78D4B21414F2BCD600B0D12A /* CheckBoxButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D4B21314F2BCD600B0D12A /* CheckBoxButton.m */; };
@@ -1534,8 +1533,6 @@
 		78C1548E158C750B005CCAD7 /* UIView+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Animation.m"; path = "Y23/View/UIView+Animation.m"; sourceTree = "<group>"; };
 		78C154A7158C9C40005CCAD7 /* SetBreathDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetBreathDataController.h; path = AVController/SetBreathDataController.h; sourceTree = "<group>"; };
 		78C154A8158C9C40005CCAD7 /* SetBreathDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetBreathDataController.m; path = AVController/SetBreathDataController.m; sourceTree = "<group>"; };
-		78CEFB7515B475B4005573B2 /* PDFRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDFRenderer.h; path = PDFRenderer/PDFRenderer.h; sourceTree = "<group>"; };
-		78CEFB7615B475B4005573B2 /* PDFRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDFRenderer.m; path = PDFRenderer/PDFRenderer.m; sourceTree = "<group>"; };
 		78CFD92014E699FB00139CD1 /* AsanasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsanasViewController.h; sourceTree = "<group>"; };
 		78CFD92114E699FB00139CD1 /* AsanasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsanasViewController.m; sourceTree = "<group>"; usesTabs = 0; };
 		78CFD92814E6ACE200139CD1 /* DashboardController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardController.h; sourceTree = "<group>"; };
@@ -2485,19 +2482,9 @@
 			name = PopoverController;
 			sourceTree = "<group>";
 		};
-		78CEFB7415B4752C005573B2 /* PDFRenderer */ = {
-			isa = PBXGroup;
-			children = (
-				78CEFB7515B475B4005573B2 /* PDFRenderer.h */,
-				78CEFB7615B475B4005573B2 /* PDFRenderer.m */,
-			);
-			name = PDFRenderer;
-			sourceTree = "<group>";
-		};
 		78CFD92414E6AB8800139CD1 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				78CEFB7415B4752C005573B2 /* PDFRenderer */,
 				78E7373915A899B90067144E /* ModalController */,
 				78C15493158C7966005CCAD7 /* PopoverController */,
 				78083A1B15024B7D00F20D0C /* TabsControllers */,
@@ -3349,7 +3336,6 @@
 				78C154AA158C9C40005CCAD7 /* SetBreathDataController.m in Sources */,
 				78F7B0F4159B5C8B00C05EA8 /* PIAsanaView.m in Sources */,
 				78E7374315A89BF00067144E /* NotesModalController.m in Sources */,
-				78CEFB7715B475B4005573B2 /* PDFRenderer.m in Sources */,
 				7812DA7415CD68860097E184 /* UIImage+Inverting.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

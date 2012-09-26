@@ -28,7 +28,6 @@
 -(void)viewDidUnload {
     
     self.notesTextView = nil;
-    self.notesText = nil;
     [super viewDidUnload];
 }
 
@@ -54,10 +53,7 @@
     
     self.notesTextView.text = self.notesText;
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
-                                               initWithBarButtonSystemItem:UIBarButtonSystemItemDone 
-                                               target:self.delegate
-                                              action:@selector(notesDone)];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -66,9 +62,12 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (BOOL)disablesAutomaticKeyboardDismissal {
-    return NO;
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    return YES;
 }
+
+
 
 - (BOOL)textViewShouldEndEditing:(UITextView *)textView {
     
