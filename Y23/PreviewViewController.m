@@ -427,16 +427,12 @@
     
     debug(@" technics is %@", [appDelegate.theNewProgram objectForKey:@"technics"]);
     
-    // adding Notes button
-    UIBarButtonItem *notesButton         = [[UIBarButtonItem alloc]
-                                            initWithTitle:@"Notes" style:UIBarButtonItemStylePlain
-                                            target:self
-                                            action:@selector(addNotes)];
+    
     UIBarButtonItem *sendItem            = [[UIBarButtonItem alloc]
                                             initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(sendingProgrammToEmile)];
     
     self.navigationItem.rightBarButtonItems =
-    [NSArray arrayWithObjects:sendItem, notesButton, nil];
+    [NSArray arrayWithObjects:sendItem, nil];
     
     if(!presentWebView){
         // 

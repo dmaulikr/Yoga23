@@ -2352,8 +2352,6 @@
 		783DA1E914E691B400E06F10 = {
 			isa = PBXGroup;
 			children = (
-				7818677615AB2F72008798A2 /* Y23appNotRetina-Icon.png */,
-				785A12571555565000C2019B /* Y23app-Icon.png */,
 				783DA22014E6946500E06F10 /* Pictures */,
 				783DA1FE14E691B400E06F10 /* Y23 */,
 				783DA1F714E691B400E06F10 /* Frameworks */,
@@ -2413,6 +2411,8 @@
 		783DA22014E6946500E06F10 /* Pictures */ = {
 			isa = PBXGroup;
 			children = (
+				785A12571555565000C2019B /* Y23app-Icon.png */,
+				7818677615AB2F72008798A2 /* Y23appNotRetina-Icon.png */,
 				7855AB8A14EADBA600F02166 /* TabBarImages */,
 				783DA22914E694B800E06F10 /* WhiteAButton.png */,
 				783DA22A14E694B800E06F10 /* WhiteCBox.png */,

@@ -186,7 +186,19 @@
     // do any setup you need for navController
     navController.modalTransitionStyle =  UIModalTransitionStyleFlipHorizontal;
     navController.modalPresentationStyle = UIModalPresentationFormSheet;
-    [self presentModalViewController:navController animated:YES];
+    
+    nmc.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+                                             initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                             target:self
+                                             action:@selector(notesDone)];
+    nmc.navigationItem.title = @"NOTES";
+    
+    if ([self respondsToSelector:@selector(presentModalViewController:animated:)]) {
+        [self presentModalViewController:navController animated:YES];
+    }else {
+        [self presentViewController:navController animated:YES completion:nil];
+    }
+    
     nmc.delegate = self;
     
     
@@ -194,10 +206,14 @@
 }
 
 -(void)notesDone {
-    [self dismissModalViewControllerAnimated:YES];
-    NSLog(@"dismiss modalController");
+    
+    if ([self respondsToSelector:@selector(dismissModalViewControllerAnimated:)]) {
+        [self dismissModalViewControllerAnimated:YES];
+    }else {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    
 }
-
 
 
 
