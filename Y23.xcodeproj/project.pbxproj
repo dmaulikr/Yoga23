@@ -747,6 +747,7 @@
 		785A12581555565000C2019B /* Y23app-Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 785A12571555565000C2019B /* Y23app-Icon.png */; };
 		785FFB6D158CB96E006D0C25 /* SetBreathDataController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 785FFB6C158CB96E006D0C25 /* SetBreathDataController.xib */; };
 		7882B20E14F15EF5008B0462 /* PersonalDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7882B20D14F15EF5008B0462 /* PersonalDataController.m */; };
+		788B114B161743D60006DFF4 /* LOGO@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 788B114A161743D60006DFF4 /* LOGO@2x.png */; };
 		788F796A15BB33820060620F /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788F796915BB33820060620F /* CoreImage.framework */; };
 		788F796D15BBFD040060620F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788F796C15BBFD040060620F /* MessageUI.framework */; };
 		78976A5115238A7200D4F0E6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78976A5015238A7200D4F0E6 /* QuartzCore.framework */; };
@@ -1525,6 +1526,7 @@
 		785FFB6C158CB96E006D0C25 /* SetBreathDataController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SetBreathDataController.xib; sourceTree = "<group>"; };
 		7882B20C14F15EF5008B0462 /* PersonalDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalDataController.h; sourceTree = "<group>"; };
 		7882B20D14F15EF5008B0462 /* PersonalDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalDataController.m; sourceTree = "<group>"; };
+		788B114A161743D60006DFF4 /* LOGO@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LOGO@2x.png"; sourceTree = "<group>"; };
 		788F796915BB33820060620F /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		788F796C15BBFD040060620F /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		78976A5015238A7200D4F0E6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -2411,6 +2413,7 @@
 		783DA22014E6946500E06F10 /* Pictures */ = {
 			isa = PBXGroup;
 			children = (
+				788B114A161743D60006DFF4 /* LOGO@2x.png */,
 				785A12571555565000C2019B /* Y23app-Icon.png */,
 				7818677615AB2F72008798A2 /* Y23appNotRetina-Icon.png */,
 				7855AB8A14EADBA600F02166 /* TabBarImages */,
@@ -3310,6 +3313,7 @@
 				78186D0115AB31B0008798A2 /* 708.png in Resources */,
 				78186D0215AB31B0008798A2 /* 709.png in Resources */,
 				7814178E15F221BC00EE8E2A /* C6@2x.png in Resources */,
+				788B114B161743D60006DFF4 /* LOGO@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

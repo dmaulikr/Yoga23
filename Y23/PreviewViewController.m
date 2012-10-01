@@ -470,14 +470,14 @@
                                                  otherButtonTitles:nil];
         [noAsanas show];
         
-    }else if ([technicsList length] < 1) {
-        // warning massage here
-        UIAlertView *noTechnics = [[UIAlertView alloc] initWithTitle:@"No saved technics .."
-                                                           message:@"You have not chosen technics!" 
-                                                          delegate:nil cancelButtonTitle:@"Ok" 
-                                                 otherButtonTitles:nil];
-        [noTechnics show];
-        
+//    }else if ([technicsList length] < 1) {
+//        // warning massage here
+//        UIAlertView *noTechnics = [[UIAlertView alloc] initWithTitle:@"No saved technics .."
+//                                                           message:@"You have not chosen technics!" 
+//                                                          delegate:nil cancelButtonTitle:@"Ok" 
+//                                                 otherButtonTitles:nil];
+//        [noTechnics show];
+//        
     }else {[self createPDFforPreview];}
     
 }

@@ -87,10 +87,9 @@
 }
 
 
--(void) viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    //self.view.superview.bounds = CGRectMake(0, 0, 600, 750);  // your size here
+- (void) viewDidAppear:(BOOL)animated {
+    
+    [self.notesTextView becomeFirstResponder];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
