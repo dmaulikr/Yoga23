@@ -40,7 +40,7 @@
     
     self.leftPicker = nil;
     self.rightPicker = nil;
-    self.theAsana = nil;
+
     self.done = nil;
     self.deleteAsanaFromSequence = nil;    
     [super viewDidUnload];

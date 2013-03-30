@@ -774,6 +774,8 @@
 		78F7B0F0159B59B600C05EA8 /* PIAsanaView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78F7B0EF159B59B600C05EA8 /* PIAsanaView.xib */; };
 		78F7B0F4159B5C8B00C05EA8 /* PIAsanaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F7B0F3159B5C8B00C05EA8 /* PIAsanaView.m */; };
 		78FF1488156D3CE100CDF7FE /* SortAsanasController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FF1487156D3CE100CDF7FE /* SortAsanasController.m */; };
+		932DDA2817073D6000F73F78 /* PIAcanasTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 932DDA2717073D6000F73F78 /* PIAcanasTableViewCell.m */; };
+		932DDA2A17073DD100F73F78 /* PIAsanasTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 932DDA2917073DD100F73F78 /* PIAsanasTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1563,6 +1565,9 @@
 		78F7B0F3159B5C8B00C05EA8 /* PIAsanaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIAsanaView.m; path = Y23/View/PIAsanaView.m; sourceTree = "<group>"; };
 		78FF1486156D3CE100CDF7FE /* SortAsanasController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortAsanasController.h; sourceTree = "<group>"; };
 		78FF1487156D3CE100CDF7FE /* SortAsanasController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortAsanasController.m; sourceTree = "<group>"; };
+		932DDA2617073D6000F73F78 /* PIAcanasTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIAcanasTableViewCell.h; path = PIAsanasCell/PIAcanasTableViewCell.h; sourceTree = "<group>"; };
+		932DDA2717073D6000F73F78 /* PIAcanasTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIAcanasTableViewCell.m; path = PIAsanasCell/PIAcanasTableViewCell.m; sourceTree = "<group>"; };
+		932DDA2917073DD100F73F78 /* PIAsanasTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PIAsanasTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2303,6 +2308,7 @@
 		78083A1B15024B7D00F20D0C /* TabsControllers */ = {
 			isa = PBXGroup;
 			children = (
+				9303AD701701ED4C0085FFC2 /* AsanasCell */,
 				7882B20C14F15EF5008B0462 /* PersonalDataController.h */,
 				7882B20D14F15EF5008B0462 /* PersonalDataController.m */,
 				78CFD92014E699FB00139CD1 /* AsanasViewController.h */,
@@ -2521,6 +2527,16 @@
 			name = ModalController;
 			sourceTree = "<group>";
 		};
+		9303AD701701ED4C0085FFC2 /* AsanasCell */ = {
+			isa = PBXGroup;
+			children = (
+				932DDA2617073D6000F73F78 /* PIAcanasTableViewCell.h */,
+				932DDA2717073D6000F73F78 /* PIAcanasTableViewCell.m */,
+				932DDA2917073DD100F73F78 /* PIAsanasTableViewCell.xib */,
+			);
+			name = AsanasCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2547,7 +2563,7 @@
 		783DA1EB14E691B400E06F10 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0460;
 			};
 			buildConfigurationList = 783DA1EE14E691B400E06F10 /* Build configuration list for PBXProject "Y23" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -3314,6 +3330,7 @@
 				78186D0215AB31B0008798A2 /* 709.png in Resources */,
 				7814178E15F221BC00EE8E2A /* C6@2x.png in Resources */,
 				788B114B161743D60006DFF4 /* LOGO@2x.png in Resources */,
+				932DDA2A17073DD100F73F78 /* PIAsanasTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3341,6 +3358,7 @@
 				78F7B0F4159B5C8B00C05EA8 /* PIAsanaView.m in Sources */,
 				78E7374315A89BF00067144E /* NotesModalController.m in Sources */,
 				7812DA7415CD68860097E184 /* UIImage+Inverting.m in Sources */,
+				932DDA2817073D6000F73F78 /* PIAcanasTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3372,6 +3390,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -3385,6 +3407,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
@@ -3398,12 +3421,17 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";

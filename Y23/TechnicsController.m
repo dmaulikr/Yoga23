@@ -223,9 +223,6 @@
 
 - (void)viewDidUnload
 {
-    
-    self.person = nil;
-    self.selectedTechnics = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

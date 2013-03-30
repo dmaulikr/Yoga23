@@ -12,5 +12,6 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) NSMutableDictionary *theNewProgram;
+@property (strong, nonatomic) __block NSMutableDictionary *asanasCatalog;
 
 @end
