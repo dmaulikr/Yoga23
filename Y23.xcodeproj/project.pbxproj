@@ -761,13 +761,6 @@
 		78E7374315A89BF00067144E /* NotesModalController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78E7374115A89BF00067144E /* NotesModalController.m */; };
 		78E7374415A89BF00067144E /* NotesModalController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78E7374215A89BF00067144E /* NotesModalController.xib */; };
 		78EE5063153978D60075D52F /* express.csv in Resources */ = {isa = PBXBuildFile; fileRef = 78EE505A153978D60075D52F /* express.csv */; };
-		78EE5064153978D60075D52F /* level_1.csv in Resources */ = {isa = PBXBuildFile; fileRef = 78EE505B153978D60075D52F /* level_1.csv */; };
-		78EE5065153978D60075D52F /* level_2.csv in Resources */ = {isa = PBXBuildFile; fileRef = 78EE505C153978D60075D52F /* level_2.csv */; };
-		78EE5066153978D60075D52F /* level_3.csv in Resources */ = {isa = PBXBuildFile; fileRef = 78EE505D153978D60075D52F /* level_3.csv */; };
-		78EE5067153978D60075D52F /* level_4.csv in Resources */ = {isa = PBXBuildFile; fileRef = 78EE505E153978D60075D52F /* level_4.csv */; };
-		78EE5068153978D60075D52F /* level_5.csv in Resources */ = {isa = PBXBuildFile; fileRef = 78EE505F153978D60075D52F /* level_5.csv */; };
-		78EE5069153978D60075D52F /* level_6.csv in Resources */ = {isa = PBXBuildFile; fileRef = 78EE5060153978D60075D52F /* level_6.csv */; };
-		78EE506A153978D60075D52F /* level_7.csv in Resources */ = {isa = PBXBuildFile; fileRef = 78EE5061153978D60075D52F /* level_7.csv */; };
 		78EE506B153978D60075D52F /* mainCollection.csv in Resources */ = {isa = PBXBuildFile; fileRef = 78EE5062153978D60075D52F /* mainCollection.csv */; };
 		78EE5074153992F20075D52F /* CreatingSequences.m in Sources */ = {isa = PBXBuildFile; fileRef = 78EE5072153992F20075D52F /* CreatingSequences.m */; };
 		78EE5075153992F20075D52F /* CreatingSequences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78EE5073153992F20075D52F /* CreatingSequences.xib */; };
@@ -776,6 +769,8 @@
 		78FF1488156D3CE100CDF7FE /* SortAsanasController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FF1487156D3CE100CDF7FE /* SortAsanasController.m */; };
 		932DDA2817073D6000F73F78 /* PIAcanasTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 932DDA2717073D6000F73F78 /* PIAcanasTableViewCell.m */; };
 		932DDA2A17073DD100F73F78 /* PIAsanasTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 932DDA2917073DD100F73F78 /* PIAsanasTableViewCell.xib */; };
+		93C4F3971708A873006821DC /* light.csv in Resources */ = {isa = PBXBuildFile; fileRef = 93C4F3961708A873006821DC /* light.csv */; };
+		93C4F39D1708AB74006821DC /* FFTransAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C4F39C1708AB74006821DC /* FFTransAlertView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1549,13 +1544,6 @@
 		78E7374115A89BF00067144E /* NotesModalController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotesModalController.m; path = ModalController/NotesModalController.m; sourceTree = "<group>"; };
 		78E7374215A89BF00067144E /* NotesModalController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NotesModalController.xib; path = ModalController/NotesModalController.xib; sourceTree = "<group>"; };
 		78EE505A153978D60075D52F /* express.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = express.csv; sourceTree = "<group>"; };
-		78EE505B153978D60075D52F /* level_1.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level_1.csv; sourceTree = "<group>"; };
-		78EE505C153978D60075D52F /* level_2.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level_2.csv; sourceTree = "<group>"; };
-		78EE505D153978D60075D52F /* level_3.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level_3.csv; sourceTree = "<group>"; };
-		78EE505E153978D60075D52F /* level_4.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level_4.csv; sourceTree = "<group>"; };
-		78EE505F153978D60075D52F /* level_5.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level_5.csv; sourceTree = "<group>"; };
-		78EE5060153978D60075D52F /* level_6.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level_6.csv; sourceTree = "<group>"; };
-		78EE5061153978D60075D52F /* level_7.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level_7.csv; sourceTree = "<group>"; };
 		78EE5062153978D60075D52F /* mainCollection.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mainCollection.csv; sourceTree = "<group>"; };
 		78EE5071153992F20075D52F /* CreatingSequences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatingSequences.h; sourceTree = "<group>"; };
 		78EE5072153992F20075D52F /* CreatingSequences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatingSequences.m; sourceTree = "<group>"; };
@@ -1568,6 +1556,9 @@
 		932DDA2617073D6000F73F78 /* PIAcanasTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIAcanasTableViewCell.h; path = PIAsanasCell/PIAcanasTableViewCell.h; sourceTree = "<group>"; };
 		932DDA2717073D6000F73F78 /* PIAcanasTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIAcanasTableViewCell.m; path = PIAsanasCell/PIAcanasTableViewCell.m; sourceTree = "<group>"; };
 		932DDA2917073DD100F73F78 /* PIAsanasTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PIAsanasTableViewCell.xib; sourceTree = "<group>"; };
+		93C4F3961708A873006821DC /* light.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = light.csv; sourceTree = "<group>"; };
+		93C4F39B1708AB74006821DC /* FFTransAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FFTransAlertView.h; path = Y23/View/FFTransAlertView.h; sourceTree = "<group>"; };
+		93C4F39C1708AB74006821DC /* FFTransAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FFTransAlertView.m; path = Y23/View/FFTransAlertView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2435,6 +2426,8 @@
 		784981631503CF3D006D3746 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				93C4F39B1708AB74006821DC /* FFTransAlertView.h */,
+				93C4F39C1708AB74006821DC /* FFTransAlertView.m */,
 				78D4B21214F2BCD600B0D12A /* CheckBoxButton.h */,
 				78D4B21314F2BCD600B0D12A /* CheckBoxButton.m */,
 				78C1548D158C750B005CCAD7 /* UIView+Animation.h */,
@@ -2504,14 +2497,8 @@
 		78E50E8E15308239003CF195 /* CSV Data */ = {
 			isa = PBXGroup;
 			children = (
+				93C4F3961708A873006821DC /* light.csv */,
 				78EE505A153978D60075D52F /* express.csv */,
-				78EE505B153978D60075D52F /* level_1.csv */,
-				78EE505C153978D60075D52F /* level_2.csv */,
-				78EE505D153978D60075D52F /* level_3.csv */,
-				78EE505E153978D60075D52F /* level_4.csv */,
-				78EE505F153978D60075D52F /* level_5.csv */,
-				78EE5060153978D60075D52F /* level_6.csv */,
-				78EE5061153978D60075D52F /* level_7.csv */,
 				78EE5062153978D60075D52F /* mainCollection.csv */,
 			);
 			name = "CSV Data";
@@ -2600,13 +2587,6 @@
 				7826EF6F15023CA9001482B4 /* C5.png in Resources */,
 				78274D531507D8F300FDAA48 /* TechnicDetails.xib in Resources */,
 				78EE5063153978D60075D52F /* express.csv in Resources */,
-				78EE5064153978D60075D52F /* level_1.csv in Resources */,
-				78EE5065153978D60075D52F /* level_2.csv in Resources */,
-				78EE5066153978D60075D52F /* level_3.csv in Resources */,
-				78EE5067153978D60075D52F /* level_4.csv in Resources */,
-				78EE5068153978D60075D52F /* level_5.csv in Resources */,
-				78EE5069153978D60075D52F /* level_6.csv in Resources */,
-				78EE506A153978D60075D52F /* level_7.csv in Resources */,
 				78EE506B153978D60075D52F /* mainCollection.csv in Resources */,
 				78EE5075153992F20075D52F /* CreatingSequences.xib in Resources */,
 				785A12581555565000C2019B /* Y23app-Icon.png in Resources */,
@@ -3331,6 +3311,7 @@
 				7814178E15F221BC00EE8E2A /* C6@2x.png in Resources */,
 				788B114B161743D60006DFF4 /* LOGO@2x.png in Resources */,
 				932DDA2A17073DD100F73F78 /* PIAsanasTableViewCell.xib in Resources */,
+				93C4F3971708A873006821DC /* light.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3359,6 +3340,7 @@
 				78E7374315A89BF00067144E /* NotesModalController.m in Sources */,
 				7812DA7415CD68860097E184 /* UIImage+Inverting.m in Sources */,
 				932DDA2817073D6000F73F78 /* PIAcanasTableViewCell.m in Sources */,
+				93C4F39D1708AB74006821DC /* FFTransAlertView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

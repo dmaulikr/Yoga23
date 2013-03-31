@@ -12,7 +12,7 @@
 @class AppDelegate;
 
 
-@interface AsanasViewController : UIViewController <UIScrollViewDelegate, UITableViewDataSource,UITableViewDelegate> {
+@interface AsanasViewController : UIViewController <UIScrollViewDelegate, UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate> {
     
     __weak IBOutlet UIToolbar               *toolBar;
     __weak IBOutlet UISegmentedControl      *segmentCotrol;
@@ -21,15 +21,13 @@
     NSArray                                 *namesArray;
     NSMutableArray                          *setsArray;
     NSMutableArray                          *asanasImages;
-    NSMutableSet                            *choosedResult;
-    CALayer                                 *buttonLayer;
-    UIScrollView                            *scrollView;
+    NSMutableDictionary                     *choosedResult;
     unsigned                                loadedImages;
     unsigned                                linesCount;
     AppDelegate                             *appDelegate;
     NSMutableArray                          *asanasKeap;
-    
-    
+    int                                     previousSegment;
+    int                                     newSegment;
 }
 
 @property (nonatomic, strong) NSMutableArray    *selectedAsanas;   // array for result of selection 

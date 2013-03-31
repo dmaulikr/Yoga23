@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class AppDelegate;
+
 @interface PIAcanasTableViewCell : UITableViewCell {
     
     NSArray     *cellButtons;
+    AppDelegate *appDelegate;
 }
 
 @property(nonatomic,strong)IBOutlet UIButton          *asanaButton1;
@@ -24,7 +27,7 @@
 
 + (PIAcanasTableViewCell *)cellFromNibNamed:(NSString *)nibName;
 + (NSString *)reuseIdentifier;
-- (void)setupButtonsImages:(NSArray*)array;
+- (void)setupButtonsImages:(NSArray*)array range:(int)range delegate:(id)delegate;
 
 
 @end

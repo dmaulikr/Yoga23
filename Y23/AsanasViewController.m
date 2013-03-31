@@ -13,6 +13,7 @@
 #import "AppDelegate.h"
 #import "PIAcanasTableViewCell.h"
 #import "CreatingSequences.h"
+#import "FFTransAlertView.h"
 
 #define aSViewSize 116
 #define aImageSize 112
@@ -69,12 +70,23 @@ enum sets {
                                                    target:self
                                                    action:@selector(nextButton)];
     
-    NSArray *items =  @[nextButton,notesButton];
+    UIBarButtonItem *clearButton                = [[UIBarButtonItem alloc]
+                                                  initWithTitle:@" Clear All " style:UIBarButtonItemStylePlain
+                                                  target:self
+                                                  action:@selector(clearAllButton)];
+    
+    UIBarButtonItem *fixed1                     = [[UIBarButtonItem alloc]
+                                                   initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                                   target:nil action:nil];
+     [fixed1 setWidth:45.0f];
+    
+    NSArray *items =  @[nextButton,notesButton,fixed1,clearButton];
     self.navigationItem.rightBarButtonItems = items;
     if (!asanasImages) {
         asanasImages = [NSMutableArray array];
     }
     [self createToolBar];
+    choosedResult = appDelegate.selectedAsanas;
 }
 
 
@@ -108,29 +120,66 @@ enum sets {
     [self.navigationController pushViewController:cs animated:YES];
 }
 
+- (void)clearAllButton {
+    
+    CustomAlert *clearAllAlert = [[CustomAlert alloc]
+                                  initWithTitle:@"Warning"
+                                  message:@"All choosed asanas will be cleaned\n(Saved sequences are remain)"
+                                  delegate:self cancelButtonTitle:@"Cancel"
+                                  otherButtonTitles:@"Clear"
+                                  , nil];
+    clearAllAlert.tag = 0;
+    [clearAllAlert show];
+}
+
+
+
 
 
 - (void)createToolBar {
     
-    [segmentCotrol addTarget:self action:@selector(fetchAsanas:) forControlEvents:UIControlEventValueChanged];
+    [segmentCotrol addTarget:self action:@selector(segmentControlPressed) forControlEvents:UIControlEventValueChanged];
     
     segmentCotrol.selectedSegmentIndex = kMainSet;
+    previousSegment = kMainSet;
     segmentCotrol.segmentedControlStyle = UISegmentedControlStyleBar;
     segmentCotrol.backgroundColor = [UIColor clearColor];
     [segmentCotrol setSelectedSegmentIndex:0];
-    [self fetchAsanas:segmentCotrol];
+    [self fetchAsanas:kMainSet];
     toolBar.frame = CGRectMake(0, 64, 768, 44);
     [self.navigationController.view addSubview:toolBar];
     
     
 }
 
+- (void)segmentControlPressed {
+    
+    if ([choosedResult count] > 0) {
+        
+        CustomAlert *changeSetAlert = [[CustomAlert alloc]
+                                       initWithTitle:@"You select a different set of asanas"
+                                       message:@"All choosed asanas will be cleaned\n(Saved sequences are remain)"
+                                       delegate:self cancelButtonTitle:@"Cancel"
+                                       otherButtonTitles:@"Go"
+                                       , nil];
+        changeSetAlert.tag = 1;
+        [changeSetAlert show];
+        
+    }else {
+        
+        
+        [self fetchAsanas:segmentCotrol.selectedSegmentIndex];
+    }
+    
 
-- (void)fetchAsanas:(UISegmentedControl*)sender {
+}
+
+
+- (void)fetchAsanas:(int)sender {
     
     loadedImages = 0;
     NSString*   namesFile = nil;
-    int         setNumber = sender.selectedSegmentIndex;
+    int         setNumber = sender;
     
     switch (setNumber) {
         case kMainSet:
@@ -152,7 +201,7 @@ enum sets {
     }
     
     namesArray = [setsArray objectAtIndex:setNumber];
-    
+    //debug(@"namesArray is %@ setsArray is %@",namesArray, setsArray);
     // number of cells
     int imagesCount = [namesArray count];
     // define line count for each 6 asanas
@@ -172,7 +221,7 @@ enum sets {
     }
 #ifdef DEBUG
     
-    debug(@"lineCount is %d", linesCount);
+    //debug(@"lineCount is %d", linesCount);
     // debug(@"namesArray is %@ nameFile is %@",namesArray, namesFile);
     
 #endif
@@ -182,269 +231,31 @@ enum sets {
     [table reloadData];
 }
 
+#pragma mark UIAlertView delegate method
 
-
-
-
-
-
-
-
-
--(void)addScrollViewContent {
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     
-    for (UIView *subview in scrollView.subviews) {
-        [subview removeFromSuperview];
-    }
-    scrollView.contentOffset = CGPointMake(0,0);
-    int imagesCount = [namesArray count];
-    //asanasViews = [[NSMutableArray alloc] initWithCapacity:10];
-    choosedResult = [[NSMutableSet alloc] initWithCapacity:10];
-    
-    unsigned lineCount; // define line count for each 6 asanas
-    lineCount = imagesCount / 6;
-    if (imagesCount%6 != 0) {
-        lineCount ++;
+    if (alertView.tag == 0 && buttonIndex == 1) {
+        
+        [choosedResult removeAllObjects];
+        [table reloadData];
     }
     
-#ifdef DEBUG
-    
-    debug(@"lineCount is %d", lineCount);
-    
-#endif
-    
-    
-    CGRect contentFrame = CGRectMake(36, 28, 748, (lineCount*aSViewSize));
-    UIView *contentView = [[UIView alloc] initWithFrame:contentFrame];
-    scrollView.contentSize = CGSizeMake(contentView.frame.size.width,contentView.frame.size.height);
-    NSUInteger c = 0; // c is number of images
-    for ( int i = 0; i < lineCount*aSViewSize; i+= aSViewSize) {
+    if (alertView.tag == 1 && buttonIndex == 1) {
         
-        for (unsigned a = 0; a <= aSViewSize*5; a += aSViewSize) {
-            
-            CGRect asanaFrame = CGRectMake( a, i, aImageSize, aImageSize );
-            CGRect buttonFrame = CGRectMake( 1, 1, aImageSize, aImageSize );
-            
-            if (c < imagesCount) {
-                
-                UIView *asanaView = [[UIView alloc] initWithFrame:asanaFrame];
-                UIButton *asanaButton = [[UIButton alloc] initWithFrame:buttonFrame];
-                asanaButton.tag = c;
-                buttonLayer = [asanaButton layer];
-                [buttonLayer setMasksToBounds:YES];
-                [buttonLayer setCornerRadius:0.0];
-                [buttonLayer setBorderWidth:1.0];
-                [buttonLayer setBorderColor:[[UIColor grayColor] CGColor]];
-                [asanaButton addTarget:self action:@selector(checkAsana:) forControlEvents:UIControlEventTouchUpInside];
-                [asanaView addSubview:asanaButton];
-                // activity indicator for image loading time
-                UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc]
-                                                         initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-                activityView.frame = CGRectMake( 21, 21, 70, 70 );
-                [asanaView addSubview:activityView];
-                [activityView startAnimating];
-                //[asanasViews addObject:asanaView]; // add asana view in self array
-                [contentView addSubview:asanaView];
-            }
-            c++;
-            
-        }
+        [choosedResult removeAllObjects];
+        [self fetchAsanas:segmentCotrol.selectedSegmentIndex];
+        previousSegment = segmentCotrol.selectedSegmentIndex;
         
+    }else {
         
+        segmentCotrol.selectedSegmentIndex = previousSegment;
     }
-    [scrollView addSubview:contentView];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        
-       [self loadImageAsynchFrom:0 upTo:48];
-    });
-    
-}
-
-#pragma mark - Asanas view loaded images, adding end checked
-
-- (void) loadImageAsynchFrom:(unsigned)first upTo:(unsigned)last {
-    
-    unsigned rest;
-    
-    rest = (last - first)%6;
-    last -= rest;
-    
-    for (NSInteger a = first ; a < last ; a += 6) {
-        
-        
-        for (NSUInteger i = a  ; i < (a + 6) ; i++) {
-            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
-            
-            dispatch_async(queue, ^{
-                NSUInteger fileNumber = [[namesArray objectAtIndex:i] integerValue];
-                NSString *fileName = [NSString stringWithFormat:@"%d", fileNumber];
-                UIImage *asana = nil;
-                if (![[appDelegate.asanasCatalog objectForKey:fileName] isEqual:[NSNull null]]) {
-                    asana = [appDelegate.asanasCatalog objectForKey:fileName];
-                }else {
-                    asana = [UIImage imageNamed:fileName];
-                }
-                
-                
-                dispatch_sync(dispatch_get_main_queue(), ^{
-                    
-                    [self addAsanaImage:asana withViewTag:i imageViewTag:fileNumber];
-                });
-            });
-        }
-        [NSThread sleepForTimeInterval:0.08]; // delay for animation
-    }
-    if (rest) {
-        for (NSUInteger i = last  ; i < (last + rest) ; i++) {
-            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
-            
-            dispatch_async(queue, ^{
-                NSUInteger fileNumber = [[namesArray objectAtIndex:i] integerValue];
-                NSString *fileName = [NSString stringWithFormat:@"%d", fileNumber];
-                UIImage *asana = nil;
-                if (![[appDelegate.asanasCatalog objectForKey:fileName] isEqual:[NSNull null]]) {
-                    asana = [appDelegate.asanasCatalog objectForKey:fileName];
-                }else {
-                    asana = [UIImage imageNamed:fileName];
-                }
-                
-                dispatch_sync(dispatch_get_main_queue(), ^{
-                    
-                    [self addAsanaImage:asana withViewTag:i imageViewTag:fileNumber];
-                });
-            });
-        }
-    }
-    
-}
-
-- (void)addAsanaImage:(UIImage *)image withViewTag:(NSUInteger)tag imageViewTag:(NSUInteger)fileNumber {
-    
-    UIImageView *aView = [[UIImageView alloc] initWithImage:image];
-    aView.tag = fileNumber; // in tag value pass image number
-    aView.frame = CGRectMake(1, 1, aImageSize, aImageSize);
-    //[[[[asanasViews objectAtIndex:tag] subviews] objectAtIndex:1] stopAnimating];
-    aView.alpha = 0.0;
-    [UIView animateWithDuration:0.5
-                          delay:0.0
-                        options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^{ aView.alpha = 1.0; }
-                     completion:^(BOOL fin) {/* if (fin) [myView removeFromSuperview]; */}];
-    
-    //if (![[[asanasViews objectAtIndex:tag] subviews] count] < 3) {
-   //     [[asanasViews objectAtIndex:tag] addSubview:aView];
-  //  }
-    
-    loadedImages += 1;
-}
-
-#pragma mark -
-#pragma mark UIScrollViewDelegate mehods
-
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    
-}
-
-- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
-    
-    unsigned gap;
-    unsigned offset = (unsigned) targetContentOffset->y ;
-    gap = (offset - offset%116)/116 * 6;
-    
-#ifdef DEBUG
-    
-    debug(@"contentOffset is %@",  NSStringFromCGPoint(*targetContentOffset));
-    debug(@"offset is %d",  offset);
-    debug(@"offse1 is %d",  (offset - 100)%116);
-    debug(@"offset2 is %d",  (offset - offset%116)/116);
-    debug(@"countet image for loading is %d",  gap);
-    
-#endif
-    gap += 54;
-    if (gap > [namesArray count]) {gap = [namesArray count];}
-    if (gap > loadedImages) {
-        
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            
-            [self loadImageAsynchFrom:loadedImages upTo:gap];
-        });
-        
-    }
-    
-    
-}
-
-
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
 }
 
 
 
-- (void)prepareForSegue:(UIStoryboardSegue*)segue sender:(id)sender {
-    
-    if ([[segue identifier] isEqualToString:@"Main"]) {
-        
-        SelectAsanas *sa = (SelectAsanas *) [segue destinationViewController];
-        sa.navigationItem.title = @"Main Collection";
-        
-        NSString *file = [[NSBundle mainBundle] pathForResource:@"mainCollection" ofType:@"csv"];
-        NSString *csvString = [[NSString stringWithContentsOfFile:file
-                                                         encoding:NSUTF8StringEncoding error:NULL] stringByTrimmingCharactersInSet:
-                               [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-        NSArray *stringValues = [csvString componentsSeparatedByString:@","];
-        NSMutableArray *images = [NSMutableArray arrayWithCapacity:[stringValues count]];
-        for (NSString *strValue in stringValues) {
-            
-            NSNumber *numValue = [NSNumber numberWithInt:[strValue intValue]];
-            [images addObject:numValue];
-        }
-        NSLog(@"images: %@", images);
-        
-        sa.imagesNames = images;
-        
-    }
-    
-    if ([[segue identifier] isEqualToString:@"Express" ]) {
-        
-        SelectAsanas *sa = [segue destinationViewController];
-        sa.navigationItem.title = @"Express Collection";
-        
-        NSString *file = [[NSBundle mainBundle] pathForResource:@"express" ofType:@"csv"];
-        NSString *csvString = [[NSString stringWithContentsOfFile:file
-                                                         encoding:NSUTF8StringEncoding error:NULL] stringByTrimmingCharactersInSet:
-                               [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-        NSArray *stringValues = [csvString componentsSeparatedByString:@","];
-        NSMutableArray *images = [NSMutableArray arrayWithCapacity:[stringValues count]];
-        for (NSString *strValue in stringValues) {
-            
-            NSNumber *numValue = [NSNumber numberWithInt:[strValue intValue]];
-            [images addObject:numValue];
-        }
-        NSLog(@"images: %@", images);
-        
-        sa.imagesNames = images;
-        
-        
-    }
-    if ([[segue identifier] isEqualToString:@"ByLevel"]) {
-        SelectAsanas *sa = [segue destinationViewController];
-        sa.navigationItem.title = @"Collection by level";
-        
-        NSMutableSet *imagesSet = [[NSMutableSet alloc] init]; // create NSSet - avoid repetition images
-        
-        NSSortDescriptor * myDescriptor = [[NSSortDescriptor alloc] initWithKey:nil ascending:YES];
-        NSArray *images = [imagesSet allObjects];
-        images = [images sortedArrayUsingDescriptors:[NSArray arrayWithObjects:myDescriptor, nil]];
-        sa.imagesNames = images;
-        
-        
-        
-    }
-    if ([[segue identifier] isEqualToString:@"notesModalController"]) {
-        
-    }
-    
-}
+
 
 #pragma mark Adding Notes to AppDelegate array
 
@@ -491,6 +302,11 @@ enum sets {
 
 #pragma mark UITableView & UITableViewDataSource methods
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return 116;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -505,42 +321,65 @@ enum sets {
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     PIAcanasTableViewCell *cell = (PIAcanasTableViewCell *)[tableView dequeueReusableCellWithIdentifier:[PIAcanasTableViewCell reuseIdentifier]];
-
+    
     
     if (cell == nil)
     {
         cell = (PIAcanasTableViewCell *)[PIAcanasTableViewCell cellFromNibNamed:@"PIAsanasTableViewCell"];
     }
-
+    
     if ([asanasImages count] != 0) {
         
         // set cell images
         NSMutableArray *lineImages = [NSMutableArray array];
         int lineIndex = indexPath.row;
         int i = 0;
+        int  imageIndex;
         
         while (i <= 5)
         {
-            int imageIndex = (lineIndex * 6 + i);
-            NSLog(@"imageIndex is %d", imageIndex);
-            UIImage *image = [asanasImages objectAtIndex:imageIndex];
-            if (image) {
+            imageIndex = (lineIndex * 6 + i);
+            UIImage *image = nil;
+            if ([asanasImages count] > imageIndex) {
+                image = [asanasImages objectAtIndex:imageIndex];
                 [lineImages addObject:image];
             }
             
+            
+            
             i++;
         }
-        
-        
-        [cell setupButtonsImages:lineImages];
+        // set images, target and selector to cell button
+        [cell setupButtonsImages:lineImages range:imageIndex delegate:self];
         
     }
     
-       cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.accessoryType = UITableViewCellAccessoryNone;
     
     return cell;
 }
 
+- (void)asanaButtonPressed:(id)sender {
+    
+    UIButton *pressedButton = (UIButton*)sender;
+    NSString *imageKey = [NSString stringWithFormat:@"%d",pressedButton.tag];
+    UIImage *image = [choosedResult objectForKey:imageKey];
+    debug(@"image is %@ tag is %@", image,imageKey);
+    if (image) {
+        
+        [[pressedButton layer] setBorderColor:[UIColor lightGrayColor].CGColor];
+        [choosedResult removeObjectForKey:imageKey];
+        
+        
+    }else {
+        
+        [choosedResult setObject:[appDelegate.asanasCatalog objectForKey:imageKey] forKey:imageKey];
+        [[pressedButton layer] setBorderColor:[UIColor redColor].CGColor];
+    }
+    
+    
+    
+}
 
 
 - (void)didReceiveMemoryWarning

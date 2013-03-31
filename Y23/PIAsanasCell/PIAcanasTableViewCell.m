@@ -1,4 +1,4 @@
-//
+    //
 //  PIAcanasTableViewCell.m
 //  Y23
 //
@@ -7,6 +7,8 @@
 //
 
 #import "PIAcanasTableViewCell.h"
+#import <QuartzCore/QuartzCore.h>
+#import "AppDelegate.h"
 
 @implementation PIAcanasTableViewCell : UITableViewCell
 
@@ -45,17 +47,40 @@
 }
 
 
-- (void)setupButtonsImages:(NSArray*)array {
+- (void)setupButtonsImages:(NSArray*)array range:(int)range delegate:(id)delegate {
     
+    if (!appDelegate) {
+        appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    }
     _cellAsanas = @[_asanaButton1,_asanaButton2,_asanaButton3,_asanaButton4,_asanaButton5,_asanaButton6];
-    NSLog(@"images array is %@", array);
     for (int i = 0; i < [array count]; i++) {
         
         UIButton *button = [_cellAsanas objectAtIndex:i];
-        [button setImage:[array objectAtIndex:i] forState:UIControlStateNormal];
+        UIImage *image = [array objectAtIndex:i];
+        
+        if (image) {
+            
+            [button setImage:image forState:UIControlStateNormal];
+            [button setTag:(range + i)];
+            [button addTarget:delegate action:@selector(asanaButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+            [[button layer] setBorderWidth:1.0f];
+            
+            if ([appDelegate.selectedAsanas objectForKey:[NSString stringWithFormat:@"%d",(range + i)]]) {
+                
+                [[button layer] setBorderColor:[UIColor redColor].CGColor];
+                
+            }else {
+                
+                [[button layer] setBorderColor:[UIColor lightGrayColor].CGColor];
+            }
+            
+        }
+        
     }
     
 }
+
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];

@@ -13,5 +13,5 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) NSMutableDictionary *theNewProgram;
 @property (strong, nonatomic) __block NSMutableDictionary *asanasCatalog;
-
+@property (strong, nonatomic)  NSMutableDictionary *selectedAsanas;
 @end

@@ -11,7 +11,7 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
-@synthesize theNewProgram = _theNewProgram, asanasCatalog = _asanasCatalog;
+@synthesize theNewProgram = _theNewProgram, asanasCatalog = _asanasCatalog, selectedAsanas = _selectedAsanas;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -25,7 +25,7 @@
     [self.theNewProgram setObject:[NSMutableArray array] forKey:@"technics"];
     NSMutableString *notesText = [[NSMutableString alloc] initWithString:@"Here notes"];
     [self.theNewProgram setObject:notesText forKey:@"notes"];
-    
+    _selectedAsanas = [NSMutableDictionary dictionary];
     [self loadAsanasImages];
     
     return YES;

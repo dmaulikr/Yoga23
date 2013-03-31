@@ -375,38 +375,6 @@
         <image name="C6@2x.png" width="1536" height="1996"/>
         <image name="LOGO@2x.png" width="1024" height="817"/>
     </resources>
-    <classes>
-        <class className="AsanasViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AsanasViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="navigationItem" candidateClass="UINavigationItem"/>
-                <relationship kind="outlet" name="segmentCotrol" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="table" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
-            </relationships>
-        </class>
-        <class className="DashboardController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DashboardController.h"/>
-        </class>
-        <class className="PersonalDataController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PersonalDataController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="eMail" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="firstName" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="lastName" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="notes" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="PreviewViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PreviewViewController.h"/>
-        </class>
-        <class className="SelectAsanas" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SelectAsanas.h"/>
-        </class>
-        <class className="Technics" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/Technics.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
