@@ -2357,6 +2357,7 @@
 				783DA1F514E691B400E06F10 /* Products */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		783DA1F514E691B400E06F10 /* Products */ = {
 			isa = PBXGroup;

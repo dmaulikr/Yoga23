@@ -72,6 +72,22 @@
 #pragma mark - Asanas Images Scrollview adding 
 
 - (UIScrollView *)addScrollView {
+    
+    if (!allAsanas) {
+        allAsanas = [NSMutableArray array];
+    }else {
+        [allAsanas removeAllObjects];
+    }
+
+    NSMutableArray *allNames = [[appDelegate.selectedAsanas allKeys] mutableCopy];
+    debug(@"allNames is %@", allNames);
+    [allNames sortUsingSelector:@selector(compare:)];
+    debug(@"allNames is %@", allNames);
+    for (NSString *imageName in allNames) {
+        
+        [allAsanas addObject:[appDelegate.selectedAsanas objectForKey:imageName]];
+    }
+    
     asanasCount = [allAsanas count];
     
     
@@ -113,7 +129,7 @@
                 [asanaView addSubview:asanaButton];
                 
                 
-                UIImage *asanaSourceImage = [[allAsanas objectAtIndex:c] image];
+                UIImage *asanaSourceImage = [allAsanas objectAtIndex:c];
                 UIImage *asanaImage = [UIImage imageWithCGImage:[asanaSourceImage CGImage] scale:0.7 orientation:UIImageOrientationUp];
                 [asanaButton setImage:asanaImage forState:UIControlStateNormal]; // add asana image to button after scaling
                 [contentView addSubview:asanaView];
