@@ -79,13 +79,23 @@
         [allAsanas removeAllObjects];
     }
 
-    NSMutableArray *allNames = [[appDelegate.selectedAsanas allKeys] mutableCopy];
-    debug(@"allNames is %@", allNames);
-    [allNames sortUsingSelector:@selector(compare:)];
-    debug(@"allNames is %@", allNames);
-    for (NSString *imageName in allNames) {
+    NSArray *allKeys = [appDelegate.selectedAsanas allKeys] ;
+    debug(@"allNames is %@", allKeys);
+    NSMutableArray *sortedNumbers = [NSMutableArray array];
+    for (NSString *imageName in allKeys) {
         
-        [allAsanas addObject:[appDelegate.selectedAsanas objectForKey:imageName]];
+        NSNumber *numberKey = [NSNumber numberWithInt:[imageName intValue]];
+        [sortedNumbers addObject:numberKey];
+    }
+
+    NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:nil ascending:YES];
+    [sortedNumbers sortUsingDescriptors:[NSArray arrayWithObject:descriptor]];
+    debug(@"allNames is %@", sortedNumbers);
+    
+    
+    for (NSNumber *keyNumber in sortedNumbers) {
+        
+        [allAsanas addObject:[appDelegate.selectedAsanas objectForKey:[keyNumber stringValue]]];
     }
     
     asanasCount = [allAsanas count];
@@ -116,7 +126,7 @@
                 
                 UIView *asanaView = [[UIView alloc] initWithFrame:asanaViewFrame];
                 UIButton *asanaButton = [[UIButton alloc] initWithFrame:buttonFrame];
-                asanaView.tag = [[allAsanas objectAtIndex:c] tag];
+                //asanaView.tag = [[allAsanas objectAtIndex:c] tag];
                 //debug(@"asanaView.tag %i", asanaView.tag);
                 asanaButton.tag = c;
                 CALayer *buttonLayer = [asanaButton layer];
