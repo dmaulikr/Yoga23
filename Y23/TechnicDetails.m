@@ -16,6 +16,7 @@
 @implementation TechnicDetails
 
 
+
 - (id)initWithName:(NSString *)name elements:(NSArray *)elements tag:(int)tag
 {
     self = [super init];
@@ -42,10 +43,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.title = @"Technic details";
+    self.navigationItem.title = technicName;
     
     // adding "Notes" button
-    self.navigationItem.title = @"Sorting sequence asanas";
     UIBarButtonItem *notesButton         = [[UIBarButtonItem alloc]
                                             initWithTitle:@"Notes" style:UIBarButtonItemStylePlain
                                             target:self

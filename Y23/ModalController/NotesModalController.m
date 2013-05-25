@@ -39,19 +39,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    if (self.notesTextView) {
-        self.notesTextView.delegate = self;
+    if (_notesTextView) {
+        _notesTextView.delegate = self;
     }
     
     CGRect textViewFrame = CGRectMake(0.0, 0.0, 500.0, 500.0);
-    self.notesTextView.frame = textViewFrame;
-    [self.notesTextView setFont:[UIFont systemFontOfSize:18.0]];
+    _notesTextView.frame = textViewFrame;
+    [_notesTextView setFont:[UIFont systemFontOfSize:18.0]];
     
     // get to the New Programm data storage in AppDelegate class
     AppDelegate *appDelegate= (AppDelegate*)[[UIApplication sharedApplication] delegate];
     self.notesText = [appDelegate.theNewProgram objectForKey:@"notes"];
     
-    self.notesTextView.text = self.notesText;
+    _notesTextView.text = _notesText;
+    [_notesTextView setKeyboardAppearance:UIKeyboardAppearanceAlert];
     
     
 }
@@ -61,6 +62,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {

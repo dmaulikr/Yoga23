@@ -31,6 +31,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        
     }
     return self;
 }
@@ -72,8 +73,19 @@
                                             action:@selector(addNotes)];
     self.navigationItem.rightBarButtonItems =
     [NSArray arrayWithObjects:notesButton, nil];
+    
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    _firstName.keyboardAppearance = UIKeyboardAppearanceAlert;
+    self.lastName.keyboardAppearance = UIKeyboardAppearanceAlert;
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    
+    
+    return YES;
+}
 
 
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
@@ -90,9 +102,7 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    if ([textField.text isEqualToString:@""])
-        return;
-    
+        
     if (!self.personalData) {
         
         // get to the New Programm data storage in AppDelegate class

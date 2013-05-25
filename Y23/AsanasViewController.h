@@ -25,7 +25,7 @@
     unsigned                                loadedImages;
     unsigned                                linesCount;
     AppDelegate                             *appDelegate;
-    NSMutableArray                          *asanasKeap;
+    NSMutableArray                          *asanasHeap;
     int                                     previousSegment;
     int                                     newSegment;
 }

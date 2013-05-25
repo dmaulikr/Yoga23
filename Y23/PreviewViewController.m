@@ -12,6 +12,7 @@
 #import "PreviewViewController.h"
 #import "NotesModalController.h"
 #import "UIImage+Inverting.h"
+#import "FFTransAlertView.h"
 
 #define debug NSLog
 
@@ -260,11 +261,10 @@
     CFGregorianDate currentDate = CFAbsoluteTimeGetGregorianDate(CFAbsoluteTimeGetCurrent(), CFTimeZoneCopySystem());
     NSString *createDate = [NSString stringWithFormat:@"%02d:%02d:%02.0ld", currentDate.day, currentDate.month, currentDate.year];
     NSString *firstname = [[appDelegate.theNewProgram objectForKey:@"personal"] objectForKey:@"firstName"];
+    if ([firstname length] < 1) firstname = @"Disciple";
     NSString *lastName = [[appDelegate.theNewProgram objectForKey:@"personal"] objectForKey:@"lastName"];
-    if (!firstname) {
-        
-    }
-    NSString *fileName = [NSString stringWithFormat:@"%@_%@_%@Y23.PDF", firstname, lastName, createDate]; //  pdf file name
+    if (!lastName) lastName = @"";
+    shortFileNAme = [NSString stringWithFormat:@"%@_%@_%@Y23.PDF", firstname, lastName, createDate]; //  pdf file name
 
     NSArray *arrayPaths =
     NSSearchPathForDirectoriesInDomains(
@@ -273,16 +273,21 @@
                                         YES);
     NSString *path = [arrayPaths objectAtIndex:0];
     
-    tempFileName = [path stringByAppendingPathComponent:fileName]; // full pdf file name in bundle
+    tempFileName = [path stringByAppendingPathComponent:shortFileNAme]; // full pdf file name in bundle
     
     debug(@"path is %@", tempFileName);
     
     
     // Prepare common text assamble
     NSMutableString *commonText = technicsList;
-    [commonText appendString:@"\n\n\n"];
-    [commonText appendString:@" NOTES: \n\n"];
-    [commonText appendString:[appDelegate.theNewProgram objectForKey:@"notes"]];
+    
+    NSString *notes = [appDelegate.theNewProgram objectForKey:@"notes"];
+    if (![notes isEqualToString:@"Here notes"]) {
+        [commonText appendString:@"\n\n\n"];
+        [commonText appendString:@" NOTES: \n\n"];
+        [commonText appendString:[appDelegate.theNewProgram objectForKey:@"notes"]];
+    }
+    
     debug(@"commonText is %@", commonText);
     
     // create mutable for seting font
@@ -293,7 +298,7 @@
         CFAttributedStringReplaceString (currentText, CFRangeMake(0, 0), (CFStringRef)commonText);
     
     //    create font
-    CTFontRef font = CTFontCreateWithName(CFSTR("Times New Roman"), 18, NULL);
+    CTFontRef font = CTFontCreateWithName(CFSTR("TimesNewRomanPSMT"), 18, NULL);
     
     //    set font attribute
     CFAttributedStringSetAttribute(currentText, CFRangeMake(0, CFAttributedStringGetLength(currentText)), kCTFontAttributeName, font);
@@ -326,7 +331,7 @@
     
     
     
-    debug(@"neededSequences is %@", neededSequences);
+    //debug(@"neededSequences is %@", neededSequences);
     do {
         
         // Draw a page number at the bottom of each page
@@ -399,11 +404,11 @@
     email.mailComposeDelegate = self;
     
     // Subject
-    [email setSubject:@"Testing"];
+    [email setSubject:@"Yoga 23 training"];
     
     // Optional Attachments
     NSData *pdfData = [NSData dataWithContentsOfFile:tempFileName];
-    [email addAttachmentData:pdfData mimeType:@"application/pdf" fileName:tempFileName];
+    [email addAttachmentData:pdfData mimeType:@"application/pdf" fileName:shortFileNAme];
     
     // Body
     [email setMessageBody:@"This is the body" isHTML:NO];
@@ -464,7 +469,7 @@
         
     if ([sequences count] == 0) {
         // warning massage here
-        UIAlertView *noAsanas = [[UIAlertView alloc] initWithTitle:@"No saved sequences .."
+        CustomAlert *noAsanas = [[CustomAlert alloc] initWithTitle:@"No saved sequences .."
                                                            message:@"You have not created the sequence!" 
                                                           delegate:nil cancelButtonTitle:@"Ok" 
                                                  otherButtonTitles:nil];
@@ -495,10 +500,11 @@
                                         YES);
     NSString *path = [arrayPaths objectAtIndex:0];
     
-    NSArray *directoryContent = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:NULL];
+    NSArray *directoryContent = [fileManager contentsOfDirectoryAtPath:path error:NULL];
     for (int count = 0; count < (int)[directoryContent count]; count++)
     {
         debug(@"File %d: %@", (count + 1), [directoryContent objectAtIndex:count]);
+         [fileManager removeItemAtPath:[directoryContent objectAtIndex:count] error:nil];
     }
 }
 

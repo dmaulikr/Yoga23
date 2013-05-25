@@ -11,6 +11,7 @@
 #import "PIAsanaView.h"
 #import "UIView+Animation.h"
 #import "NotesModalController.h"
+#import "FFTransAlertView.h"
 
 
 
@@ -150,7 +151,7 @@
     if ([appDelegate.theNewProgram objectForKey:@"asanas"]) {
         sequences = [appDelegate.theNewProgram objectForKey:@"asanas"];
     }
-    debug(@"sequences is %@", sequences);
+    //debug(@"sequences is %@", sequences);
     [scrollView addSubview:contentView];
     return (scrollView);
 }
@@ -167,7 +168,7 @@
     }
     if (asanasNumber == 42) {
         // warning massage here
-        UIAlertView *tooManyAsanas = [[UIAlertView alloc] initWithTitle:@"Too many asanas selected.."
+        CustomAlert *tooManyAsanas = [[CustomAlert alloc] initWithTitle:@"Too many asanas selected.."
                                                            message:@"42 is a limit to the number of asanas!" 
                                                           delegate:nil cancelButtonTitle:@"Ok" 
                                                  otherButtonTitles:nil];
@@ -222,7 +223,7 @@
         
         if ([addedAsanas count] == 0) {
             // warning massage here
-            UIAlertView *noAsanas = [[UIAlertView alloc] initWithTitle:@"No asanas selected.."
+            CustomAlert *noAsanas = [[CustomAlert alloc] initWithTitle:@"No asanas selected.."
                                                                message:@"You have not selected any asana!" 
                                                               delegate:nil cancelButtonTitle:@"Ok" 
                                                      otherButtonTitles:nil];

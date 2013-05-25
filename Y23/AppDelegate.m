@@ -40,6 +40,11 @@
                                                      encoding:NSUTF8StringEncoding error:NULL] stringByTrimmingCharactersInSet:
                            [NSCharacterSet whitespaceAndNewlineCharacterSet]];
     NSArray *stringValues = [csvString componentsSeparatedByString:@","];
+    
+       
+    
+    
+    
     _asanasCatalog = [[NSMutableDictionary alloc] initWithCapacity:[stringValues count]];
     
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);

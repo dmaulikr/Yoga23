@@ -10,7 +10,7 @@
 #import "QuartzCore/QuartzCore.h"
 #import "CreatingSequences.h"
 #import "NotesModalController.h"
-
+#import "FFTransAlertView.h"
 
 #define aSViewSize 116
 #define aImageSize 112
@@ -226,7 +226,7 @@
         
         if ([choiceResult count] == 0) {
             // warning massage here
-            UIAlertView *noAsanas = [[UIAlertView alloc] initWithTitle:@"No asanas selected.."
+            CustomAlert *noAsanas = [[CustomAlert alloc] initWithTitle:@"No asanas selected.."
                                                                message:@"You have not selected any asana!" 
                                                               delegate:nil cancelButtonTitle:@"Ok" 
                                                      otherButtonTitles:nil];

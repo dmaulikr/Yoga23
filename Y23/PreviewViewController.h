@@ -14,16 +14,17 @@
 @interface PreviewViewController : UIViewController <MFMailComposeViewControllerDelegate> {
     
 @protected
-    AppDelegate *appDelegate;
-    UIWebView *presentWebView;
-    NSString *tempFileName;             // PDF File name
-    NSMutableArray *sequences;          // AppDelegate sequences images array
-    NSMutableArray *technics;           // AppDelegate technics array
-    NSMutableString *technicsList;      // list of chosen technics
-    int sequenceNumber;
-    float startTextRectY;
-    CFRange currentTextRange;
-    CTFramesetterRef textFramesetter;  // text range and framesetter
+    AppDelegate         *appDelegate;
+    UIWebView           *presentWebView;
+    NSString            *tempFileName;       // PDF full File name
+    NSString            *shortFileNAme;      // PDF short File name
+    NSMutableArray      *sequences;          // AppDelegate sequences images array
+    NSMutableArray      *technics;           // AppDelegate technics array
+    NSMutableString     *technicsList;      // list of chosen technics
+    int                 sequenceNumber;
+    float               startTextRectY;
+    CFRange             currentTextRange;
+    CTFramesetterRef    textFramesetter;  // text range and framesetter
     
     MFMailComposeViewController *email;
 

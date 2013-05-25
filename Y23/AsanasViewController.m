@@ -92,12 +92,13 @@ enum sets {
 
 -(void)nextButton{
     
+    [toolBar setHidden:YES];
     // to ceate sequences 
-    if ([asanasKeap count] < 10) {
+    if ([asanasHeap count] < 10) {
         
-        if ([asanasKeap count] == 1) {
+        if ([asanasHeap count] == 1) {
             // warning massage here
-            UIAlertView *noAsanas = [[UIAlertView alloc] initWithTitle:@"No asanas selected.."
+            CustomAlert *noAsanas = [[CustomAlert alloc] initWithTitle:@"No asanas selected.."
                                                                message:@"You have not selected any asana!"
                                                               delegate:nil cancelButtonTitle:@"Ok"
                                                      otherButtonTitles:nil];
@@ -114,7 +115,7 @@ enum sets {
     // sorting elements as image No.
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"tag"
                                                                    ascending:YES] ;
-    NSArray *sortedArray = [asanasKeap sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    NSArray *sortedArray = [asanasHeap sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
     
     cs -> allAsanas = [NSMutableArray arrayWithArray:sortedArray];
     [self.navigationController pushViewController:cs animated:YES];
@@ -166,8 +167,7 @@ enum sets {
         [changeSetAlert show];
         
     }else {
-        
-        
+    
         [self fetchAsanas:segmentCotrol.selectedSegmentIndex];
     }
     
@@ -214,8 +214,9 @@ enum sets {
         
         [asanasImages removeAllObjects];
     }
+    // debug(@"namesArray is %@ setsArray is ",namesArray);
     for (NSString *imageName in namesArray) {
-        
+        //debug(@"imageName is %@  ",imageName);
         [asanasImages addObject:[[appDelegate asanasCatalog] objectForKey:imageName]];
         
     }
@@ -320,39 +321,77 @@ enum sets {
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PIAcanasTableViewCell *cell = (PIAcanasTableViewCell *)[tableView dequeueReusableCellWithIdentifier:[PIAcanasTableViewCell reuseIdentifier]];
     
+    static NSString *CellIdentifier = @"asanasCell";
     
-    if (cell == nil)
-    {
-        cell = (PIAcanasTableViewCell *)[PIAcanasTableViewCell cellFromNibNamed:@"PIAsanasTableViewCell"];
+    PIAcanasTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (!cell) {
+        
+         cell = (PIAcanasTableViewCell *)[PIAcanasTableViewCell cellFromNibNamed:@"PIAsanasTableViewCell"];
+        
+       
     }
-    
+
     if ([asanasImages count] != 0) {
         
         // set cell images
-        NSMutableArray *lineImages = [NSMutableArray array];
         int lineIndex = indexPath.row;
-        int i = 0;
+        int i = 1;
         int  imageIndex;
         
-        while (i <= 5)
+        while (i <= 6)
         {
             imageIndex = (lineIndex * 6 + i);
             UIImage *image = nil;
-            if ([asanasImages count] > imageIndex) {
-                image = [asanasImages objectAtIndex:imageIndex];
-                [lineImages addObject:image];
+            if ([asanasImages count] >= imageIndex) {
+                
+                image = [asanasImages objectAtIndex:(imageIndex - 1)];
+                UIButton *oneCellButton = nil;
+                
+                switch (i) {
+                    case 1:
+                        oneCellButton = cell.asanaButton1;
+                        break;
+                    case 2:
+                        oneCellButton = cell.asanaButton2;
+                        break;
+                    case 3:
+                        oneCellButton = cell.asanaButton3;
+                        break;
+                    case 4:
+                        oneCellButton = cell.asanaButton4;
+                        break;
+                    case 5:
+                        oneCellButton = cell.asanaButton5;
+                        break;
+                    case 6:
+                        oneCellButton = cell.asanaButton6;
+                        break;
+                }
+                
+                [oneCellButton addTarget:self action:@selector(asanaButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+                [oneCellButton setImage:image forState:UIControlStateNormal];
+                oneCellButton.tag = indexPath.row * 6 + i;
+                [[oneCellButton layer] setBorderWidth:1.0f];
+                
+                if ([appDelegate.selectedAsanas objectForKey:[NSString stringWithFormat:@"%d",oneCellButton.tag]]) {
+                    
+                    [[oneCellButton layer] setBorderColor:[UIColor redColor].CGColor];
+                    
+                }else {
+                    
+                    [[oneCellButton layer] setBorderColor:[UIColor lightGrayColor].CGColor];
+                }
             }
-            
-            
-            
+
             i++;
         }
         // set images, target and selector to cell button
-        [cell setupButtonsImages:lineImages range:imageIndex delegate:self];
+        
         
     }
+
     
     cell.accessoryType = UITableViewCellAccessoryNone;
     
@@ -373,7 +412,7 @@ enum sets {
         
     }else {
         
-        [choosedResult setObject:[appDelegate.asanasCatalog objectForKey:imageKey] forKey:imageKey];
+        [choosedResult setObject:[asanasImages objectAtIndex:(pressedButton.tag - 1)] forKey:imageKey];
         [[pressedButton layer] setBorderColor:[UIColor redColor].CGColor];
     }
     
@@ -402,6 +441,7 @@ enum sets {
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [toolBar setHidden:NO];
 }
 
 - (void)viewDidAppear:(BOOL)animated
