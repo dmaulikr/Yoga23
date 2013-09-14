@@ -14,6 +14,7 @@
 @implementation PIAsanaView
 
 @synthesize leftNumber = _leftNumber, rightNumber = _rightNumber, labelsValues = _labelsValues;
+@synthesize identificator = _identificator;
 
 
 

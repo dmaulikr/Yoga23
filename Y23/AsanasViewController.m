@@ -7,7 +7,6 @@
 //
 
 #import "AsanasViewController.h"
-#import "SelectAsanas.h"
 #import "QuartzCore/QuartzCore.h"
 #import "NotesModalController.h"
 #import "AppDelegate.h"
@@ -25,7 +24,11 @@ enum sets {
     kLightSet
 };
 
-@implementation AsanasViewController
+@interface AsanasViewController () <HideNotesViewProtocol>
+
+@end
+
+@implementation AsanasViewController 
 
 
 
@@ -84,19 +87,20 @@ enum sets {
     self.navigationItem.rightBarButtonItems = items;
     if (!asanasImages) {
         asanasImages = [NSMutableArray array];
+        asanasKeys = [NSMutableArray array];
     }
     [self createToolBar];
-    choosedResult = appDelegate.selectedAsanas;
+    [self fetchAsanas:kMainSet];
 }
 
 
--(void)nextButton{
+-(void)nextButton {
     
-    [toolBar setHidden:YES];
+    
     // to ceate sequences 
-    if ([asanasHeap count] < 10) {
+    if ([appDelegate.selectedAsanas count] < 10) {
         
-        if ([asanasHeap count] == 1) {
+        if ([appDelegate.selectedAsanas count] == 0) {
             // warning massage here
             CustomAlert *noAsanas = [[CustomAlert alloc] initWithTitle:@"No asanas selected.."
                                                                message:@"You have not selected any asana!"
@@ -109,19 +113,21 @@ enum sets {
             // one more warning massage
         }
     }
-    
+    [toolBar setHidden:YES];
     CreatingSequences *cs = [[CreatingSequences alloc] init];
     
     // sorting elements as image No.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"tag"
-                                                                   ascending:YES] ;
-    NSArray *sortedArray = [asanasHeap sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+    //NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"tag"
+    //                                                               ascending:YES] ;
+    //NSArray *sortedArray = [asanasHeap sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
     
-    cs -> allAsanas = [NSMutableArray arrayWithArray:sortedArray];
+    //cs -> allAsanas = [NSMutableArray arrayWithArray:sortedArray];
     [self.navigationController pushViewController:cs animated:YES];
 }
 
 - (void)clearAllButton {
+    
+    if ([appDelegate.selectedAsanas count] > 0) {
     
     CustomAlert *clearAllAlert = [[CustomAlert alloc]
                                   initWithTitle:@"Warning"
@@ -131,6 +137,16 @@ enum sets {
                                   , nil];
     clearAllAlert.tag = 0;
     [clearAllAlert show];
+    }else {
+        CustomAlert *clearAllAlert = [[CustomAlert alloc]
+                                      initWithTitle:nil
+                                      message:@"Nothing to remove"
+                                      delegate:self cancelButtonTitle:@"Ok"
+                                      otherButtonTitles:nil
+                                      , nil];
+        clearAllAlert.tag = 0;
+        [clearAllAlert show];
+    }
 }
 
 
@@ -146,7 +162,7 @@ enum sets {
     segmentCotrol.segmentedControlStyle = UISegmentedControlStyleBar;
     segmentCotrol.backgroundColor = [UIColor clearColor];
     [segmentCotrol setSelectedSegmentIndex:0];
-    [self fetchAsanas:kMainSet];
+    
     toolBar.frame = CGRectMake(0, 64, 768, 44);
     [self.navigationController.view addSubview:toolBar];
     
@@ -155,7 +171,7 @@ enum sets {
 
 - (void)segmentControlPressed {
     
-    if ([choosedResult count] > 0) {
+    if ([appDelegate.selectedAsanas count] > 0) {
         
         CustomAlert *changeSetAlert = [[CustomAlert alloc]
                                        initWithTitle:@"You select a different set of asanas"
@@ -210,15 +226,14 @@ enum sets {
         linesCount ++;
     }
     
-    if ([asanasImages count] != 0) {
-        
-        [asanasImages removeAllObjects];
-    }
+    if ([asanasImages count] != 0) [asanasImages removeAllObjects];
+    if ([asanasKeys count] != 0) [asanasImages removeAllObjects];
+    
     // debug(@"namesArray is %@ setsArray is ",namesArray);
     for (NSString *imageName in namesArray) {
         //debug(@"imageName is %@  ",imageName);
         [asanasImages addObject:[[appDelegate asanasCatalog] objectForKey:imageName]];
-        
+        [asanasKeys addObject:imageName];
     }
 #ifdef DEBUG
     
@@ -238,13 +253,14 @@ enum sets {
     
     if (alertView.tag == 0 && buttonIndex == 1) {
         
-        [choosedResult removeAllObjects];
+        [appDelegate.selectedAsanas removeAllObjects];
+        [appDelegate.asanasCounter removeAllObjects];
         [table reloadData];
     }
     
     if (alertView.tag == 1 && buttonIndex == 1) {
         
-        [choosedResult removeAllObjects];
+        [appDelegate.selectedAsanas removeAllObjects];
         [self fetchAsanas:segmentCotrol.selectedSegmentIndex];
         previousSegment = segmentCotrol.selectedSegmentIndex;
         
@@ -277,11 +293,9 @@ enum sets {
                                              action:@selector(notesDone)];
     nmc.navigationItem.title = @"NOTES";
     
-    if ([self respondsToSelector:@selector(presentModalViewController:animated:)]) {
-        [self presentModalViewController:navController animated:YES];
-    }else {
-        [self presentViewController:navController animated:YES completion:nil];
-    }
+
+    [self presentViewController:navController animated:YES completion:nil];
+    
     
     nmc.delegate = self;
     
@@ -291,11 +305,8 @@ enum sets {
 
 -(void)notesDone {
     
-    if ([self respondsToSelector:@selector(dismissModalViewControllerAnimated:)]) {
-        [self dismissModalViewControllerAnimated:YES];
-    }else {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }
+    [self dismissViewControllerAnimated:YES completion:nil];
+
     
 }
 
@@ -401,18 +412,18 @@ enum sets {
 - (void)asanaButtonPressed:(id)sender {
     
     UIButton *pressedButton = (UIButton*)sender;
-    NSString *imageKey = [NSString stringWithFormat:@"%d",pressedButton.tag];
-    UIImage *image = [choosedResult objectForKey:imageKey];
-    debug(@"image is %@ tag is %@", image,imageKey);
+    NSString *asanaNumber = [asanasKeys objectAtIndex:(pressedButton.tag - 1)];
+    UIImage *image = [appDelegate.selectedAsanas objectForKey:asanaNumber];
+    //debug(@"image is %@ tag is %@", image,imageKey);
     if (image) {
         
         [[pressedButton layer] setBorderColor:[UIColor lightGrayColor].CGColor];
-        [choosedResult removeObjectForKey:imageKey];
+        [appDelegate.selectedAsanas removeObjectForKey:asanaNumber];
         
         
     }else {
-        
-        [choosedResult setObject:[asanasImages objectAtIndex:(pressedButton.tag - 1)] forKey:imageKey];
+        //debug(@"[asanasImages objectAtIndex:(pressedButton.tag - 1)] is %@", [asanasImages objectAtIndex:(pressedButton.tag - 1)]);
+        [appDelegate.selectedAsanas setObject:[asanasImages objectAtIndex:(pressedButton.tag - 1)] forKey:asanaNumber];
         [[pressedButton layer] setBorderColor:[UIColor redColor].CGColor];
     }
     

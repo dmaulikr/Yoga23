@@ -10,9 +10,15 @@
 #import "AppDelegate.h"
 #import "NotesModalController.h"
 
+
+@interface Technics () <HideNotesViewProtocol>
+
+@end
+
 @implementation Technics
 
 @synthesize selectedTechnics = _selectedTechnics, person = _person;
+@synthesize clearing = _clearing;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,7 +45,34 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
+    _clearing = NO;
+   
+    [self.view addSubview:[self renewTechnicsView]];
+  
+    
+    // adding Notes button
+    UIBarButtonItem *notesButton         = [[UIBarButtonItem alloc]
+                                            initWithTitle:@"Notes" style:UIBarButtonItemStylePlain
+                                            target:self
+                                            action:@selector(addNotes)];
+    self.navigationItem.rightBarButtonItems =
+    [NSArray arrayWithObjects:notesButton, nil];
+    
+}
 
+- (UIView*)renewTechnicsView {
+    
+    if (contentView) {
+        [contentView removeFromSuperview];
+        contentView = nil;
+    }
+    
+    
+    contentView = [[UIView alloc] initWithFrame:self.view.frame];
+    
+
+    
     // parse plist with technics
     NSString* plistPath = [[NSBundle mainBundle] pathForResource:@"Technics" ofType:@"plist"];
     allTechnics =[[NSMutableArray alloc] initWithContentsOfFile:plistPath];
@@ -49,16 +82,20 @@
     self.selectedTechnics = [appDelegate.theNewProgram objectForKey:@"technics"];
     NSLog(@"appDelegate theNewProgramm is %@", appDelegate.theNewProgram);
     
+    
     for (NSInteger i = 0; i < [allTechnics count]; ++i)
     {
         [self.selectedTechnics addObject:[NSNull null]];
     }
-    NSLog(@" allTechnics is %d", [allTechnics count]);
 
+    
+   
+    NSLog(@" allTechnics is %d", [allTechnics count]);
+    
     
     // create subview of main view
     int x = 0; //  width coordinate
-    int y = 0; // first height coordinate    
+    int y = 0; // first height coordinate
     int elementTag = 0; // tag for identification
     
     for (id plistElement in allTechnics) {
@@ -74,7 +111,7 @@
         cellView.backgroundColor = [UIColor clearColor];
         cellView.tag = elementTag;
         CheckBoxButton *checkBox = [[CheckBoxButton alloc] initWithFrame:checkBoxFrame];
-        [checkBox setImage:[UIImage imageNamed:@"WhiteCBox.png"] 
+        [checkBox setImage:[UIImage imageNamed:@"WhiteCBox.png"]
                   forState:UIControlStateNormal];
         checkBox.tag = elementTag;
         [checkBox addTarget:self action:@selector(addProgramItem:) forControlEvents:UIControlEventTouchUpInside];
@@ -86,23 +123,23 @@
         labelString.textColor = [UIColor whiteColor];
         labelString.font = [UIFont fontWithName:@"Chalkduster" size:22.0];
         labelString.backgroundColor = [UIColor clearColor];
-        // if just string element from plist:       
+        // if just string element from plist:
         if ([plistElement isKindOfClass:[NSString class]]) {
             
             labelString.text = plistElement;
             
-        } 
+        }
         // if there are nested elements inside:
         else if ([plistElement isKindOfClass:[NSDictionary class]]) {
             
             NSArray *dictKeyString = [plistElement allKeys];
             labelString.text = [dictKeyString objectAtIndex:0];
-         // add button for next view with elements  
+            // add button for next view with elements
             CGRect goButtonFrame = CGRectMake( 640, 16, 40, 40 );
             UIButton *goButton = [[UIButton alloc] initWithFrame:goButtonFrame];
             goButton.tag = elementTag;
             [goButton setEnabled:NO];
-            [goButton setImage:[UIImage imageNamed:@"WhiteAButton.png"] 
+            [goButton setImage:[UIImage imageNamed:@"WhiteAButton.png"]
                       forState:UIControlStateNormal];
             [goButton addTarget:self action:@selector(goTechnicDetails:) forControlEvents:UIControlEventTouchUpInside];
             [cellView addSubview:goButton];
@@ -110,17 +147,11 @@
         
         [cellView addSubview:labelString];
         [cellView addSubview:checkBox];
-        [self.view addSubview:cellView];
-        
+        [contentView addSubview:cellView];        
         elementTag++;
     }
-    // adding Notes button
-    UIBarButtonItem *notesButton         = [[UIBarButtonItem alloc]
-                                            initWithTitle:@"Notes" style:UIBarButtonItemStylePlain
-                                            target:self
-                                            action:@selector(addNotes)];
-    self.navigationItem.rightBarButtonItems =
-    [NSArray arrayWithObjects:notesButton, nil];
+    
+    return contentView;
     
 }
 
@@ -193,11 +224,9 @@
                                              action:@selector(notesDone)];
     nmc.navigationItem.title = @"NOTES";
     
-    if ([self respondsToSelector:@selector(presentModalViewController:animated:)]) {
-        [self presentModalViewController:navController animated:YES];
-    }else {
-        [self presentViewController:navController animated:YES completion:nil];
-    }
+
+    [self presentViewController:navController animated:YES completion:nil];
+
     
     nmc.delegate = self;
     
@@ -207,18 +236,19 @@
 
 -(void)notesDone {
     
-    if ([self respondsToSelector:@selector(dismissModalViewControllerAnimated:)]) {
-        [self dismissModalViewControllerAnimated:YES];
-    }else {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }
-    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
 
 - (void)viewWillAppear:(BOOL)animated {
-    
+
+    // clear if needed
+    if (_clearing) {
+        _clearing = NO;
+        [self.view addSubview:[self renewTechnicsView]];
+    }
+    [super viewWillAppear:animated];
 }
 
 - (void)viewDidUnload

@@ -8,6 +8,12 @@
 
 #import "PersonalDataController.h"
 #import "NotesModalController.h"
+#import "AppDelegate.h"
+
+@interface PersonalDataController () <HideNotesViewProtocol>
+
+@end
+
 
 @implementation PersonalDataController
 
@@ -32,6 +38,7 @@
     if (self) {
         // Custom initialization
         
+        
     }
     return self;
 }
@@ -39,6 +46,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // get to the New Programm data storage in AppDelegate class
+    appDelegate= (AppDelegate*)[[UIApplication sharedApplication] delegate];
     
     // set image icons for Personal Tab
     UIImage *personalIcon = [UIImage imageNamed:@"Personal@2x.png"];
@@ -79,6 +89,10 @@
 - (void)viewWillAppear:(BOOL)animated {
     _firstName.keyboardAppearance = UIKeyboardAppearanceAlert;
     self.lastName.keyboardAppearance = UIKeyboardAppearanceAlert;
+    NSLog(@"first name from delegate - %@",[[appDelegate.theNewProgram objectForKey:@"personal"] objectForKey:@"firstName"]);
+    self.firstName.text = [[appDelegate.theNewProgram objectForKey:@"personal"] objectForKey:@"firstName"];
+    self.lastName.text = [[appDelegate.theNewProgram objectForKey:@"personal"] objectForKey:@"lastName"];
+    self.eMail.text = [[appDelegate.theNewProgram objectForKey:@"personal"] objectForKey:@"eMail"];
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
@@ -105,8 +119,7 @@
         
     if (!self.personalData) {
         
-        // get to the New Programm data storage in AppDelegate class
-        AppDelegate *appDelegate= (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        
         self.personalData = [appDelegate.theNewProgram objectForKey:@"personal"];
         
         // set current date
@@ -119,11 +132,12 @@
     }
     if (textField == self.firstName )
     {
-        [self.personalData setObject:self.firstName.text forKey:@"firstName"];
-
+        NSLog(@"personalData 1 from delegate - %@ text - %@",[appDelegate.theNewProgram objectForKey:@"personal"],self.firstName.text);
+        [self.personalData setObject:[NSString stringWithString:self.firstName.text] forKey:@"firstName"];
+        NSLog(@"personalData2 from delegate - %@",[appDelegate.theNewProgram objectForKey:@"personal"] );
     }
     if (textField == self.lastName) {
-        [self.personalData setObject:self.lastName.text forKey:@"lastName"];
+       [self.personalData setObject:self.lastName.text forKey:@"lastName"];
     }
     if (textField == self.eMail) {
         [self.personalData setObject:self.eMail.text forKey:@"eMail"];
@@ -159,11 +173,8 @@
                                               action:@selector(notesDone)];
     nmc.navigationItem.title = @"NOTES";
     
-    if ([self respondsToSelector:@selector(presentModalViewController:animated:)]) {
-        [self presentModalViewController:navController animated:YES];
-    }else {
-        [self presentViewController:navController animated:YES completion:nil];
-    }
+
+    [self presentViewController:navController animated:YES completion:nil];
     
     nmc.delegate = self;
     
@@ -173,12 +184,8 @@
 
 -(void)notesDone {
     
-    if ([self respondsToSelector:@selector(dismissModalViewControllerAnimated:)]) {
-        [self dismissModalViewControllerAnimated:YES];
-    }else {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }
-    
+    [self dismissViewControllerAnimated:YES completion:nil];
+  
 }
 
 

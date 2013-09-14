@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "CheckBoxButton.h"
 
+@class Technics;
+
 @interface TechnicDetails : UIViewController {
     NSString *technicName;
     NSArray *elementsNames;

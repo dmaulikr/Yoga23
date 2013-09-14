@@ -11,20 +11,23 @@
 #import "AppDelegate.h"
 
 
-@interface CreatingSequences : UIViewController <ModalViewControllerDelegate> {
+@interface CreatingSequences : UIViewController <ModalViewControllerDelegate,AsanasSortAndSave> {
     
 @public
     NSMutableArray *allAsanas;    
 @protected
-    AppDelegate *appDelegate;
-    NSUInteger asanasCount; // count of all asanas
-    NSMutableArray *sequences; // all sequences
-    UIScrollView *seqScrollView;
-    UIView *seqContentView;
-    UIView *saveSequence;
-    SortAsanasController *sortController;
-    NSMutableArray *addedAsanas; // cuurent choiced asanas
-    BOOL saved; // for saving event
+    AppDelegate             *appDelegate;
+    NSUInteger              asanasCount; // count of all asanas
+    NSMutableArray          *sequences; // all sequences
+    UIScrollView            *seqScrollView;
+    UIView                  *seqContentView;
+    UIView                  *saveSequence;
+    SortAsanasController    *sortController;
+    NSMutableArray          *addedAsanas; // curent choosed asanas
+    BOOL                    saved; // for saving event
+    UIImage                 *counterBG;
+    NSMutableArray          *trackedObjects; // all View Objects wiyh asanas buttons and views
+    NSMutableArray          *controllersContainer;
 }
 
 @property (nonatomic, strong) NSMutableArray *currentSequenceViews; // current sequence

@@ -6,6 +6,12 @@
 //
 //
 
+@protocol TapOnAsanaProtocol <NSObject>
+
+- (void)asanaButtonPressed:(id)sender;
+
+@end
+
 #import <UIKit/UIKit.h>
 
 @class AppDelegate;

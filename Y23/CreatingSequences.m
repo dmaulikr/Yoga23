@@ -12,12 +12,9 @@
 #import "UIView+Animation.h"
 #import "NotesModalController.h"
 #import "FFTransAlertView.h"
+#import "CSAsanaViewController.h"
 
-
-
-
-
-@interface CreatingSequences ()
+@interface CreatingSequences () <HideNotesViewProtocol>
 
 @end
 
@@ -38,16 +35,32 @@
     }
     return self;
 }
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        if (!appDelegate) {
+            appDelegate= (AppDelegate*)[[UIApplication sharedApplication] delegate];
+            sequences = [appDelegate.theNewProgram objectForKey:@"asanas"];
+            trackedObjects = [NSMutableArray array];
+            addedAsanas = appDelegate.unsavedSequence;
+        }
+    }
+    return self;
+}
 
+- (void)setAddedAsanas:(NSMutableArray *)views {
+    
+    appDelegate.unsavedSequence = views;
+    addedAsanas = appDelegate.unsavedSequence;
+    
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     // adding "Notes" and "To sort" button
-    if (!appDelegate) {
-       appDelegate= (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        sequences = [appDelegate.theNewProgram objectForKey:@"asanas"];
-    }
+    //appDelegate.unsavedSequence = addedAsanas;
     
     self.navigationItem.title = [NSString stringWithFormat:@"Creating sequences (%d)", [sequences count]];
     
@@ -64,9 +77,8 @@
     [NSArray arrayWithObjects:doneButton, notesButton, nil];
     
     
-    
+    counterBG = [UIImage imageNamed:@"numberPic"];
     [self.view addSubview:[self addScrollView]]; // adding all images to main view
-    
 }
 
 
@@ -81,7 +93,7 @@
     }
 
     NSArray *allKeys = [appDelegate.selectedAsanas allKeys] ;
-    debug(@"allNames is %@", allKeys);
+    //debug(@"allNames is %@", allKeys);
     NSMutableArray *sortedNumbers = [NSMutableArray array];
     for (NSString *imageName in allKeys) {
         
@@ -91,7 +103,7 @@
 
     NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:nil ascending:YES];
     [sortedNumbers sortUsingDescriptors:[NSArray arrayWithObject:descriptor]];
-    debug(@"allNames is %@", sortedNumbers);
+    //.debug(@"allNames is %@", sortedNumbers);
     
     
     for (NSNumber *keyNumber in sortedNumbers) {
@@ -100,6 +112,7 @@
     }
     
     asanasCount = [allAsanas count];
+    controllersContainer = [NSMutableArray array];
     
     
     unsigned lineCount; // define line count for each 9 asanas
@@ -121,29 +134,39 @@
         for (unsigned a = 0; a <= aSViewSize*5; a += aSViewSize) {
             
             CGRect asanaViewFrame = CGRectMake( a, i, aSViewSize - 4.0 , aSViewSize - 4.0);
-            CGRect buttonFrame = CGRectMake( 1, 1, aImageSize, aImageSize );
             
             if (c < [allAsanas count]) {
                 
-                UIView *asanaView = [[UIView alloc] initWithFrame:asanaViewFrame];
-                UIButton *asanaButton = [[UIButton alloc] initWithFrame:buttonFrame];
-                //asanaView.tag = [[allAsanas objectAtIndex:c] tag];
-                //debug(@"asanaView.tag %i", asanaView.tag);
-                asanaButton.tag = c;
-                CALayer *buttonLayer = [asanaButton layer];
+                CSAsanaViewController *asanaController = [[CSAsanaViewController alloc] init];
+                asanaController.view.frame = asanaViewFrame;
+                [trackedObjects addObject:asanaController];
+                // find asanas identifier
+                NSArray *key = [appDelegate.selectedAsanas allKeysForObject:[allAsanas objectAtIndex:c]];
+                NSString *number = [appDelegate.asanasCounter objectForKey:[key objectAtIndex:0]];
+                asanaController.asanaKey = [key objectAtIndex:0];
+                
+                if (!number) {
+                    asanaController.countView.hidden = YES;
+                }else {
+                    asanaController.countLabel.text = number;
+                }
+                
+                asanaController.button.tag = c;
+                
+                CALayer *buttonLayer = [asanaController.button layer];
                 [buttonLayer setMasksToBounds:YES];
                 [buttonLayer setCornerRadius:0.0];
                 [buttonLayer setBorderWidth:1.0];
                 [buttonLayer setBorderColor:[[UIColor grayColor] CGColor]];
                 // set action for tap on asana button
-                [asanaButton addTarget:self action:@selector(checkAsanaForSequence:) forControlEvents:UIControlEventTouchUpInside];
-                [asanaView addSubview:asanaButton];
-                
+                [asanaController.button addTarget:self action:@selector(checkAsanaForSequence:) forControlEvents:UIControlEventTouchUpInside];
                 
                 UIImage *asanaSourceImage = [allAsanas objectAtIndex:c];
                 UIImage *asanaImage = [UIImage imageWithCGImage:[asanaSourceImage CGImage] scale:0.7 orientation:UIImageOrientationUp];
-                [asanaButton setImage:asanaImage forState:UIControlStateNormal]; // add asana image to button after scaling
-                [contentView addSubview:asanaView];
+                [asanaController.button setImage:asanaImage forState:UIControlStateNormal]; // add asana image to button after scaling
+                [contentView addSubview:asanaController.view];
+                [controllersContainer addObject:asanaController];
+                
             }
             c++;
         }
@@ -159,34 +182,58 @@
 #pragma mark - Asanas view adding end checked to down view
 
 - (void)checkAsanaForSequence:(id)sender {
-    if (!addedAsanas) {
-        addedAsanas = [[NSMutableArray alloc] initWithCapacity:2.0];
-    }
+    
+   
     int asanasNumber = [addedAsanas count];
-    if (self.currentSequenceViews && !saved) {
-        asanasNumber = [self.currentSequenceViews count] + [addedAsanas count];
-    }
+
     if (asanasNumber == 42) {
         // warning massage here
         CustomAlert *tooManyAsanas = [[CustomAlert alloc] initWithTitle:@"Too many asanas selected.."
-                                                           message:@"42 is a limit to the number of asanas!" 
+                                                           message:@"42 is a limit of asanas number" 
                                                           delegate:nil cancelButtonTitle:@"Ok" 
                                                  otherButtonTitles:nil];
         [tooManyAsanas show];
         return;
     }
     // create asana object
-    UIImage *asanaImage = [sender imageForState:UIControlStateNormal];
+    UIButton *senderButton = (UIButton*)sender;
+    CSAsanaViewController *asController = [trackedObjects objectAtIndex:senderButton.tag];
+    UIImage *asanaImage = [asController.button imageForState:UIControlStateNormal];
     CGRect asanaImageViewFrame = CGRectMake( 0, 0, aImageSize, aImageSize );
     UIImageView *asanaImageView = [[UIImageView alloc] initWithFrame:asanaImageViewFrame];
     [asanaImageView setImage:asanaImage];
-    asanaImageView.tag = [[sender superview] tag];
+    asanaImageView.tag = [asController.asanaKey integerValue];
+    //
+    NSString *asanaKey = asController.asanaKey;
+    NSString *number = [appDelegate.asanasCounter objectForKey:asanaKey];
     
+    if (!number) {
+        number = @"1";
+        asController.countView.alpha = 0.0;
+        asController.countView.hidden = NO;
+        
+        [UIView animateWithDuration:0.5
+                         animations:^{asController.countView.alpha = 1.0;}
+                         completion:nil];
+        
+        asController.countLabel.text = @"1";
+        [appDelegate.asanasCounter setObject:number forKey:asanaKey];
+    
+    }else {
+        number = [appDelegate.asanasCounter objectForKey:asanaKey];
+        NSString *newNumber = [NSString stringWithFormat:@"%d",([number integerValue] +1)];
+        [appDelegate.asanasCounter setObject:newNumber forKey:asanaKey];
+         asController.countLabel.alpha = 0.0;
+        asController.countLabel.text = newNumber;
+        
+        [UIView animateWithDuration:0.5
+                         animations:^{asController.countLabel.alpha = 1.0;}
+                         completion:nil];
+    }
     //
     
-   
 
-    // copy for animation choicing
+    // copy for animation
     UIView *animatedView = [[sender superview] copyWithImageView:asanaImageView];
     animatedView.frame = [[sender superview] frame];
     [[[sender superview] superview] addSubview:animatedView];
@@ -198,6 +245,7 @@
                      completion:^(BOOL fin) { if (fin) [animatedView removeFromSuperview];}];
     
     PIAsanaView *asanaItem = [[PIAsanaView alloc] init];
+    asanaItem.identificator = asanaKey;
     UIImageView *asanaImageViewItem = [[UIImageView alloc] initWithFrame:asanaImageViewFrame];
     [asanaImageViewItem setImage:asanaImage];
 
@@ -205,12 +253,28 @@
     [asanaItem addSubview:asanaImageViewItem];
     [addedAsanas addObject:asanaItem];
 
-    debug(@" CreatingSequences %@", [self performSelector:@selector(currentSequenceViews)]);
+    
 
 
     
    // debug(@"image number for current sequense %i", [[sender superview] tag]);
     
+}
+
+- (void)increaseCounterOfAsana:(NSString*)asanaID {  // not work, example
+    
+    NSString *number = [appDelegate.asanasCounter objectForKey:asanaID];
+    if (!number) {
+        number = @"1";
+        [appDelegate.asanasCounter setObject:number forKey:number];
+        
+    }else {
+        number = [appDelegate.asanasCounter objectForKey:number];
+        NSString *newNumber = [NSString stringWithFormat:@"%d",([number integerValue] +1)];
+        [appDelegate.asanasCounter setObject:newNumber forKey:number];
+        
+    }
+
 }
 
 
@@ -219,37 +283,19 @@
 - (void)toSorting {
     
     
-    if ([addedAsanas count] < 10) {
-        
-        if ([addedAsanas count] == 0) {
-            // warning massage here
-            CustomAlert *noAsanas = [[CustomAlert alloc] initWithTitle:@"No asanas selected.."
-                                                               message:@"You have not selected any asana!" 
-                                                              delegate:nil cancelButtonTitle:@"Ok" 
-                                                     otherButtonTitles:nil];
-            [noAsanas show];
-            return;
-        }else {
-            
-            // one more warning massage
-        }
-    }
     
+    if ([addedAsanas count] == 0) {
+        // warning massage here
+        CustomAlert *noAsanas = [[CustomAlert alloc] initWithTitle:@"No asanas selected.."
+                                                           message:@"You have not selected any asana!"
+                                                          delegate:nil cancelButtonTitle:@"Ok"
+                                                 otherButtonTitles:nil];
+        [noAsanas show];
+        return;
+    }
     SortAsanasController *sac = [[SortAsanasController alloc] init];
-    
-    // sorting elements as image No.
- 
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"tag"
-                                                                   ascending:YES] ;
-    NSArray *sortedArray = [addedAsanas sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
-    if (self.currentSequenceViews && !saved) {
-         [self.currentSequenceViews addObjectsFromArray:sortedArray];
-    }else {
-        self.currentSequenceViews = [NSMutableArray arrayWithArray:sortedArray];
-        saved = NO;
-    }
-    
-    sac -> sequence = [NSMutableArray arrayWithArray:self.currentSequenceViews];
+    debug(@" addedAsanas -  %@", addedAsanas);
+    sac -> sequence = addedAsanas;
     sac.delegate = self;
     [self.navigationController pushViewController:sac animated:YES];
 
@@ -267,10 +313,8 @@
     
     [sequences addObject:sortedSequence];
    
-    self.currentSequenceViews = nil;
-    addedAsanas = nil;
+    [addedAsanas removeAllObjects];
     self.navigationItem.title = [NSString stringWithFormat:@"Creating sequences (%d)", [sequences count]];
-    saved = YES;
     // debug(@"appDelegate asanas array %@", appDelegate.theNewProgram);
     
 }
@@ -296,11 +340,8 @@
                                              action:@selector(notesDone)];
     nmc.navigationItem.title = @"NOTES";
     
-    if ([self respondsToSelector:@selector(presentModalViewController:animated:)]) {
-        [self presentModalViewController:navController animated:YES];
-    }else {
-        [self presentViewController:navController animated:YES completion:nil];
-    }
+
+    [self presentViewController:navController animated:YES completion:nil];
     
     nmc.delegate = self;
     
@@ -310,22 +351,25 @@
 
 -(void)notesDone {
     
-    if ([self respondsToSelector:@selector(dismissModalViewControllerAnimated:)]) {
-        [self dismissModalViewControllerAnimated:YES];
-    }else {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }
+    [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 
 
 - (void)viewWillAppear:(BOOL)animated {
-    addedAsanas = nil;
+    for (CSAsanaViewController *asanaController in controllersContainer) {
+        NSString *number = [appDelegate.asanasCounter objectForKey:asanaController.asanaKey];
+        if (!number) {
+            asanaController.countView.hidden = YES;
+        }else {
+            asanaController.countLabel.text = number;
+        }
+    }
 }
 
 - (void)didDismissModalView {
     
-    [self dismissModalViewControllerAnimated:YES];
+   [self dismissViewControllerAnimated:YES completion:nil];
 
 }
 

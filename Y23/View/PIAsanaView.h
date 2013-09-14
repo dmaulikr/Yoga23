@@ -17,9 +17,10 @@
     NSString *exhalePausa;
 }
 
-@property (nonatomic, strong) IBOutlet UILabel *leftNumber;
-@property (nonatomic, strong) IBOutlet UILabel *rightNumber;
-@property (nonatomic, strong) NSArray *labelsValues;
+@property (nonatomic, strong) IBOutlet UILabel  *leftNumber;
+@property (nonatomic, strong) IBOutlet UILabel  *rightNumber;
+@property (nonatomic, strong) NSArray           *labelsValues;
+@property (nonatomic, strong) NSString          *identificator;
 
 - (void)setBrithingLoop:(NSArray*)setLoop;
 

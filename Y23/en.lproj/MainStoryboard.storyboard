@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="4457.6" systemVersion="12E55" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="4">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3682.6"/>
     </dependencies>
     <scenes>
         <!--Asanas View Controller - Asanas-->
@@ -19,7 +20,7 @@
                                     <barButtonItem width="234" style="plain" systemItem="fixedSpace" id="x39-Md-nfR"/>
                                     <barButtonItem style="plain" id="roG-Kh-Khp">
                                         <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="ED2-Ve-OeZ">
-                                            <rect key="frame" x="246" y="7" width="300" height="30"/>
+                                            <rect key="frame" x="250" y="7" width="300" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
                                                 <segment title="Main" width="100"/>
@@ -48,6 +49,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Asanas" id="P1t-rv-itw"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -66,7 +68,7 @@
         <!--Technics - Technics-->
         <scene sceneID="EGe-Um-cbQ">
             <objects>
-                <viewController storyboardIdentifier="" title="Technics" id="bJu-CT-Zrp" customClass="Technics" sceneMemberID="viewController">
+                <viewController title="Technics" id="bJu-CT-Zrp" customClass="Technics" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jiM-HM-Amm">
                         <rect key="frame" x="0.0" y="64" width="768" height="911"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -78,6 +80,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Technics" id="SBG-Cy-bzX"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                 </viewController>
@@ -90,16 +93,17 @@
             <objects>
                 <viewController storyboardIdentifier="SelectAsanas" id="TBE-9s-ZQ8" customClass="SelectAsanas" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8ua-w9-oRw">
-                        <rect key="frame" x="0.0" y="20" width="768" height="955"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="975"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="768x1044Chalkboard.png" id="QbU-Cx-Z4y">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="955"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="935"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="aeg-gX-Jl5"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
@@ -120,13 +124,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="911"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="C6@2x.png" id="ieg-pd-lvJ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="C6.png" id="ieg-pd-lvJ">
                                 <rect key="frame" x="44" y="30" width="680" height="884"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Dashboard" id="q0p-zY-8sv"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T3x-g3-I80" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -148,16 +153,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Preview" id="SRO-K6-BUm"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bUB-nC-t5b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4966" y="2482"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tabbar Controller-->
         <scene sceneID="15">
             <objects>
-                <tabBarController id="4" sceneMemberID="viewController">
+                <tabBarController id="4" customClass="MainTabbarController" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="5">
@@ -240,7 +247,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="LOGO@2x.png" id="vN0-sW-IEB">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="LOGO.png" id="vN0-sW-IEB">
                                 <rect key="frame" x="128" y="300" width="512" height="409"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -280,6 +287,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Personal data and notes" id="cf0-gu-eHS"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
@@ -295,11 +303,12 @@
         <!--Navigation Controller - Asanas-->
         <scene sceneID="3vK-cq-bbO">
             <objects>
-                <navigationController id="pV6-SI-d1G" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="AsanasNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="pV6-SI-d1G" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Asanas" id="Sgl-YP-mgt"/>
                     <toolbarItems/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="blackOpaque" id="dhD-dh-j8z">
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="black" id="dhD-dh-j8z">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -316,10 +325,11 @@
         <scene sceneID="l6I-AR-Ofe">
             <objects>
                 <navigationController title="Personal" id="2OO-8Q-N3c" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Personal" id="IIP-sP-Aci"/>
                     <toolbarItems/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="blackOpaque" id="QAE-Gb-lWV">
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="black" id="QAE-Gb-lWV">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -336,10 +346,11 @@
         <scene sceneID="X7y-de-rJn">
             <objects>
                 <navigationController storyboardIdentifier="Technics" title="Technics" id="1fL-ld-VMG" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Technics" id="6"/>
                     <toolbarItems/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="blackOpaque" id="RpN-dp-dbg">
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="black" id="RpN-dp-dbg">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -356,9 +367,10 @@
         <scene sceneID="BlP-Tg-P0L">
             <objects>
                 <navigationController title="Dashboard" id="JqT-TD-dZL" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Dashboard" id="r37-T6-huI"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="blackOpaque" id="UpO-Dd-VPs">
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="black" id="UpO-Dd-VPs">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -375,9 +387,10 @@
         <scene sceneID="0ou-GM-CJq">
             <objects>
                 <navigationController title="Preview" id="tgu-tI-Bgp" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Preview" id="wUi-t7-4Ll"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="blackOpaque" id="rWq-Kt-TxO">
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" barStyle="black" id="rWq-Kt-TxO">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -393,11 +406,46 @@
     </scenes>
     <resources>
         <image name="768x1044Chalkboard.png" width="768" height="1044"/>
-        <image name="C6@2x.png" width="1536" height="1996"/>
-        <image name="LOGO@2x.png" width="1024" height="817"/>
+        <image name="C6.png" width="768" height="998"/>
+        <image name="LOGO.png" width="512" height="408.5"/>
     </resources>
+    <classes>
+        <class className="AsanasViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AsanasViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="navigationItem" candidateClass="UINavigationItem"/>
+                <relationship kind="outlet" name="segmentCotrol" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="table" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="toolBar" candidateClass="UIToolbar"/>
+            </relationships>
+        </class>
+        <class className="DashboardController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DashboardController.h"/>
+        </class>
+        <class className="MainTabbarController" superclassName="UITabBarController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MainTabbarController.h"/>
+        </class>
+        <class className="PersonalDataController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PersonalDataController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="eMail" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="firstName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="lastName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="notes" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="PreviewViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PreviewViewController.h"/>
+        </class>
+        <class className="SelectAsanas" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SelectAsanas.h"/>
+        </class>
+        <class className="Technics" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/Technics.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
+        <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackOpaque"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>

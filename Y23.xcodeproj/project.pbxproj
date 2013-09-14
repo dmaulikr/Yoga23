@@ -40,7 +40,7 @@
 		7882B20E14F15EF5008B0462 /* PersonalDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7882B20D14F15EF5008B0462 /* PersonalDataController.m */; };
 		788B114B161743D60006DFF4 /* LOGO@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 788B114A161743D60006DFF4 /* LOGO@2x.png */; };
 		788F796A15BB33820060620F /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788F796915BB33820060620F /* CoreImage.framework */; };
-		788F796D15BBFD040060620F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788F796C15BBFD040060620F /* MessageUI.framework */; };
+		788F796D15BBFD040060620F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788F796C15BBFD040060620F /* MessageUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		78976A5115238A7200D4F0E6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78976A5015238A7200D4F0E6 /* QuartzCore.framework */; };
 		78AE455C14ED7DF200A1176A /* 1044x768Chalkboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 78AE455A14ED7DF200A1176A /* 1044x768Chalkboard.png */; };
 		78C1548F158C750B005CCAD7 /* UIView+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 78C1548E158C750B005CCAD7 /* UIView+Animation.m */; };
@@ -60,8 +60,11 @@
 		78FF1488156D3CE100CDF7FE /* SortAsanasController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FF1487156D3CE100CDF7FE /* SortAsanasController.m */; };
 		932DDA2817073D6000F73F78 /* PIAcanasTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 932DDA2717073D6000F73F78 /* PIAcanasTableViewCell.m */; };
 		932DDA2A17073DD100F73F78 /* PIAsanasTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 932DDA2917073DD100F73F78 /* PIAsanasTableViewCell.xib */; };
+		935FAD8F176C9F6E006AD625 /* MainTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 935FAD8E176C9F6E006AD625 /* MainTabbarController.m */; };
+		93A07F201776214300318D6E /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93A07F1F1776214300318D6E /* Media.xcassets */; };
 		93C4F3971708A873006821DC /* light.csv in Resources */ = {isa = PBXBuildFile; fileRef = 93C4F3961708A873006821DC /* light.csv */; };
 		93C4F39D1708AB74006821DC /* FFTransAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C4F39C1708AB74006821DC /* FFTransAlertView.m */; };
+		93C79E141758DC470094FAB6 /* numberPic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 93C79E131758DC470094FAB6 /* numberPic@2x.png */; };
 		93CFAAA317510FBD00715B45 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 93CFA7DE17510FBA00715B45 /* 1.png */; };
 		93CFAAA417510FBD00715B45 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 93CFA7DF17510FBA00715B45 /* 2.png */; };
 		93CFAAA517510FBD00715B45 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 93CFA7E017510FBA00715B45 /* 3.png */; };
@@ -771,6 +774,8 @@
 		93CFAD6517510FBD00715B45 /* 707.png in Resources */ = {isa = PBXBuildFile; fileRef = 93CFAAA017510FBD00715B45 /* 707.png */; };
 		93CFAD6617510FBD00715B45 /* 708.png in Resources */ = {isa = PBXBuildFile; fileRef = 93CFAAA117510FBD00715B45 /* 708.png */; };
 		93CFAD6717510FBD00715B45 /* 709.png in Resources */ = {isa = PBXBuildFile; fileRef = 93CFAAA217510FBD00715B45 /* 709.png */; };
+		93D98053175A4F0B00ED9FB1 /* CSAsanaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D98051175A4F0B00ED9FB1 /* CSAsanaViewController.m */; };
+		93D98054175A4F0B00ED9FB1 /* CSAsanaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93D98052175A4F0B00ED9FB1 /* CSAsanaViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -847,9 +852,13 @@
 		932DDA2617073D6000F73F78 /* PIAcanasTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIAcanasTableViewCell.h; path = PIAsanasCell/PIAcanasTableViewCell.h; sourceTree = "<group>"; };
 		932DDA2717073D6000F73F78 /* PIAcanasTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIAcanasTableViewCell.m; path = PIAsanasCell/PIAcanasTableViewCell.m; sourceTree = "<group>"; };
 		932DDA2917073DD100F73F78 /* PIAsanasTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PIAsanasTableViewCell.xib; sourceTree = "<group>"; };
+		935FAD8D176C9F6E006AD625 /* MainTabbarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabbarController.h; sourceTree = "<group>"; };
+		935FAD8E176C9F6E006AD625 /* MainTabbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabbarController.m; sourceTree = "<group>"; };
+		93A07F1F1776214300318D6E /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = Y23/Media.xcassets; sourceTree = "<group>"; };
 		93C4F3961708A873006821DC /* light.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = light.csv; sourceTree = "<group>"; };
 		93C4F39B1708AB74006821DC /* FFTransAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FFTransAlertView.h; path = Y23/View/FFTransAlertView.h; sourceTree = "<group>"; };
 		93C4F39C1708AB74006821DC /* FFTransAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FFTransAlertView.m; path = Y23/View/FFTransAlertView.m; sourceTree = "<group>"; };
+		93C79E131758DC470094FAB6 /* numberPic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "numberPic@2x.png"; path = "Y23/PIImages/numberPic@2x.png"; sourceTree = "<group>"; };
 		93CFA7DE17510FBA00715B45 /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		93CFA7DF17510FBA00715B45 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
 		93CFA7E017510FBA00715B45 /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
@@ -1559,6 +1568,9 @@
 		93CFAAA017510FBD00715B45 /* 707.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 707.png; sourceTree = "<group>"; };
 		93CFAAA117510FBD00715B45 /* 708.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 708.png; sourceTree = "<group>"; };
 		93CFAAA217510FBD00715B45 /* 709.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 709.png; sourceTree = "<group>"; };
+		93D98050175A4F0B00ED9FB1 /* CSAsanaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSAsanaViewController.h; sourceTree = "<group>"; };
+		93D98051175A4F0B00ED9FB1 /* CSAsanaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSAsanaViewController.m; sourceTree = "<group>"; };
+		93D98052175A4F0B00ED9FB1 /* CSAsanaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CSAsanaViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1636,6 +1648,9 @@
 				78274D4F1507D8F300FDAA48 /* TechnicDetails.h */,
 				78274D501507D8F300FDAA48 /* TechnicDetails.m */,
 				78274D511507D8F300FDAA48 /* TechnicDetails.xib */,
+				93D98050175A4F0B00ED9FB1 /* CSAsanaViewController.h */,
+				93D98051175A4F0B00ED9FB1 /* CSAsanaViewController.m */,
+				93D98052175A4F0B00ED9FB1 /* CSAsanaViewController.xib */,
 			);
 			name = Details;
 			sourceTree = "<group>";
@@ -1643,6 +1658,7 @@
 		783DA1E914E691B400E06F10 = {
 			isa = PBXGroup;
 			children = (
+				93A07F1F1776214300318D6E /* Media.xcassets */,
 				783DA22014E6946500E06F10 /* Pictures */,
 				783DA1FE14E691B400E06F10 /* Y23 */,
 				783DA1F714E691B400E06F10 /* Frameworks */,
@@ -1678,6 +1694,8 @@
 			children = (
 				783DA20714E691B400E06F10 /* AppDelegate.h */,
 				783DA20814E691B400E06F10 /* AppDelegate.m */,
+				935FAD8D176C9F6E006AD625 /* MainTabbarController.h */,
+				935FAD8E176C9F6E006AD625 /* MainTabbarController.m */,
 				784981631503CF3D006D3746 /* View */,
 				78CFD92414E6AB8800139CD1 /* Controllers */,
 				783DA20A14E691B400E06F10 /* MainStoryboard.storyboard */,
@@ -1703,6 +1721,7 @@
 		783DA22014E6946500E06F10 /* Pictures */ = {
 			isa = PBXGroup;
 			children = (
+				93C79E121758DC0B0094FAB6 /* SupportingImages */,
 				788B114A161743D60006DFF4 /* LOGO@2x.png */,
 				785A12571555565000C2019B /* Y23app-Icon.png */,
 				7818677615AB2F72008798A2 /* Y23appNotRetina-Icon.png */,
@@ -1727,9 +1746,9 @@
 				78C1548E158C750B005CCAD7 /* UIView+Animation.m */,
 				7812DA7215CD68860097E184 /* UIImage+Inverting.h */,
 				7812DA7315CD68860097E184 /* UIImage+Inverting.m */,
-				78F7B0EF159B59B600C05EA8 /* PIAsanaView.xib */,
 				78F7B0F2159B5C8B00C05EA8 /* PIAsanaView.h */,
 				78F7B0F3159B5C8B00C05EA8 /* PIAsanaView.m */,
+				78F7B0EF159B59B600C05EA8 /* PIAsanaView.xib */,
 			);
 			name = View;
 			path = ..;
@@ -2534,6 +2553,14 @@
 			path = Y23/AsanasCatalog;
 			sourceTree = SOURCE_ROOT;
 		};
+		93C79E121758DC0B0094FAB6 /* SupportingImages */ = {
+			isa = PBXGroup;
+			children = (
+				93C79E131758DC470094FAB6 /* numberPic@2x.png */,
+			);
+			name = SupportingImages;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2560,7 +2587,7 @@
 		783DA1EB14E691B400E06F10 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0500;
 			};
 			buildConfigurationList = 783DA1EE14E691B400E06F10 /* Build configuration list for PBXProject "Y23" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -3275,6 +3302,7 @@
 				93CFAD3617510FBD00715B45 /* 660.png in Resources */,
 				93CFAD3717510FBD00715B45 /* 661.png in Resources */,
 				93CFAD3817510FBD00715B45 /* 662.png in Resources */,
+				93A07F201776214300318D6E /* Media.xcassets in Resources */,
 				93CFAD3917510FBD00715B45 /* 663.png in Resources */,
 				93CFAD3A17510FBD00715B45 /* 664.png in Resources */,
 				93CFAD3B17510FBD00715B45 /* 665.png in Resources */,
@@ -3322,6 +3350,8 @@
 				93CFAD6517510FBD00715B45 /* 707.png in Resources */,
 				93CFAD6617510FBD00715B45 /* 708.png in Resources */,
 				93CFAD6717510FBD00715B45 /* 709.png in Resources */,
+				93C79E141758DC470094FAB6 /* numberPic@2x.png in Resources */,
+				93D98054175A4F0B00ED9FB1 /* CSAsanaViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3351,6 +3381,8 @@
 				7812DA7415CD68860097E184 /* UIImage+Inverting.m in Sources */,
 				932DDA2817073D6000F73F78 /* PIAcanasTableViewCell.m in Sources */,
 				93C4F39D1708AB74006821DC /* FFTransAlertView.m in Sources */,
+				93D98053175A4F0B00ED9FB1 /* CSAsanaViewController.m in Sources */,
+				935FAD8F176C9F6E006AD625 /* MainTabbarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3380,9 +3412,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -3399,10 +3432,13 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				SDKROOT = iphoneos;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos7.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
@@ -3411,9 +3447,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -3423,11 +3460,13 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				SDKROOT = iphoneos;
+				SDKROOT = iphoneos7.0;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -3436,12 +3475,15 @@
 		783DA21E14E691B400E06F10 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Igor Tcherny (7US428BKG6)";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Igor Tchorni (A2Q6JAYMQF)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Y23/Y23-Prefix.pch";
 				INFOPLIST_FILE = "Y23/Y23-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "F383B291-51F1-45E4-9A38-6FDD907203C0";
+				PROVISIONING_PROFILE = "F7C224FB-0658-41F0-A4AF-88AA58B0848C";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -3449,10 +3491,13 @@
 		783DA21F14E691B400E06F10 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Y23/Y23-Prefix.pch";
 				INFOPLIST_FILE = "Y23/Y23-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -3467,7 +3512,7 @@
 				783DA21C14E691B400E06F10 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		783DA21D14E691B400E06F10 /* Build configuration list for PBXNativeTarget "Y23" */ = {
 			isa = XCConfigurationList;
@@ -3476,7 +3521,7 @@
 				783DA21F14E691B400E06F10 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};

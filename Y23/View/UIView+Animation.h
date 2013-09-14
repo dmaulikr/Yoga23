@@ -14,5 +14,6 @@
 - (void) scaleTo:(CGRect)bounds duration:(float)secs;
 - (id) copyWithImageView:(UIImageView*)imageView;
 - (UIImage *) imageFromView;
+- (void)makeBlurEffect;
 
 @end

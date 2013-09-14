@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AppDelegate.h"
 
-@interface PersonalDataController : UIViewController  <UITextFieldDelegate, UITextViewDelegate>
+@class AppDelegate;
+
+@interface PersonalDataController : UIViewController  <UITextFieldDelegate, UITextViewDelegate> {
+    
+    AppDelegate         *appDelegate;
+}
 
 @property (assign, nonatomic) IBOutlet UITextField *firstName;
 @property (assign, nonatomic) IBOutlet UITextField *lastName;

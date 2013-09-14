@@ -9,6 +9,10 @@
 #import "DashboardController.h"
 #import "NotesModalController.h"
 
+@interface DashboardController () <HideNotesViewProtocol>
+
+@end
+
 @implementation DashboardController
 
 @synthesize person = _person;
@@ -49,11 +53,8 @@
                                              action:@selector(notesDone)];
     nmc.navigationItem.title = @"NOTES";
     
-    if ([self respondsToSelector:@selector(presentModalViewController:animated:)]) {
-        [self presentModalViewController:navController animated:YES];
-    }else {
-        [self presentViewController:navController animated:YES completion:nil];
-    }
+
+    [self presentViewController:navController animated:YES completion:nil];
     
     nmc.delegate = self;
     
@@ -63,12 +64,7 @@
 
 -(void)notesDone {
     
-    if ([self respondsToSelector:@selector(dismissModalViewControllerAnimated:)]) {
-        [self dismissModalViewControllerAnimated:YES];
-    }else {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }
-    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

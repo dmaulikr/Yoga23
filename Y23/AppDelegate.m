@@ -12,7 +12,8 @@
 
 @synthesize window = _window;
 @synthesize theNewProgram = _theNewProgram, asanasCatalog = _asanasCatalog, selectedAsanas = _selectedAsanas;
-
+@synthesize asanasCounter = _asanasCounter;
+@synthesize unsavedSequence = _unsavedSequence;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -26,6 +27,9 @@
     NSMutableString *notesText = [[NSMutableString alloc] initWithString:@"Here notes"];
     [self.theNewProgram setObject:notesText forKey:@"notes"];
     _selectedAsanas = [NSMutableDictionary dictionary];
+    _asanasCounter = [NSMutableDictionary dictionary];
+    _unsavedSequence = [NSMutableArray array];
+    
     [self loadAsanasImages];
     
     return YES;

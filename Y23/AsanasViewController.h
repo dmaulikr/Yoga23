@@ -21,11 +21,11 @@
     NSArray                                 *namesArray;
     NSMutableArray                          *setsArray;
     NSMutableArray                          *asanasImages;
+    NSMutableArray                          *asanasKeys;
     NSMutableDictionary                     *choosedResult;
     unsigned                                loadedImages;
     unsigned                                linesCount;
     AppDelegate                             *appDelegate;
-    NSMutableArray                          *asanasHeap;
     int                                     previousSegment;
     int                                     newSegment;
 }

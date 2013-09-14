@@ -14,4 +14,6 @@
 @property (strong, nonatomic) NSMutableDictionary *theNewProgram;
 @property (strong, nonatomic) __block NSMutableDictionary *asanasCatalog;
 @property (strong, nonatomic)  NSMutableDictionary *selectedAsanas;
+@property (strong, nonatomic)  NSMutableDictionary *asanasCounter;
+@property (strong, nonatomic)  NSMutableArray *unsavedSequence;
 @end

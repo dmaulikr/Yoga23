@@ -6,6 +6,12 @@
 //
 //
 
+@protocol HideNotesViewProtocol <NSObject>
+
+- (void)notesDone;
+
+@end
+
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 
@@ -14,7 +20,7 @@
 }
 
 @property (nonatomic, strong) IBOutlet UITextView *notesTextView;
-@property (nonatomic, assign) id delegate;
+@property (nonatomic, assign) id <HideNotesViewProtocol> delegate;
 @property (strong, nonatomic) NSMutableString *notesText;
 
 -(IBAction)finishEditing;

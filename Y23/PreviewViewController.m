@@ -13,11 +13,16 @@
 #import "NotesModalController.h"
 #import "UIImage+Inverting.h"
 #import "FFTransAlertView.h"
+#import "TechnicsController.h"
+#import "AsanasViewController.h"
+#import "MainTabbarController.h"
+
+
 
 #define debug NSLog
 
 
-@interface PreviewViewController ()
+@interface PreviewViewController () <HideNotesViewProtocol> 
 
 @end
 
@@ -28,6 +33,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+
     }
     return self;
 }
@@ -45,7 +51,7 @@
     // do any setup you need for navController
     navController.modalTransitionStyle =  UIModalTransitionStyleFlipHorizontal;
     navController.modalPresentationStyle = UIModalPresentationFormSheet;
-    [self presentModalViewController:navController animated:YES];
+    [self presentViewController:navController animated:YES completion:nil];
     nmc.delegate = self;
     
     
@@ -53,8 +59,9 @@
 }
 
 -(void)notesDone {
-    [self dismissModalViewControllerAnimated:YES];
-    NSLog(@"dismiss modalController");
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+
 }
 
 #pragma mark - Creating technics list
@@ -74,8 +81,8 @@
             
         }
         if ([element isKindOfClass:[NSDictionary class]]) {
-             NSString *name = [[element allKeys] objectAtIndex:0];
-             NSMutableArray *elements = [[element valueForKey:name] mutableCopy];
+            NSString *name = [[element allKeys] objectAtIndex:0];
+            NSMutableArray *elements = [[element valueForKey:name] mutableCopy];
             [elements removeObjectIdenticalTo:[NSNull null]];
             if ([elements count] > 0) {
                 [technicsList appendString:name];
@@ -86,10 +93,8 @@
                     [technicsList appendString:@"\n"];
                 }
             }
-        
         }
     }
-    
 }
 
 
@@ -123,11 +128,11 @@
         NSString *createDate = [NSString stringWithFormat:@"%02d:%02d:%02.0ld", currentDate.day, currentDate.month, currentDate.year];
         NSString *firstname = [[appDelegate.theNewProgram objectForKey:@"personal"] objectForKey:@"firstName"];
         NSString *lastName = [[appDelegate.theNewProgram objectForKey:@"personal"] objectForKey:@"lastName"];
-        NSString* textToDraw = [NSString stringWithFormat:@" %@ %@  %@", firstname,lastName, createDate];
+        NSString* textToDraw = [NSString stringWithFormat:@" %@ %@  %@", firstname?firstname:@"",lastName?lastName:@"", createDate];
         
         CGSize headSize = [textToDraw sizeWithFont:[UIFont systemFontOfSize:15]
                                  constrainedToSize:maxSize
-                                     lineBreakMode:UILineBreakModeClip];
+                                     lineBreakMode:NSLineBreakByClipping];
         CGRect headRect = CGRectMake(((612.0 - headSize.width) / 2.0),
                                     40 - ((72.0 - headSize.height) / 2.0) ,
                                      headSize.width,
@@ -140,7 +145,7 @@
 
     CGSize pageStringSize = [pageString sizeWithFont:theFont
                                    constrainedToSize:maxSize
-                                       lineBreakMode:UILineBreakModeClip];
+                                       lineBreakMode:NSLineBreakByClipping];
     CGRect stringRect = CGRectMake(((612.0 - pageStringSize.width) / 2.0),
                                    720.0 + ((82.0 - pageStringSize.height) / 2.0) ,
                                    pageStringSize.width,
@@ -172,7 +177,7 @@
         
         CGSize numberStringSize = [numberString sizeWithFont:[UIFont systemFontOfSize:12]
                                            constrainedToSize:CGSizeMake(200, 40.0)
-                                               lineBreakMode:UILineBreakModeClip];
+                                               lineBreakMode:NSLineBreakByClipping];
         CGRect stringRect = CGRectMake(60,
                                        currentRange - 20.0 ,
                                        numberStringSize.width,
@@ -394,8 +399,30 @@
 #pragma mark - Sending PDF file email methodes
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+    switch (result) {
+        case MFMailComposeResultCancelled:
+            NSLog(@"cancelled");
+            break;
+        case MFMailComposeResultSaved:
+            [self clearAll];
+            break;
+        case MFMailComposeResultSent:
+            [self clearAll];
+            break;
+        case MFMailComposeResultFailed: {
+            CustomAlert *alert = [[CustomAlert alloc] initWithTitle:NSLocalizedString(@"Error sending email!",@"Error sending email!")
+                                                            message:[error localizedDescription]
+                                                           delegate:nil
+                                                  cancelButtonTitle:NSLocalizedString(@"Bummer",@"Bummer")
+                                                  otherButtonTitles:nil];
+            [alert show];
+            break;
+        }
+        default:
+            break;
+    }
     
-    [email dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)sendingProgrammToEmile {
@@ -406,6 +433,11 @@
     // Subject
     [email setSubject:@"Yoga 23 training"];
     
+    if ([[appDelegate.theNewProgram objectForKey:@"personal"] objectForKey:@"eMail"]) {
+        [email setToRecipients:@[[[appDelegate.theNewProgram objectForKey:@"personal"] objectForKey:@"eMail"]]];
+    }
+    
+    
     // Optional Attachments
     NSData *pdfData = [NSData dataWithContentsOfFile:tempFileName];
     [email addAttachmentData:pdfData mimeType:@"application/pdf" fileName:shortFileNAme];
@@ -414,7 +446,27 @@
     [email setMessageBody:@"This is the body" isHTML:NO];
     
     // Present it
-    [self presentModalViewController:email animated:YES];
+    [self presentViewController:email animated:YES completion:nil];
+}
+
+- (void)clearAll {
+    
+    MainTabbarController *mtc = (MainTabbarController*)self.tabBarController;
+    mtc.asanasCleaning      = YES;
+    mtc.technicsCleaning    = YES;
+    Technics *techController = (Technics*)[[[[mtc viewControllers] objectAtIndex:2] viewControllers] objectAtIndex:0] ;
+    techController.clearing = YES;
+   
+    appDelegate.theNewProgram = [[NSMutableDictionary alloc] init];
+    [appDelegate.theNewProgram setObject:[NSMutableDictionary dictionaryWithCapacity:4] forKey:@"personal"];
+    [[appDelegate.theNewProgram objectForKey:@"asanas" ]  removeAllObjects];
+    [[appDelegate.theNewProgram objectForKey:@"technics" ]  removeAllObjects];
+    [appDelegate.selectedAsanas removeAllObjects];
+    [appDelegate.asanasCounter removeAllObjects];
+    NSMutableString *notesText = [[NSMutableString alloc] initWithString:@"Here notes"];
+    [appDelegate.theNewProgram setObject:notesText forKey:@"notes"];
+    [appDelegate.unsavedSequence removeAllObjects];
+    
 }
 
 
@@ -426,9 +478,11 @@
     [super viewDidLoad];
     if (!appDelegate) {
         appDelegate= (AppDelegate*)[[UIApplication sharedApplication] delegate];
-        sequences = [appDelegate.theNewProgram objectForKey:@"asanas"]; 
-        technics = [appDelegate.theNewProgram objectForKey:@"technics"];
     }
+    
+    sequences = [appDelegate.theNewProgram objectForKey:@"asanas"];
+    technics = [appDelegate.theNewProgram objectForKey:@"technics"];
+
     
     debug(@" technics is %@", [appDelegate.theNewProgram objectForKey:@"technics"]);
     
@@ -436,8 +490,7 @@
     UIBarButtonItem *sendItem            = [[UIBarButtonItem alloc]
                                             initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(sendingProgrammToEmile)];
     
-    self.navigationItem.rightBarButtonItems =
-    [NSArray arrayWithObjects:sendItem, nil];
+    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:sendItem, nil];
     
     if(!presentWebView){
         // 

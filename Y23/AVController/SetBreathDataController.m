@@ -95,7 +95,7 @@
         [rPicker3Values addObject:aNumber];
     }
   
-    [self.done addTarget:self.delegate action:@selector(dismissPopover) forControlEvents:UIControlEventTouchUpInside];
+    [self.done addTarget:_delegate action:@selector(dismissPopover) forControlEvents:UIControlEventTouchUpInside];
     
     
 
@@ -218,6 +218,7 @@
 #pragma mark - View lifecycle
 
 - (void) removeTheAsana {
+    
     [self.delegate performSelector:@selector(removeAsanaView:) withObject:self.theAsana];
 }
 

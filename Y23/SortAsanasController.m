@@ -12,13 +12,14 @@
 #import "PIAsanaView.h"
 #import "SetBreathDataController.h"
 #import "NotesModalController.h"
+#import "FFTransAlertView.h"
 
 
 
 
 
 
-@interface SortAsanasController ()
+@interface SortAsanasController () <HideNotesViewProtocol>
 
 @end
 
@@ -46,6 +47,8 @@
 
     // adding "Notes" button
     
+    appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    
     
     self.navigationItem.title = @"Sorting sequence asanas";
     UIBarButtonItem *notesButton         = [[UIBarButtonItem alloc]
@@ -69,7 +72,6 @@
     [self.view sendSubviewToBack:backgroundImage];
     
     [self.view addSubview:[self addSortView]]; // adding all images to main view
-    debug(@"!_asanasViews");
     
 
     
@@ -363,7 +365,24 @@
 - (void) removeAsanaView:(UIView *)view {
     
     int tag = view.tag;
-    [self.asanasViews removeObjectAtIndex:tag];
+    PIAsanaView *removedAsana = [self.asanasViews objectAtIndex:tag];
+    
+    // decrease counter
+    NSString *asanaID = removedAsana.identificator;
+    NSString *number = [appDelegate.asanasCounter objectForKey:asanaID];
+    NSString *newNumber = [NSString stringWithFormat:@"%d",([number integerValue] - 1)];
+    
+    if ([newNumber isEqualToString:@"0"]) {
+        [appDelegate.asanasCounter removeObjectForKey:asanaID];
+    }else {
+        [appDelegate.asanasCounter setObject:newNumber forKey:asanaID];
+    }
+    // remove recoqnizer
+    PIAsanaView *asanaView = [_asanasViews objectAtIndex:tag];
+    for (UIPanGestureRecognizer *recognizer in [asanaView gestureRecognizers]) {
+        [asanaView removeGestureRecognizer:recognizer];
+    }
+    [_asanasViews removeObjectAtIndex:tag];
     if ([[_asanasViews lastObject] tag] > tag) { // animation and move asanas
         PIAsanaView *movedView;
         for (int i = tag; i < [_asanasViews count]; i++) {
@@ -395,6 +414,12 @@
 
 - (void)saving {
     // snapshot for sequence
+    if ([_asanasViews count] == 0) {
+        
+        CustomAlert *zeroAsanasAlert = [[CustomAlert alloc] initWithTitle:@"No asanas on the view" message:@"Please tap Cancel and then add asanas" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [zeroAsanasAlert show];
+        return;
+    }
     UIImage *sequenceImage = [contentView imageFromView];
     
     // removing asanas views from the screen
@@ -409,11 +434,13 @@
         }
     
     [self.delegate performSelector:@selector(saveSequence:) withObject:sequenceImage];
-    debug(@"sequence image is %@", sequenceImage);
+    //debug(@"sequence image is %@", sequenceImage);
     // pausa for animation
     // and go back to previous CreatingAsanas controller
     BOOL yesBool = YES;
     NSNumber *yesNumber = [NSNumber numberWithBool:yesBool];
+    
+    [_asanasViews removeAllObjects];
     
     [self.navigationController performSelector:@selector(popViewControllerAnimated:) withObject:yesNumber afterDelay:0.35]; 
 }
@@ -428,7 +455,9 @@
     }
     
     if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
-        [self.delegate performSelector:@selector(setCurrentSequenceViews:) withObject:_asanasViews];
+        
+        sequence = _asanasViews;
+        [self.delegate performSelector:@selector(setAddedAsanas:) withObject:_asanasViews];
         //debug(@" delegate %@", [self.delegate performSelector:@selector(currentSequenceViews)]);
 
     }
@@ -454,11 +483,9 @@
                                              action:@selector(notesDone)];
     nmc.navigationItem.title = @"NOTES";
     
-    if ([self respondsToSelector:@selector(presentModalViewController:animated:)]) {
-        [self presentModalViewController:navController animated:YES];
-    }else {
-        [self presentViewController:navController animated:YES completion:nil];
-    }
+ 
+    [self presentViewController:navController animated:YES completion:nil];
+
     
     nmc.delegate = self;
     
@@ -468,11 +495,8 @@
 
 -(void)notesDone {
     
-    if ([self respondsToSelector:@selector(dismissModalViewControllerAnimated:)]) {
-        [self dismissModalViewControllerAnimated:YES];
-    }else {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }
+    [self dismissViewControllerAnimated:YES completion:nil];
+
     
 }
 

@@ -53,6 +53,7 @@
         appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     }
     _cellAsanas = @[_asanaButton1,_asanaButton2,_asanaButton3,_asanaButton4,_asanaButton5,_asanaButton6];
+    id <TapOnAsanaProtocol> messageDelegate = delegate;
     for (int i = 0; i < [array count]; i++) {
         
         UIButton *button = [_cellAsanas objectAtIndex:i];
@@ -62,7 +63,7 @@
             
             [button setImage:image forState:UIControlStateNormal];
             [button setTag:(range + i)];
-            [button addTarget:delegate action:@selector(asanaButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+            [button addTarget:messageDelegate action:@selector(asanaButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
             [[button layer] setBorderWidth:1.0f];
             
             if ([appDelegate.selectedAsanas objectForKey:[NSString stringWithFormat:@"%d",(range + i)]]) {

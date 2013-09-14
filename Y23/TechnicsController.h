@@ -13,10 +13,13 @@
 @interface Technics : UIViewController {
     
     NSArray *allTechnics;
+    UIView  *contentView;
+
 }
 
-@property (nonatomic, weak) NSMutableArray *selectedTechnics;
-@property (nonatomic, weak) NSString *person;
+@property (nonatomic, weak) NSMutableArray  *selectedTechnics;
+@property (nonatomic, weak) NSString        *person;
+@property (nonatomic, assign)BOOL           clearing;
 
 - (void)addProgramItem:(CheckBoxButton*)sender ;
 - (void)goTechnicDetails:(UIButton*)sender;

@@ -10,7 +10,11 @@
 #import "AppDelegate.h"
 #import "NotesModalController.h"
 
-@class Technics;
+
+
+@interface TechnicDetails () <HideNotesViewProtocol>
+
+@end
 
 
 @implementation TechnicDetails
@@ -186,11 +190,9 @@
                                              action:@selector(notesDone)];
     nmc.navigationItem.title = @"NOTES";
     
-    if ([self respondsToSelector:@selector(presentModalViewController:animated:)]) {
-        [self presentModalViewController:navController animated:YES];
-    }else {
-        [self presentViewController:navController animated:YES completion:nil];
-    }
+
+    [self presentViewController:navController animated:YES completion:nil];
+    
     
     nmc.delegate = self;
     
@@ -200,11 +202,8 @@
 
 -(void)notesDone {
     
-    if ([self respondsToSelector:@selector(dismissModalViewControllerAnimated:)]) {
-        [self dismissModalViewControllerAnimated:YES];
-    }else {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }
+    [self dismissViewControllerAnimated:YES completion:nil];
+
     
 }
 
