@@ -90,7 +90,16 @@ enum sets {
         asanasKeys = [NSMutableArray array];
     }
     [self createToolBar];
-    [self fetchAsanas:kMainSet];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if ([appDelegate.selectedAsanas count] < 1) {
+        [self fetchAsanas:kMainSet];
+    }
+    [toolBar setHidden:NO];
 }
 
 
@@ -343,7 +352,7 @@ enum sets {
         
        
     }
-
+    cell.backgroundColor = [UIColor clearColor];
     if ([asanasImages count] != 0) {
         
         // set cell images
@@ -449,11 +458,7 @@ enum sets {
     [super viewDidUnload];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [toolBar setHidden:NO];
-}
+
 
 - (void)viewDidAppear:(BOOL)animated
 {

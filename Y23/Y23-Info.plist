@@ -10,15 +10,31 @@
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFiles</key>
 	<array>
-		<string>Y23app-Icon.png</string>
-		<string>Y23appNotRetina-Icon.png</string>
+		<string>Icon</string>
+		<string>Icon-72</string>
+		<string>Icon-Small</string>
+		<string>Icon-Small-50</string>
 	</array>
-	<key>CFBundleIcons</key>
-	<dict/>
 	<key>CFBundleIcons~ipad</key>
-	<dict/>
+	<dict>
+		<key>CFBundlePrimaryIcon</key>
+		<dict>
+			<key>CFBundleIconFiles</key>
+			<array>
+				<string>Icon-Small</string>
+				<string>Icon-Small-40</string>
+				<string>Icon-Small-50</string>
+				<string>Icon-76</string>
+				<string>Icon-72</string>
+				<string>Icon</string>
+				<string>Y23appIcon-76</string>
+				<string>Y23appIcon-72</string>
+				<string>Y23appIcon</string>
+			</array>
+		</dict>
+	</dict>
 	<key>CFBundleIdentifier</key>
-	<string>Yoga23</string>
+	<string>com.igorcherny.Yoga23</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -31,6 +47,8 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>4.1</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIMainStoryboardFile</key>
