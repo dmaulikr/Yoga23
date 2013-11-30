@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DashboardController : UIViewController
+@class AppDelegate;
+
+@interface DashboardController : UIViewController {
+    
+    AppDelegate     *appDelegate;
+}
 
 @property (nonatomic, weak) NSString *person;
 

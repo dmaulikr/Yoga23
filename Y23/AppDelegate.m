@@ -7,8 +7,15 @@
 //
 
 #import "AppDelegate.h"
+#import "GAI.h"
+#import "GAIDictionaryBuilder.h"
+#import "GAIFields.h"
+#import <NewRelicAgent/NewRelicAgent.h>
+
 
 @implementation AppDelegate
+
+#define kGoogleAnalyticsKey @"UA-44975470-1"
 
 @synthesize window = _window;
 @synthesize theNewProgram = _theNewProgram, asanasCatalog = _asanasCatalog, selectedAsanas = _selectedAsanas;
@@ -17,6 +24,22 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // NewRelic
+    [NewRelicAgent startWithApplicationToken:@"AA1e6fff42c46f7b5e74b7a67fb2f7eb76b7c5465f"];
+    
+    // Optional: automatically send uncaught exceptions to Google Analytics.
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    
+    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
+    [GAI sharedInstance].dispatchInterval = 10;
+    
+    // Optional: set Logger to VERBOSE for debug information.
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+    
+    // Initialize tracker.
+    id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:kGoogleAnalyticsKey];
+    // Set the new tracker as the default tracker, globally.
+    [GAI sharedInstance].defaultTracker = tracker;
     
     [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
     [[UITabBar appearance] setBackgroundImage:nil];
@@ -76,6 +99,8 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
+    
+    [[GAI sharedInstance] dispatch];
     /*
      Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
      If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
@@ -104,6 +129,42 @@
      See also applicationDidEnterBackground:.
      */
 }
+
+#pragma mark GoogleAnalytics
+
+- (void)pageTrackingGA:(NSString*)page {
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName value:page];
+    
+    [tracker send:[[GAIDictionaryBuilder createAppView]  build]];
+    
+}
+
+- (void)eventTrackingGA:(NSString*)event andAction:(NSString*)action andLabel:(NSString*)label {
+    
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:event     // Event category (required)
+                                                          action:action  // Event action (required)
+                                                           label:label          // Event label
+                                                           value:nil] build]];    // Event value
+}
+
+- (void)saveToUserDefaults:(id)object forKey:(NSString*)key {
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:object forKey:key];
+    [defaults synchronize];
+}
+
+- (id)retrieveFromUserDefaults:(NSString*)key {
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    id object = [defaults objectForKey:key];
+    
+    return object;
+}
+
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

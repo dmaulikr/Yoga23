@@ -58,6 +58,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     
     // adding "Notes" and "To sort" button
     //appDelegate.unsavedSequence = addedAsanas;
@@ -73,13 +74,24 @@
                                             initWithTitle:@"To sort" style:UIBarButtonItemStylePlain
                                             target:self action:@selector(toSorting)];
     
+    UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    fixedSpace.width = 30.0;
+    
     self.navigationItem.rightBarButtonItems =
-    [NSArray arrayWithObjects:doneButton, notesButton, nil];
+    [NSArray arrayWithObjects:doneButton,fixedSpace, notesButton, nil];
     
     
     counterBG = [UIImage imageNamed:@"numberPic"];
     [self.view addSubview:[self addScrollView]]; // adding all images to main view
 }
+
+
+- (void)viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:animated];
+    [appDelegate pageTrackingGA:@"Creating sequences"];
+}
+
 
 
 #pragma mark - Asanas Images Scrollview adding 
@@ -193,10 +205,14 @@
                                                           delegate:nil cancelButtonTitle:@"Ok" 
                                                  otherButtonTitles:nil];
         [tooManyAsanas show];
+        [appDelegate eventTrackingGA:@"Creating sequences" andAction:@"Too many asanas alert" andLabel:nil];
         return;
     }
+    
+    
     // create asana object
     UIButton *senderButton = (UIButton*)sender;
+    [appDelegate eventTrackingGA:@"Creating sequences" andAction:@"Added to sequence" andLabel:[NSString stringWithFormat:@"Asana number is %d",(senderButton.tag + 1)]];
     CSAsanaViewController *asController = [trackedObjects objectAtIndex:senderButton.tag];
     UIImage *asanaImage = [asController.button imageForState:UIControlStateNormal];
     CGRect asanaImageViewFrame = CGRectMake( 0, 0, aImageSize, aImageSize );
@@ -282,7 +298,7 @@
 
 - (void)toSorting {
     
-    
+    [appDelegate eventTrackingGA:@"Creating sequences" andAction:@"To Sorting" andLabel:[NSString stringWithFormat:@"Number of asanas %d",[addedAsanas count]]];
     
     if ([addedAsanas count] == 0) {
         // warning massage here
@@ -294,7 +310,7 @@
         return;
     }
     SortAsanasController *sac = [[SortAsanasController alloc] init];
-    debug(@" addedAsanas -  %@", addedAsanas);
+    //debug(@" addedAsanas -  %@", addedAsanas);
     sac -> sequence = addedAsanas;
     sac.delegate = self;
     [self.navigationController pushViewController:sac animated:YES];
@@ -325,6 +341,9 @@
 
 -(void)addNotes {
     
+    // Google An
+    [appDelegate eventTrackingGA:@"Notes" andAction:@"Get Notes" andLabel:@"Creating sequences"];
+    
     NotesModalController *nmc = [[NotesModalController alloc] init];
     
     UINavigationController *navController = [[UINavigationController alloc]
@@ -351,6 +370,8 @@
 
 -(void)notesDone {
     
+    // Google An
+    [appDelegate eventTrackingGA:@"Notes" andAction:@"Hide Notes" andLabel:@"Creating sequences"];
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }

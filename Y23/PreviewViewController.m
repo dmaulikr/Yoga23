@@ -42,7 +42,8 @@
 #pragma mark Adding Notes to AppDelegate array
 
 -(void)addNotes {
-    
+    // Google An
+    [appDelegate eventTrackingGA:@"Notes" andAction:@"Get Notes" andLabel:@"Preview"];
     NotesModalController *nmc = [[NotesModalController alloc] init];
     
     UINavigationController *navController = [[UINavigationController alloc]
@@ -59,6 +60,9 @@
 }
 
 -(void)notesDone {
+    
+    // Google An
+    [appDelegate eventTrackingGA:@"Notes" andAction:@"Hide Notes" andLabel:@"Preview"];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 
@@ -401,13 +405,18 @@
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
     switch (result) {
         case MFMailComposeResultCancelled:
+            // Google An
+            [appDelegate eventTrackingGA:@"Preview" andAction:@"Send programm" andLabel:@"Cancel"];
             NSLog(@"cancelled");
             break;
         case MFMailComposeResultSaved:
-            [self clearAll];
+            // Google An
+            [appDelegate eventTrackingGA:@"Preview" andAction:@"Send programm" andLabel:@"Saved"];
+            [self afterSendingAlert];
             break;
         case MFMailComposeResultSent:
-            [self clearAll];
+            [appDelegate eventTrackingGA:@"Preview" andAction:@"Send programm" andLabel:@"Sent"];
+            [self afterSendingAlert];
             break;
         case MFMailComposeResultFailed: {
             CustomAlert *alert = [[CustomAlert alloc] initWithTitle:NSLocalizedString(@"Error sending email!",@"Error sending email!")
@@ -426,6 +435,10 @@
 }
 
 - (void)sendingProgrammToEmile {
+    
+    // Google An
+    [appDelegate eventTrackingGA:@"Preview" andAction:@"Send programm" andLabel:@"Button"];
+    
     
     email = [[MFMailComposeViewController alloc] init];
     email.mailComposeDelegate = self;
@@ -449,7 +462,15 @@
     [self presentViewController:email animated:YES completion:nil];
 }
 
+- (void)afterSendingAlert {
+    UIAlertView *requestForClearAlert = [[UIAlertView alloc] initWithTitle:@"Purge it?" message:nil delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"Clear", nil];
+    requestForClearAlert.tag = 10;
+    [requestForClearAlert show];
+}
+
 - (void)clearAll {
+    // Google An
+    [appDelegate eventTrackingGA:@"Clear programm" andAction:@"Clear after sending " andLabel:nil];
     
     MainTabbarController *mtc = (MainTabbarController*)self.tabBarController;
     mtc.asanasCleaning      = YES;
@@ -469,7 +490,25 @@
     
 }
 
+#pragma mark - UIAlertView Delegate
 
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if (alertView.tag == 10) {
+        switch (buttonIndex) {
+            case 0:
+               
+                break;
+            case 1:
+                [self clearAll];
+                break;
+                
+            default:
+                break;
+        }
+    }
+}
 
 #pragma mark - View LifeCicle
 
@@ -538,6 +577,12 @@
 //        
     }else {[self createPDFforPreview];}
     
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:animated];
+    [appDelegate pageTrackingGA:@"Preview"];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

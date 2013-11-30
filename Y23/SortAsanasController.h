@@ -13,14 +13,15 @@
 
 @end
 
-#import <UIKit/UIKit.h>
-#import "SetBreathDataController.h"
-
 @protocol ModalViewControllerDelegate <NSObject>
 
 - (void)didDismissModalView;
 
 @end
+
+#import <UIKit/UIKit.h>
+#import "SetBreathDataController.h"
+
 
 @class AppDelegate;
 
@@ -35,6 +36,8 @@
     SetBreathDataController *popoverContent;
     
     AppDelegate             *appDelegate;
+    UIPanGestureRecognizer  *panGesture;
+    BOOL                    noSimultant;
     
    
 }

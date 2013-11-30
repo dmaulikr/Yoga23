@@ -24,7 +24,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        
     }
     return self;
 }
@@ -45,6 +45,7 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     
     _clearing = NO;
    
@@ -56,8 +57,11 @@
                                             initWithTitle:@"Notes" style:UIBarButtonItemStylePlain
                                             target:self
                                             action:@selector(addNotes)];
+    
+    UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    fixedSpace.width = 83.0;
     self.navigationItem.rightBarButtonItems =
-    [NSArray arrayWithObjects:notesButton, nil];
+    [NSArray arrayWithObjects:fixedSpace,notesButton, nil];
     
 }
 
@@ -78,9 +82,8 @@
     allTechnics =[[NSMutableArray alloc] initWithContentsOfFile:plistPath];
     
     // an array for the results of selection
-    AppDelegate *appDelegate= (AppDelegate*)[[UIApplication sharedApplication] delegate];
     self.selectedTechnics = [appDelegate.theNewProgram objectForKey:@"technics"];
-    NSLog(@"appDelegate theNewProgramm is %@", appDelegate.theNewProgram);
+    //NSLog(@"appDelegate theNewProgramm is %@", appDelegate.theNewProgram);
     
     
     for (NSInteger i = 0; i < [allTechnics count]; ++i)
@@ -90,7 +93,7 @@
 
     
    
-    NSLog(@" allTechnics is %d", [allTechnics count]);
+    //NSLog(@" allTechnics is %d", [allTechnics count]);
     
     
     // create subview of main view
@@ -105,18 +108,11 @@
         // setup line view with text, checkbox and Go-button if required :
         CGRect viewFrame = CGRectMake( x, y, 768, 50 );
         CGRect labelFrame = CGRectMake( 80, 20, 480, 30 );
-        CGRect checkBoxFrame = CGRectMake( 580, 16, 40, 40 );
         
         UIView *cellView= [[UIView alloc] initWithFrame:viewFrame];
         cellView.backgroundColor = [UIColor clearColor];
         cellView.tag = elementTag;
-        CheckBoxButton *checkBox = [[CheckBoxButton alloc] initWithFrame:checkBoxFrame];
-        [checkBox setImage:[UIImage imageNamed:@"WhiteCBox.png"]
-                  forState:UIControlStateNormal];
-        checkBox.tag = elementTag;
-        [checkBox addTarget:self action:@selector(addProgramItem:) forControlEvents:UIControlEventTouchUpInside];
-        
-        
+
         
         // setup line label:
         UILabel *labelString = [[UILabel alloc] initWithFrame:labelFrame];
@@ -127,7 +123,13 @@
         if ([plistElement isKindOfClass:[NSString class]]) {
             
             labelString.text = plistElement;
-            
+            CGRect checkBoxFrame = CGRectMake( 620, 16, 40, 40 );
+            CheckBoxButton *checkBox = [[CheckBoxButton alloc] initWithFrame:checkBoxFrame];
+            [checkBox setImage:[UIImage imageNamed:@"WhiteCBox.png"]
+                      forState:UIControlStateNormal];
+            checkBox.tag = elementTag;
+            [checkBox addTarget:self action:@selector(addProgramItem:) forControlEvents:UIControlEventTouchUpInside];
+            [cellView addSubview:checkBox];
         }
         // if there are nested elements inside:
         else if ([plistElement isKindOfClass:[NSDictionary class]]) {
@@ -138,15 +140,13 @@
             CGRect goButtonFrame = CGRectMake( 640, 16, 40, 40 );
             UIButton *goButton = [[UIButton alloc] initWithFrame:goButtonFrame];
             goButton.tag = elementTag;
-            [goButton setEnabled:NO];
+            [goButton setEnabled:YES];
             [goButton setImage:[UIImage imageNamed:@"WhiteAButton.png"]
                       forState:UIControlStateNormal];
             [goButton addTarget:self action:@selector(goTechnicDetails:) forControlEvents:UIControlEventTouchUpInside];
             [cellView addSubview:goButton];
         }
-        
         [cellView addSubview:labelString];
-        [cellView addSubview:checkBox];
         [contentView addSubview:cellView];        
         elementTag++;
     }
@@ -163,13 +163,15 @@
     if (sender.checked) {
         
         if ([element isKindOfClass:[NSString class]]) {  // if string element, add to selected List
-            
+            // Google An
+            [appDelegate eventTrackingGA:@"Technics" andAction:@"Technic Checked" andLabel:[NSString stringWithFormat:@"%@",element]];
             [self.selectedTechnics replaceObjectAtIndex:sender.tag withObject:element]; 
         }
         
         if ([element isKindOfClass:[NSDictionary class]]) { 
-            
             // if there are nested elements - activated arrow button after checking
+            // Google An
+            [appDelegate eventTrackingGA:@"Technics" andAction:@"Technic group Checked" andLabel:[NSString stringWithFormat:@"tag %d",sender.tag]];
             UIView *viewAtTag = (UIView*)[self.view viewWithTag:sender.tag];
             UIButton *arrow = [[viewAtTag subviews] objectAtIndex:0];
             [arrow setEnabled:YES];            
@@ -178,11 +180,14 @@
     else {
         
         if ([element isKindOfClass:[NSString class]]) {  // remove element from selected List
+            // Google An
+            [appDelegate eventTrackingGA:@"Technics" andAction:@"Technic Unchecked" andLabel:[NSString stringWithFormat:@"%@",element]];
             [self.selectedTechnics replaceObjectAtIndex:sender.tag withObject:[NSNull null]];
         }
         
         if ([element isKindOfClass:[NSDictionary class]]) {
-            
+            // Google An
+            [appDelegate eventTrackingGA:@"Technics" andAction:@"Technic group Unchecked" andLabel:[NSString stringWithFormat:@"tag %d",sender.tag]];
             // if there are nested elements - deactivated arrow button after unchecking
             UIView *viewAtTag = (UIView*)[self.view viewWithTag:sender.tag];
             UIButton *arrow = [[viewAtTag subviews] objectAtIndex:0];
@@ -193,11 +198,15 @@
 }
 
 - (void) goTechnicDetails: (UIButton *)sender {
-     
+    
+    
     int index = [sender tag];
     NSString *name = [[[allTechnics objectAtIndex:index] allKeys] objectAtIndex:0];
     NSArray *elements = [[allTechnics objectAtIndex:index] valueForKey:name];
    
+    // Google An
+    [appDelegate eventTrackingGA:@"Technics" andAction:@"Technic go Details" andLabel:[NSString stringWithFormat:@"%@",name]];
+
     
     TechnicDetails *td = [[TechnicDetails alloc] initWithName:name elements:elements tag:index];
 
@@ -208,6 +217,9 @@
 #pragma mark Adding Notes to AppDelegate array
 
 -(void)addNotes {
+    
+    // Google An
+    [appDelegate eventTrackingGA:@"Notes" andAction:@"Get Notes" andLabel:@"Technics"];
     
     NotesModalController *nmc = [[NotesModalController alloc] init];
     
@@ -236,6 +248,9 @@
 
 -(void)notesDone {
     
+    // Google An
+    [appDelegate eventTrackingGA:@"Notes" andAction:@"Hide Notes" andLabel:@"Technics"];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -249,6 +264,13 @@
         [self.view addSubview:[self renewTechnicsView]];
     }
     [super viewWillAppear:animated];
+}
+
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [appDelegate pageTrackingGA:@"Technics MainView"];
 }
 
 - (void)viewDidUnload

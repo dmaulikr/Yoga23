@@ -8,6 +8,7 @@
 
 #import "SetBreathDataController.h"
 #import "PIAsanaView.h"
+#import "AppDelegate.h"
 
 #define debug NSLog
 #define kInspiratoryDurationComponent  0
@@ -31,7 +32,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-      
+        appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     }
     return self;
 }
@@ -96,10 +97,16 @@
     }
   
     [self.done addTarget:_delegate action:@selector(dismissPopover) forControlEvents:UIControlEventTouchUpInside];
-    
-    
-
 }
+
+- (void)viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:animated];
+    [appDelegate pageTrackingGA:@"Sorting Popover"];
+}
+
+
+
 #pragma mark - 
 #pragma mark buttons methodes
 
@@ -218,6 +225,8 @@
 #pragma mark - View lifecycle
 
 - (void) removeTheAsana {
+    
+    [appDelegate eventTrackingGA:@"Sorting Popover" andAction:@"Remove button pressed" andLabel:nil];
     
     [self.delegate performSelector:@selector(removeAsanaView:) withObject:self.theAsana];
 }

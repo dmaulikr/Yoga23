@@ -105,6 +105,9 @@ enum sets {
 
 -(void)nextButton {
     
+    // Google An
+    [appDelegate eventTrackingGA:@"Asanas Main" andAction:@"To Create Seq" andLabel:@"Next Button"];
+    
     
     // to ceate sequences 
     if ([appDelegate.selectedAsanas count] < 10) {
@@ -135,6 +138,9 @@ enum sets {
 }
 
 - (void)clearAllButton {
+    
+    // Google An
+    [appDelegate eventTrackingGA:@"Asanas Main" andAction:@"Clear" andLabel:@"Clear All"];
     
     if ([appDelegate.selectedAsanas count] > 0) {
     
@@ -208,12 +214,18 @@ enum sets {
     
     switch (setNumber) {
         case kMainSet:
+            // Google An
+            [appDelegate eventTrackingGA:@"Asanas Main" andAction:@"MainCollection" andLabel:@"Load collection"];
             namesFile = @"mainCollection";
             break;
         case kExpressSet:
+            // Google An
+            [appDelegate eventTrackingGA:@"Asanas Main" andAction:@"Express" andLabel:@"Load collection"];
             namesFile = @"express";
             break;
         case kLightSet:
+            // Google An
+            [appDelegate eventTrackingGA:@"Asanas Main" andAction:@"Light" andLabel:@"Load collection"];
             namesFile = @"light";
             break;
     }
@@ -286,6 +298,9 @@ enum sets {
 #pragma mark Adding Notes to AppDelegate array
 
 -(void)addNotes {
+    
+    // Google An
+    [appDelegate eventTrackingGA:@"Notes" andAction:@"Get Notes" andLabel:@"Asanas Main"];
     
     NotesModalController *nmc = [[NotesModalController alloc] init];
     
@@ -420,17 +435,22 @@ enum sets {
 
 - (void)asanaButtonPressed:(id)sender {
     
+    
+    
     UIButton *pressedButton = (UIButton*)sender;
     NSString *asanaNumber = [asanasKeys objectAtIndex:(pressedButton.tag - 1)];
     UIImage *image = [appDelegate.selectedAsanas objectForKey:asanaNumber];
     //debug(@"image is %@ tag is %@", image,imageKey);
     if (image) {
-        
+        // Google An
+        [appDelegate eventTrackingGA:@"Asanas Main" andAction:@"Asana Unchecked" andLabel:[NSString stringWithFormat:@"Asana number is %d",pressedButton.tag]];
         [[pressedButton layer] setBorderColor:[UIColor lightGrayColor].CGColor];
         [appDelegate.selectedAsanas removeObjectForKey:asanaNumber];
         
         
     }else {
+        // Google An
+        [appDelegate eventTrackingGA:@"Asanas Main" andAction:@"Asana checked" andLabel:[NSString stringWithFormat:@"Asana number is %d",pressedButton.tag]];
         //debug(@"[asanasImages objectAtIndex:(pressedButton.tag - 1)] is %@", [asanasImages objectAtIndex:(pressedButton.tag - 1)]);
         [appDelegate.selectedAsanas setObject:[asanasImages objectAtIndex:(pressedButton.tag - 1)] forKey:asanaNumber];
         [[pressedButton layer] setBorderColor:[UIColor redColor].CGColor];
@@ -463,6 +483,7 @@ enum sets {
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    [appDelegate pageTrackingGA:@"Asanas MainView"];
 }
 
 - (void)viewWillDisappear:(BOOL)animated

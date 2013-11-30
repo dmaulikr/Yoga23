@@ -13,10 +13,12 @@
 @end
 
 #import <UIKit/UIKit.h>
-#import "AppDelegate.h"
+
+@class AppDelegate;
 
 @interface NotesModalController : UIViewController <UITextViewDelegate> {
 
+    AppDelegate     *appDelegate;
 }
 
 @property (nonatomic, strong) IBOutlet UITextView *notesTextView;

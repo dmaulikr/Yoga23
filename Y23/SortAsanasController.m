@@ -13,6 +13,7 @@
 #import "SetBreathDataController.h"
 #import "NotesModalController.h"
 #import "FFTransAlertView.h"
+#import "AppDelegate.h"
 
 
 
@@ -36,6 +37,7 @@
     self = [super init];
     if (self) {
         sequence = currentSequence;
+        noSimultant = NO;
     }
     return self;
 }
@@ -43,6 +45,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
 
 
     // adding "Notes" button
@@ -60,10 +63,13 @@
                                             initWithTitle:@"Save" style:UIBarButtonItemStylePlain
                                             target:self action:@selector(saving)];
     
-    self.navigationItem.rightBarButtonItems =
-    [NSArray arrayWithObjects:saveButton, notesButton, nil];
+    UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    fixedSpace.width = 44.0;
     
-    UIImageView *backgroundImage = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 768.0, 1004.0)];
+    self.navigationItem.rightBarButtonItems =
+    [NSArray arrayWithObjects:saveButton,fixedSpace, notesButton, nil];
+    
+    UIImageView *backgroundImage = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 768.0, 1024.0)];
     backgroundImage.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [backgroundImage setImage:[UIImage imageNamed:@"768x1044Chalkboard.png"]];
     [self.view addSubview:backgroundImage];
@@ -72,11 +78,21 @@
     [self.view sendSubviewToBack:backgroundImage];
     
     [self.view addSubview:[self addSortView]]; // adding all images to main view
-    
 
-    
+}
 
-   }
+
+- (void)viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:animated];
+    // Google An
+    [appDelegate pageTrackingGA:@"Sorting"];
+}
+
+
+
+
+
 #pragma mark - Asanas Images Scrollview adding 
 
 - (UIView *)addSortView {
@@ -119,7 +135,6 @@
                 // set action for moving asana
                 UIPanGestureRecognizer *recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
                 recognizer.delegate = self;
-                recognizer.maximumNumberOfTouches = 1;
                 [asanaView addGestureRecognizer:recognizer];
                 [[sequence objectAtIndex:c] setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleWidth];
                 //[asanaView addSubview:[sequence objectAtIndex:c]]; // add asana imageview to button
@@ -147,6 +162,16 @@
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer
                 shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {        
                     return NO;
+}
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    
+    
+    if (noSimultant) {
+        return NO;
+    }
+    noSimultant = YES;
+    return YES;
 }
 
 
@@ -179,10 +204,11 @@
     // determination starting point
     if ([recognizer state] == UIGestureRecognizerStateBegan ) {
         
+        panGesture = recognizer; // set for tracking, only one recognizer
+        
         currLocation = recognizer.view.center;
         // scale up view and subview image
         [recognizer.view scaleTo:CGRectMake(0,0,140,140) duration:0.2];
-        
         
     }
     
@@ -315,7 +341,8 @@
             [recognizer.view scaleTo:CGRectMake(0,0,aImageSize,aImageSize) duration:0.2];
             recognizer.view.center = currLocation;
         }
-        
+        noSimultant = NO;
+        panGesture = nil;
     }
     if (recognizer.enabled) {
         recognizer.view.center = CGPointMake(recognizer.view.center.x + translation.x, 
@@ -329,6 +356,10 @@
 #pragma mark UIPopover content methodes
 
 - (void) inputBreathData:(UIButton*)sender {
+    
+    if (panGesture) {
+        return;
+    }
     
     //content ViewController
     
@@ -367,6 +398,9 @@
     int tag = view.tag;
     PIAsanaView *removedAsana = [self.asanasViews objectAtIndex:tag];
     
+    // Google An
+    [appDelegate eventTrackingGA:@"Sorting" andAction:@"Remove asana" andLabel:removedAsana.identificator];
+    NSLog(@"remove asana %@",removedAsana.identificator);
     // decrease counter
     NSString *asanaID = removedAsana.identificator;
     NSString *number = [appDelegate.asanasCounter objectForKey:asanaID];
@@ -413,6 +447,8 @@
 #pragma mark Finish 
 
 - (void)saving {
+    
+    
     // snapshot for sequence
     if ([_asanasViews count] == 0) {
         
@@ -420,6 +456,11 @@
         [zeroAsanasAlert show];
         return;
     }
+    
+    // Google An
+    [appDelegate eventTrackingGA:@"Sorting" andAction:@"Save Sequence" andLabel:[NSString stringWithFormat:@"sequence contain %d asanas",[_asanasViews count]]];
+    
+    
     UIImage *sequenceImage = [contentView imageFromView];
     
     // removing asanas views from the screen
@@ -468,6 +509,9 @@
 
 -(void)addNotes {
     
+    // Google An
+    [appDelegate eventTrackingGA:@"Notes" andAction:@"Get Notes" andLabel:@"Sorting"];
+    
     NotesModalController *nmc = [[NotesModalController alloc] init];
     
     UINavigationController *navController = [[UINavigationController alloc]
@@ -495,6 +539,8 @@
 
 -(void)notesDone {
     
+    // Google An
+    [appDelegate eventTrackingGA:@"Notes" andAction:@"Hide Notes" andLabel:@"Sorting"];
     [self dismissViewControllerAnimated:YES completion:nil];
 
     

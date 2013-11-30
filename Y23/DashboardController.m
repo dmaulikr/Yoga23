@@ -8,6 +8,7 @@
 
 #import "DashboardController.h"
 #import "NotesModalController.h"
+#import "AppDelegate.h"
 
 @interface DashboardController () <HideNotesViewProtocol>
 
@@ -21,7 +22,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        
     }
     return self;
 }
@@ -37,6 +38,9 @@
 #pragma mark Adding Notes to AppDelegate array
 
 -(void)addNotes {
+    
+    // Google An
+    [appDelegate eventTrackingGA:@"Notes" andAction:@"Get Notes" andLabel:@"Dashboard"];
     
     NotesModalController *nmc = [[NotesModalController alloc] init];
     
@@ -64,6 +68,8 @@
 
 -(void)notesDone {
     
+    // Google An
+    [appDelegate eventTrackingGA:@"Notes" andAction:@"Hide Notes" andLabel:@"Dashboard"];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -82,14 +88,25 @@
 {
     
     [super viewDidLoad];
+    
+    appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     // adding Notes button
     UIBarButtonItem *notesButton         = [[UIBarButtonItem alloc]
                                             initWithTitle:@"Notes" style:UIBarButtonItemStylePlain
                                             target:self
                                             action:@selector(addNotes)];
-    self.navigationItem.rightBarButtonItems =
-    [NSArray arrayWithObjects:notesButton, nil];
     
+    UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    fixedSpace.width = 83.0;
+    self.navigationItem.rightBarButtonItems =
+    [NSArray arrayWithObjects:fixedSpace,notesButton, nil];
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [appDelegate pageTrackingGA:@"Technics MainView"];
 }
 
 

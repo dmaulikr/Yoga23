@@ -7,6 +7,7 @@
 //
 
 #import "NotesModalController.h"
+#import "AppDelegate.h"
 
 @interface NotesModalController ()
 
@@ -48,7 +49,7 @@
     [_notesTextView setFont:[UIFont systemFontOfSize:18.0]];
     
     // get to the New Programm data storage in AppDelegate class
-    AppDelegate *appDelegate= (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    appDelegate= (AppDelegate*)[[UIApplication sharedApplication] delegate];
     self.notesText = [appDelegate.theNewProgram objectForKey:@"notes"];
     
     _notesTextView.text = _notesText;
@@ -78,7 +79,6 @@
         [self.notesText appendString:@"\n\n"];
         
         // set text into programm entity
-        AppDelegate *appDelegate= (AppDelegate*)[[UIApplication sharedApplication] delegate];
         [appDelegate.theNewProgram setObject:self.notesText forKey:@"notes"];
     }
     
@@ -90,6 +90,9 @@
 
 
 - (void) viewDidAppear:(BOOL)animated {
+    
+    // Google An
+    [appDelegate pageTrackingGA:@"Notes"];
     
     [self.notesTextView becomeFirstResponder];
 }

@@ -16,4 +16,10 @@
 @property (strong, nonatomic)  NSMutableDictionary *selectedAsanas;
 @property (strong, nonatomic)  NSMutableDictionary *asanasCounter;
 @property (strong, nonatomic)  NSMutableArray *unsavedSequence;
+
+- (void)pageTrackingGA:(NSString*)page;
+- (void)eventTrackingGA:(NSString*)event andAction:(NSString*)action andLabel:(NSString*)label;
+- (void)saveToUserDefaults:(id)object forKey:(NSString*)key;
+- (id)retrieveFromUserDefaults:(NSString*)key;
+
 @end

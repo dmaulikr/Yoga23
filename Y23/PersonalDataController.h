@@ -12,7 +12,8 @@
 
 @interface PersonalDataController : UIViewController  <UITextFieldDelegate, UITextViewDelegate> {
     
-    AppDelegate         *appDelegate;
+    AppDelegate             *appDelegate;
+    __weak IBOutlet UIView  *guideView;
 }
 
 @property (assign, nonatomic) IBOutlet UITextField *firstName;

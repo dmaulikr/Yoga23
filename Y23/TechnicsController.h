@@ -10,10 +10,14 @@
 #import "CheckBoxButton.h"
 #import "TechnicDetails.h"
 
+@class AppDelegate;
+
 @interface Technics : UIViewController {
     
-    NSArray *allTechnics;
-    UIView  *contentView;
+    AppDelegate *appDelegate;
+    
+    NSArray     *allTechnics;
+    UIView      *contentView;
 
 }
 

@@ -9,6 +9,7 @@
 #import "PersonalDataController.h"
 #import "NotesModalController.h"
 #import "AppDelegate.h"
+#import "CSTipsViewController.h"
 
 @interface PersonalDataController () <HideNotesViewProtocol>
 
@@ -81,21 +82,63 @@
                                             initWithTitle:@"Notes" style:UIBarButtonItemStylePlain
                                             target:self
                                             action:@selector(addNotes)];
+    
+    UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    fixedSpace.width = 83.0;
     self.navigationItem.rightBarButtonItems =
-    [NSArray arrayWithObjects:notesButton, nil];
+    [NSArray arrayWithObjects:fixedSpace,notesButton, nil];
+    
+    // first launch Guide
+//    NSUserDefaults *standartUserDefaults = [NSUserDefaults standardUserDefaults];
+//    NSString *firstLaunch = [standartUserDefaults objectForKey:@"FirstLaunch"];
+//    if (!firstLaunch) {
+//        [standartUserDefaults setObject:@"was" forKey:@"FirstLaunch"];
+//        [self showGuide];
+//    }
     
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     _firstName.keyboardAppearance = UIKeyboardAppearanceAlert;
-    self.lastName.keyboardAppearance = UIKeyboardAppearanceAlert;
-    NSLog(@"first name from delegate - %@",[[appDelegate.theNewProgram objectForKey:@"personal"] objectForKey:@"firstName"]);
-    self.firstName.text = [[appDelegate.theNewProgram objectForKey:@"personal"] objectForKey:@"firstName"];
-    self.lastName.text = [[appDelegate.theNewProgram objectForKey:@"personal"] objectForKey:@"lastName"];
-    self.eMail.text = [[appDelegate.theNewProgram objectForKey:@"personal"] objectForKey:@"eMail"];
+    _firstName.autocapitalizationType = UITextAutocapitalizationTypeWords;
+    _lastName.keyboardAppearance = UIKeyboardAppearanceAlert;
+    _lastName.autocapitalizationType = UITextAutocapitalizationTypeWords;
+    _eMail.keyboardType = UIKeyboardTypeEmailAddress;
+    //NSLog(@"first name from delegate - %@",[[appDelegate.theNewProgram objectForKey:@"personal"] objectForKey:@"firstName"]);
+    _firstName.text = [[appDelegate.theNewProgram objectForKey:@"personal"] objectForKey:@"firstName"];
+    _lastName.text = [[appDelegate.theNewProgram objectForKey:@"personal"] objectForKey:@"lastName"];
+    _eMail.text = [[appDelegate.theNewProgram objectForKey:@"personal"] objectForKey:@"eMail"];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    
+    [super viewDidAppear:animated];
+    [appDelegate pageTrackingGA:@"PersonalView"];
+    
+    // if first launch
+    if (![appDelegate retrieveFromUserDefaults:@"PersonalScreen_FirstTime"]) {
+        
+        CSTipsViewController *tpvc = [[CSTipsViewController alloc] initWithSender:@"Personal"];
+        tpvc.viewDelegate = self;
+        tpvc.view.frame = CGRectMake(0.0,0.0,768.0,450.0);
+        [self.view addSubview:tpvc.view];
+    }
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    
+    if (textField == self.firstName) {
+        // Google An
+        [appDelegate eventTrackingGA:@"Personal Data" andAction:@"Text field begin editing" andLabel:@"First Name"];
+    }else if (textField == self.lastName) {
+        // Google An
+        [appDelegate eventTrackingGA:@"Personal Data" andAction:@"Text field begin editing" andLabel:@"Last Name"];
+    }else if (textField == self.eMail) {
+        // Google An
+        [appDelegate eventTrackingGA:@"Personal Data" andAction:@"Text field begin editing" andLabel:@"Email"];
+    }
+    
     
     
     return YES;
@@ -113,6 +156,7 @@
     return YES;
     
 }
+
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
@@ -132,9 +176,9 @@
     }
     if (textField == self.firstName )
     {
-        NSLog(@"personalData 1 from delegate - %@ text - %@",[appDelegate.theNewProgram objectForKey:@"personal"],self.firstName.text);
+        //NSLog(@"personalData 1 from delegate - %@ text - %@",[appDelegate.theNewProgram objectForKey:@"personal"],self.firstName.text);
         [self.personalData setObject:[NSString stringWithString:self.firstName.text] forKey:@"firstName"];
-        NSLog(@"personalData2 from delegate - %@",[appDelegate.theNewProgram objectForKey:@"personal"] );
+        //NSLog(@"personalData2 from delegate - %@",[appDelegate.theNewProgram objectForKey:@"personal"] );
     }
     if (textField == self.lastName) {
        [self.personalData setObject:self.lastName.text forKey:@"lastName"];
@@ -157,6 +201,8 @@
 #pragma mark Adding Notes to AppDelegate array
 
 -(void)addNotes {
+    // Google An
+    [appDelegate eventTrackingGA:@"Notes" andAction:@"Get Notes" andLabel:@"Personal"];
     
     NotesModalController *nmc = [[NotesModalController alloc] init];
     
@@ -184,22 +230,15 @@
 
 -(void)notesDone {
     
+    // Google An
+    [appDelegate eventTrackingGA:@"Notes" andAction:@"Hide Notes" andLabel:@"Personal"];
+    
+    
     [self dismissViewControllerAnimated:YES completion:nil];
   
 }
 
 
-#pragma mark - View lifecycle
-
-/*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView
-{
-}
-*/
-
-
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 
 
 
