@@ -7,13 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CSTipsViewController.h"
 
 @class AppDelegate;
 
-@interface PersonalDataController : UIViewController  <UITextFieldDelegate, UITextViewDelegate> {
+@interface PersonalDataController : UIViewController  <UITextFieldDelegate, UITextViewDelegate,RemoveTipViewsProtocol> {
     
     AppDelegate             *appDelegate;
     __weak IBOutlet UIView  *guideView;
+    CSTipsViewController    *tpvc;
 }
 
 @property (assign, nonatomic) IBOutlet UITextField *firstName;
@@ -21,5 +23,7 @@
 @property (assign, nonatomic) IBOutlet UITextField *eMail;
 @property (assign, nonatomic) IBOutlet UITextView *notes;
 @property (assign, nonatomic) NSMutableDictionary *personalData;
+
+- (void)removeTips;
 
 @end

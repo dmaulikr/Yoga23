@@ -13,6 +13,10 @@
                 <outlet property="t2_View" destination="vOv-3q-XLM" id="fBj-lv-NN4"/>
                 <outlet property="t3ImageView" destination="IQe-Ct-pms" id="r5v-GU-oWd"/>
                 <outlet property="t3_View" destination="zk0-gw-hSX" id="SNe-tS-JTK"/>
+                <outlet property="tp1_containerView" destination="K4M-3B-BYN" id="MXL-C7-3lz"/>
+                <outlet property="tp1_topArrow" destination="ZjZ-aw-3ds" id="8qz-xd-7F1"/>
+                <outlet property="tp2_containerView" destination="qWt-Km-mWL" id="Ahz-ue-E61"/>
+                <outlet property="tp2_downArrow" destination="BxO-ZR-jZH" id="rqF-D5-p1A"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -50,10 +54,17 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="t_Arrow.png" id="ZjZ-aw-3ds">
-                            <rect key="frame" x="100" y="5" width="40" height="40"/>
+                        <view alpha="0.80000000000000004" contentMode="scaleToFill" id="K4M-3B-BYN">
+                            <rect key="frame" x="50" y="5" width="40" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        </imageView>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="t_Arrow.png" id="ZjZ-aw-3ds">
+                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -74,6 +85,17 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <view alpha="0.80000001192092896" contentMode="scaleToFill" id="qWt-Km-mWL">
+                            <rect key="frame" x="180" y="90" width="40" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="t_Arrow.png" id="BxO-ZR-jZH">
+                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

@@ -58,17 +58,50 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
+  
     if ([parentController isEqualToString:@"Personal"]) {
+
+        UITapGestureRecognizer *tgrFullScreen = [[UITapGestureRecognizer alloc] initWithTarget:_viewDelegate action:@selector(removeTips)];
+        UIView *aView = [[UIView alloc] initWithFrame:self.view.bounds];
+        NSLog(@"frame - %@", NSStringFromCGRect(self.view.bounds));
+        [aView addGestureRecognizer:tgrFullScreen];
+        [self.view addSubview:aView];
+        tgrFullScreen.delegate = self;
+        
+        float degrees1 = 225; //the value in degrees
+        tp1_topArrow.transform = CGAffineTransformMakeRotation(degrees1 * M_PI/180);
+        float degrees2 = 50; //the value in degrees
+        tp2_downArrow.transform = CGAffineTransformMakeRotation(degrees2 * M_PI/180);
+        
         [UIView animateWithDuration:1.2 animations:^{
             t2_View.frame = CGRectMake(250.0, 265.0, t2_View.frame.size.width, t2_View.frame.size.height);
         }];
         
         [UIView animateWithDuration:1.2
-                              delay:1.2
+                              delay:1.5
+                            options:UIViewAnimationOptionCurveEaseInOut
+                         animations:^{ tp1_containerView.frame = CGRectMake(tp1_containerView.frame.origin.x + 130.0, tp1_containerView.frame.origin.y, tp1_containerView.frame.size.width, tp1_containerView.frame.size.height);}
+                         completion:nil];
+
+        [UIView animateWithDuration:0.6
+                              delay:1.0
                             options:UIViewAnimationOptionCurveEaseInOut
                          animations:^{ t3_View.frame = CGRectMake(45.0, 750.0, t3_View.frame.size.width, t3_View.frame.size.height);}
                          completion:nil];
+        
+        [UIView animateWithDuration:0.3
+                              delay:2.8
+                            options:UIViewAnimationOptionAutoreverse
+                         animations:^{ tp2_containerView.alpha = 0.0;
+                         }
+                         completion:^(BOOL finished){if (finished)tp2_containerView.alpha = 0.8;
+                         }];
+        
     }
+    
+    
+
 }
 
 - (void)updateImageView {

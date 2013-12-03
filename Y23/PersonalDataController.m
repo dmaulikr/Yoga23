@@ -21,6 +21,16 @@
 @synthesize firstName = _firstName, lastName = _lastName, eMail = _eMail, notes = _notes;
 @synthesize personalData = _personalData;
 
+
+#pragma RemoveTipViewsProtocol method
+
+- (void)removeTips {
+    [tpvc.view removeFromSuperview];
+    tpvc = nil;
+    [_firstName performSelector:@selector(becomeFirstResponder) withObject:nil afterDelay:0.0];
+}
+
+
 - (void)viewDidUnload
 {
     self.firstName = nil;
@@ -98,6 +108,8 @@
     
 }
 
+
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     _firstName.keyboardAppearance = UIKeyboardAppearanceAlert;
@@ -119,9 +131,9 @@
     // if first launch
     if (![appDelegate retrieveFromUserDefaults:@"PersonalScreen_FirstTime"]) {
         
-        CSTipsViewController *tpvc = [[CSTipsViewController alloc] initWithSender:@"Personal"];
+        tpvc = [[CSTipsViewController alloc] initWithSender:@"Personal"];
         tpvc.viewDelegate = self;
-        tpvc.view.frame = CGRectMake(0.0,0.0,768.0,450.0);
+        tpvc.view.frame = CGRectMake(0.0,0.0,768.0,1000.0);
         [self.view addSubview:tpvc.view];
     }
 }
