@@ -30,13 +30,81 @@
     [_firstName performSelector:@selector(becomeFirstResponder) withObject:nil afterDelay:0.0];
 }
 
+- (IBAction)closeKeyboard:(id)sender {
+    
+    for (UITextField *field in fieldsArray) {
+        if ([field isEditing]) {
+            [field resignFirstResponder];
+            break;
+        }
+    }
+}
+
+- (IBAction)segmentControlClicked:(id)sender {
+    
+    if (!segmentControl) {
+        segmentControl = (UISegmentedControl*)sender;
+    }
+    
+    if (segmentControl.selectedSegmentIndex == 1) {
+        [self nextField];
+    }else {
+         [self prevField];
+    }
+    
+    
+}
+
+- (void)nextField {
+    
+    int s;
+    
+    for (UITextField *field in fieldsArray) {
+        if ([field isEditing]) {
+            s = [fieldsArray indexOfObject:field];
+            break;
+        }
+    }
+   
+    NSLog(@" fieldsArray - %@next s - %d",fieldsArray, s);
+    if (s == 0) {
+        [self unselectSegmentControl];
+    }
+    
+    if (s != 2) {
+        [[fieldsArray objectAtIndex:s + 1] becomeFirstResponder];
+    }
+    
+}
+
+- (void)prevField {
+    
+    int s;
+    
+    for (UITextField *field in fieldsArray) {
+        if ([field isEditing]) {
+            s = [fieldsArray indexOfObject:field];
+            break;
+        }
+    }
+    NSLog(@"prev s - %d", s);
+    if (s == 2) {
+        [self unselectSegmentControl];
+    }
+    
+    [[fieldsArray objectAtIndex:s - 1] becomeFirstResponder];
+    
+}
+
+- (void)unselectSegmentControl {
+    
+    segmentControl.selectedSegmentIndex = UISegmentedControlNoSegment;
+    
+}
 
 - (void)viewDidUnload
 {
-    self.firstName = nil;
-    self.lastName  = nil;
-    self.eMail = nil;
-    self.notes = nil;
+    
     [super viewDidUnload];
     
     // Release any retained subviews of the main view.
@@ -106,21 +174,29 @@
 //        [self showGuide];
 //    }
     
+    _firstName.keyboardAppearance = UIKeyboardAppearanceAlert;
+    _firstName.autocapitalizationType = UITextAutocapitalizationTypeWords;
+    _lastName.keyboardAppearance = UIKeyboardAppearanceAlert;
+    _lastName.autocapitalizationType = UITextAutocapitalizationTypeWords;
+    _eMail.keyboardType = UIKeyboardTypeEmailAddress;
+    
+    
+    fieldsArray = @[_firstName,_lastName,_eMail];
+    
 }
 
 
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    _firstName.keyboardAppearance = UIKeyboardAppearanceAlert;
-    _firstName.autocapitalizationType = UITextAutocapitalizationTypeWords;
-    _lastName.keyboardAppearance = UIKeyboardAppearanceAlert;
-    _lastName.autocapitalizationType = UITextAutocapitalizationTypeWords;
-    _eMail.keyboardType = UIKeyboardTypeEmailAddress;
+    
     //NSLog(@"first name from delegate - %@",[[appDelegate.theNewProgram objectForKey:@"personal"] objectForKey:@"firstName"]);
     _firstName.text = [[appDelegate.theNewProgram objectForKey:@"personal"] objectForKey:@"firstName"];
     _lastName.text = [[appDelegate.theNewProgram objectForKey:@"personal"] objectForKey:@"lastName"];
     _eMail.text = [[appDelegate.theNewProgram objectForKey:@"personal"] objectForKey:@"eMail"];
+    
+    NSLog(@"first name - %@, last - %@, emial - %@", _firstName, _lastName, _eMail);
+    //fieldsArray = @[_firstName,_lastName,_eMail];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -135,10 +211,23 @@
         tpvc.viewDelegate = self;
         tpvc.view.frame = CGRectMake(0.0,0.0,768.0,1000.0);
         [self.view addSubview:tpvc.view];
+    }else {
+        
+        [_firstName becomeFirstResponder];
     }
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    
+    [textField setInputAccessoryView:keyboardToolBar];
+    
+    if (textField == _firstName) {
+        segmentControl.selectedSegmentIndex = 0;
+    }else if (textField == _eMail) {
+        segmentControl.selectedSegmentIndex = 1;
+    }else {
+        segmentControl.selectedSegmentIndex = UISegmentedControlNoSegment;
+    }
     
     if (textField == self.firstName) {
         // Google An
@@ -150,6 +239,7 @@
         // Google An
         [appDelegate eventTrackingGA:@"Personal Data" andAction:@"Text field begin editing" andLabel:@"Email"];
     }
+    
     
     
     
@@ -251,7 +341,13 @@
 }
 
 
-
+- (void)dealloc {
+    keyboardToolBar = nil;
+    self.firstName = nil;
+    self.lastName  = nil;
+    self.eMail = nil;
+    self.notes = nil;
+}
 
 
 

@@ -13,9 +13,14 @@
 
 @interface PersonalDataController : UIViewController  <UITextFieldDelegate, UITextViewDelegate,RemoveTipViewsProtocol> {
     
-    AppDelegate             *appDelegate;
-    __weak IBOutlet UIView  *guideView;
-    CSTipsViewController    *tpvc;
+    AppDelegate                         *appDelegate;
+    __weak IBOutlet UIView              *guideView;
+    CSTipsViewController                *tpvc;
+    IBOutlet UIToolbar                  *keyboardToolBar;
+    __weak IBOutlet UISegmentedControl  *segmentControl;
+    __weak IBOutlet UIBarButtonItem     *closeTBButton;
+    
+    NSArray                             *fieldsArray;
 }
 
 @property (assign, nonatomic) IBOutlet UITextField *firstName;
@@ -25,5 +30,9 @@
 @property (assign, nonatomic) NSMutableDictionary *personalData;
 
 - (void)removeTips;
+- (IBAction)closeKeyboard:(id)sender;
+- (IBAction)segmentControlClicked:(id)sender;
+- (void)nextField;
+- (void)prevField;
 
 @end

@@ -338,13 +338,43 @@
                     <navigationItem key="navigationItem" title="Personal data and notes" id="cf0-gu-eHS"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
+                        <outlet property="closeTBButton" destination="MWJ-ZH-0VB" id="OC6-wa-K3D"/>
                         <outlet property="eMail" destination="zTb-6X-cqO" id="Y89-KE-PPj"/>
                         <outlet property="firstName" destination="jm3-Ik-MU4" id="gwz-si-jL0"/>
                         <outlet property="guideView" destination="RVn-j8-Mo1" id="9XP-Mz-K5G"/>
+                        <outlet property="keyboardToolBar" destination="5Dj-vN-XRv" id="0aJ-Kw-3T0"/>
                         <outlet property="lastName" destination="66J-bP-QiP" id="Xdy-eq-w3z"/>
+                        <outlet property="segmentControl" destination="Bd6-Yo-cxm" id="prv-p0-40W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D9z-wj-JUv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="black" id="5Dj-vN-XRv">
+                    <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <items>
+                        <barButtonItem style="plain" id="jyN-TR-5PF">
+                            <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Bd6-Yo-cxm">
+                                <rect key="frame" x="0.0" y="0.0" width="161" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Next"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="segmentControlClicked:" destination="unF-MI-hEG" eventType="valueChanged" id="8ZD-sv-dhu"/>
+                                </connections>
+                            </segmentedControl>
+                        </barButtonItem>
+                        <barButtonItem systemItem="flexibleSpace" id="21e-we-HVr" userLabel="Bar Button Item - Flex"/>
+                        <barButtonItem title="Close" id="MWJ-ZH-0VB" userLabel="Bar Button Item - Close">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="closeKeyboard:" destination="unF-MI-hEG" id="dfz-GY-NNg"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
             </objects>
             <point key="canvasLocation" x="4144" y="-1010"/>
         </scene>
