@@ -33,7 +33,7 @@
     // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
     [GAI sharedInstance].dispatchInterval = 10;
     
-    // Optional: set Logger to VERBOSE for debug information.
+    // Optional: set Logger to VERBOSE for dPrint information.
     [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
     
     // Initialize tracker.

@@ -25,7 +25,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
-    }
+    };
     return self;
 }
 
@@ -37,9 +37,14 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+#pragma RemoveTipViewsProtocol method
+
+- (void)removeTips {
+    [tpvc.view removeFromSuperview];
+    tpvc = nil;
+}
+
 #pragma mark - View lifecycle
-
-
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -271,6 +276,31 @@
 {
     [super viewDidAppear:animated];
     [appDelegate pageTrackingGA:@"Technics MainView"];
+    
+    // if first launch
+    if (![appDelegate retrieveFromUserDefaults:@"TechnicsScreen_FirstTime"]) {
+        [appDelegate saveToUserDefaults:@"NO" forKey:@"TechnicsScreen_FirstTime"];
+        tpvc = [[CSTipsViewController alloc] initWithSender:@"Technics"];
+        tpvc.viewDelegate = self;
+        tpvc.view.frame = CGRectMake(0.0,0.0,768.0,1000.0);
+        [self.view addSubview:tpvc.view];
+    }
+}
+
+
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+#ifdef DEBUG
+    
+    if (tpvc) {
+        [tpvc.view removeFromSuperview];
+        tpvc = nil;
+    }
+    
+#endif
+    
 }
 
 - (void)viewDidUnload

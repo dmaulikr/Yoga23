@@ -66,7 +66,7 @@
         }
     }
    
-    NSLog(@" fieldsArray - %@next s - %d",fieldsArray, s);
+    //NSLog(@" fieldsArray - %@next s - %d",fieldsArray, s);
     if (s == 0) {
         [self unselectSegmentControl];
     }
@@ -195,7 +195,7 @@
     _lastName.text = [[appDelegate.theNewProgram objectForKey:@"personal"] objectForKey:@"lastName"];
     _eMail.text = [[appDelegate.theNewProgram objectForKey:@"personal"] objectForKey:@"eMail"];
     
-    NSLog(@"first name - %@, last - %@, emial - %@", _firstName, _lastName, _eMail);
+    //NSLog(@"first name - %@, last - %@, emial - %@", _firstName, _lastName, _eMail);
     //fieldsArray = @[_firstName,_lastName,_eMail];
 }
 
@@ -206,7 +206,7 @@
     
     // if first launch
     if (![appDelegate retrieveFromUserDefaults:@"PersonalScreen_FirstTime"]) {
-        
+        [appDelegate saveToUserDefaults:@"NO" forKey:@"PersonalScreen_FirstTime"];
         tpvc = [[CSTipsViewController alloc] initWithSender:@"Personal"];
         tpvc.viewDelegate = self;
         tpvc.view.frame = CGRectMake(0.0,0.0,768.0,1000.0);
@@ -215,6 +215,21 @@
         
         [_firstName becomeFirstResponder];
     }
+}
+
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+#ifdef DEBUG
+    
+    if (tpvc) {
+        [tpvc.view removeFromSuperview];
+        tpvc = nil;
+    }
+    
+#endif
+    
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {

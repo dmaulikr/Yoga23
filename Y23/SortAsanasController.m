@@ -26,7 +26,7 @@
 
 #define aSViewSize 116
 #define aImageSize 112
-#define debug NSLog
+#define dPrint NSLog
 
 @implementation SortAsanasController
 
@@ -148,7 +148,7 @@
         }
 
     }
-    debug(@" _asanasViews %@", _asanasViews);
+    dPrint(@" _asanasViews %@", _asanasViews);
 
     
     return contentView;
@@ -262,11 +262,11 @@
                     if (movedView.center.x == aSViewSize/2) {
                         [movedView moveTo:CGPointMake(638.0, movedView.center.y - aSViewSize) duration:0.2
                                    option:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionAllowUserInteraction];
-                        //  debug(@"moved in x- direction view tag is %i", movedView.tag);
+                        //  dPrint(@"moved in x- direction view tag is %i", movedView.tag);
                     }else {
                         [movedView moveTo:CGPointMake(movedView.center.x - aSViewSize, movedView.center.y) duration:0.2
                                    option:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionAllowUserInteraction];
-                        // debug(@"moved in x- direction view tag is %i", movedView.tag);
+                        // dPrint(@"moved in x- direction view tag is %i", movedView.tag);
                     }
                     [movedView setTag:(movedView.tag - 1)];
                 }
@@ -294,11 +294,11 @@
                     if (movedView.center.x > aSViewSize/2) {
                         [movedView moveTo:CGPointMake(movedView.center.x - aSViewSize, movedView.center.y) duration:0.1
                                    option:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionAllowUserInteraction];
-                        //debug(@"moved y+ view tag is %i", movedView.tag);
+                        //dPrint(@"moved y+ view tag is %i", movedView.tag);
                     }else {
                         [movedView moveTo:CGPointMake(638.0, movedView.center.y - aSViewSize) duration:0.2
                                    option:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionAllowUserInteraction];
-                        //debug(@"moved y+ first view tag is %i", movedView.tag);
+                        //dPrint(@"moved y+ first view tag is %i", movedView.tag);
                     }
                     [movedView setTag:(movedView.tag -1)];
                 }
@@ -318,11 +318,11 @@
                 if (movedView.center.x < 638.0) {
                     [movedView moveTo:CGPointMake(movedView.center.x + aSViewSize, movedView.center.y) duration:0.1
                                option:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionAllowUserInteraction];
-                    //debug(@"moved -y view tag is %i", movedView.tag);
+                    //dPrint(@"moved -y view tag is %i", movedView.tag);
                 }else if(movedView.center.x == 638.0){
                     [movedView moveTo:CGPointMake(movedView.center.x - 580.0, movedView.center.y + aSViewSize) duration:0.2
                                option:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionAllowUserInteraction];
-                    //debug(@"moved view tag is %i", movedView.tag);
+                    //dPrint(@"moved view tag is %i", movedView.tag);
                 }
                 [movedView setTag:(movedView.tag + 1)];
             }
@@ -475,7 +475,7 @@
         }
     
     [self.delegate performSelector:@selector(saveSequence:) withObject:sequenceImage];
-    //debug(@"sequence image is %@", sequenceImage);
+    //dPrint(@"sequence image is %@", sequenceImage);
     // pausa for animation
     // and go back to previous CreatingAsanas controller
     BOOL yesBool = YES;
@@ -499,7 +499,7 @@
         
         sequence = _asanasViews;
         [self.delegate performSelector:@selector(setAddedAsanas:) withObject:_asanasViews];
-        //debug(@" delegate %@", [self.delegate performSelector:@selector(currentSequenceViews)]);
+        //dPrint(@" delegate %@", [self.delegate performSelector:@selector(currentSequenceViews)]);
 
     }
     [super viewWillDisappear:animated];

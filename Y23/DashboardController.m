@@ -73,6 +73,14 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma RemoveTipViewsProtocol method
+
+- (void)removeTips {
+    [tpvc.view removeFromSuperview];
+    tpvc = nil;
+}
+
+
 
 #pragma mark - View lifecycle
 
@@ -107,6 +115,28 @@
 {
     [super viewDidAppear:animated];
     [appDelegate pageTrackingGA:@"Technics MainView"];
+    
+    // if first launch
+    if (![appDelegate retrieveFromUserDefaults:@"DashboardScreen_FirstTime"]) {
+        [appDelegate saveToUserDefaults:@"NO" forKey:@"DashboardScreen_FirstTime"];
+        tpvc = [[CSTipsViewController alloc] initWithSender:@"Dashboard"];
+        tpvc.viewDelegate = self;
+        tpvc.view.frame = CGRectMake(0.0,0.0,768.0,1000.0);
+        [self.view addSubview:tpvc.view];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+#ifdef DEBUG
+    
+    if (tpvc) {
+        [tpvc.view removeFromSuperview];
+        tpvc = nil;
+    }
+    
+#endif
 }
 
 

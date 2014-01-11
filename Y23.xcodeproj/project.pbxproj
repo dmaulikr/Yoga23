@@ -3585,6 +3585,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Igor Tcherny (7US428BKG6)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Igor Tcherny (7US428BKG6)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3599,7 +3600,7 @@
 					/Users/deviMac/Documents/Y23Tabbed/Y23Bandel/Y23/Libraries/Google,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9B2FAF41-EAC5-42A7-A519-304BC67A8E1F";
+				PROVISIONING_PROFILE = "F383B291-51F1-45E4-9A38-6FDD907203C0";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
@@ -3610,6 +3611,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Igor Tcherny (7US428BKG6)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Igor Tcherny (7US428BKG6)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3624,7 +3626,7 @@
 					/Users/deviMac/Documents/Y23Tabbed/Y23Bandel/Y23/Libraries/Google,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9B2FAF41-EAC5-42A7-A519-304BC67A8E1F";
+				PROVISIONING_PROFILE = "F383B291-51F1-45E4-9A38-6FDD907203C0";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;

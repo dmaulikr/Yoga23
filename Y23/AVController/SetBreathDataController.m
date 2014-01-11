@@ -10,7 +10,6 @@
 #import "PIAsanaView.h"
 #import "AppDelegate.h"
 
-#define debug NSLog
 #define kInspiratoryDurationComponent  0
 #define kInspiratoryPausaComponent  1
 #define kExpirationDurationComponent  2

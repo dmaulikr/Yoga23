@@ -16,7 +16,7 @@
 
 #define aSViewSize 116
 #define aImageSize 112
-#define debug NSLog
+
 
 enum sets {
     kMainSet = 0,
@@ -238,7 +238,7 @@ enum sets {
     }
     
     namesArray = [setsArray objectAtIndex:setNumber];
-    //debug(@"namesArray is %@ setsArray is %@",namesArray, setsArray);
+    //dPrint(@"namesArray is %@ setsArray is %@",namesArray, setsArray);
     // number of cells
     int imagesCount = [namesArray count];
     // define line count for each 6 asanas
@@ -250,16 +250,16 @@ enum sets {
     if ([asanasImages count] != 0) [asanasImages removeAllObjects];
     if ([asanasKeys count] != 0) [asanasImages removeAllObjects];
     
-    // debug(@"namesArray is %@ setsArray is ",namesArray);
+    // dPrint(@"namesArray is %@ setsArray is ",namesArray);
     for (NSString *imageName in namesArray) {
-        //debug(@"imageName is %@  ",imageName);
+        //dPrint(@"imageName is %@  ",imageName);
         [asanasImages addObject:[[appDelegate asanasCatalog] objectForKey:imageName]];
         [asanasKeys addObject:imageName];
     }
-#ifdef DEBUG
+#ifdef dPrint
     
-    //debug(@"lineCount is %d", linesCount);
-    // debug(@"namesArray is %@ nameFile is %@",namesArray, namesFile);
+    //dPrint(@"lineCount is %d", linesCount);
+    // dPrint(@"namesArray is %@ nameFile is %@",namesArray, namesFile);
     
 #endif
     // NSMutableArray *imagesArray = [NSMutableArray arrayWithCapacity:[namesArray count]];
@@ -440,7 +440,7 @@ enum sets {
     UIButton *pressedButton = (UIButton*)sender;
     NSString *asanaNumber = [asanasKeys objectAtIndex:(pressedButton.tag - 1)];
     UIImage *image = [appDelegate.selectedAsanas objectForKey:asanaNumber];
-    //debug(@"image is %@ tag is %@", image,imageKey);
+    //dPrint(@"image is %@ tag is %@", image,imageKey);
     if (image) {
         // Google An
         [appDelegate eventTrackingGA:@"Asanas Main" andAction:@"Asana Unchecked" andLabel:[NSString stringWithFormat:@"Asana number is %d",pressedButton.tag]];
@@ -451,7 +451,7 @@ enum sets {
     }else {
         // Google An
         [appDelegate eventTrackingGA:@"Asanas Main" andAction:@"Asana checked" andLabel:[NSString stringWithFormat:@"Asana number is %d",pressedButton.tag]];
-        //debug(@"[asanasImages objectAtIndex:(pressedButton.tag - 1)] is %@", [asanasImages objectAtIndex:(pressedButton.tag - 1)]);
+        //dPrint(@"[asanasImages objectAtIndex:(pressedButton.tag - 1)] is %@", [asanasImages objectAtIndex:(pressedButton.tag - 1)]);
         [appDelegate.selectedAsanas setObject:[asanasImages objectAtIndex:(pressedButton.tag - 1)] forKey:asanaNumber];
         [[pressedButton layer] setBorderColor:[UIColor redColor].CGColor];
     }
@@ -484,12 +484,36 @@ enum sets {
 {
     [super viewDidAppear:animated];
     [appDelegate pageTrackingGA:@"Asanas MainView"];
+    // if first launch
+    if (![appDelegate retrieveFromUserDefaults:@"AsanasScreen_FirstTime"]) {
+        [appDelegate saveToUserDefaults:@"NO" forKey:@"AsanasScreen_FirstTime"];
+        tpvc = [[CSTipsViewController alloc] initWithSender:@"Asanas"];
+        tpvc.viewDelegate = self;
+        tpvc.view.frame = CGRectMake(0.0,0.0,768.0,1000.0);
+        [self.view addSubview:tpvc.view];
+    }
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-	[super viewWillDisappear:animated];
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+#ifdef DEBUG
+    
+    if (tpvc) {
+        [tpvc.view removeFromSuperview];
+        tpvc = nil;
+    }
+    
+#endif
+    
 }
+
+
+- (void)removeTips {
+    [tpvc.view removeFromSuperview];
+    tpvc = nil;
+}
+
 
 - (void)viewDidDisappear:(BOOL)animated
 {

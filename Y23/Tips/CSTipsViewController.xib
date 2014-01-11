@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
@@ -7,12 +7,19 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CSTipsViewController">
             <connections>
+                <outlet property="asanasTipsLabel" destination="yeo-e8-7b1" id="4tE-hF-rQ1"/>
+                <outlet property="dashboardTipsLabels" destination="Anb-wx-ZgO" id="A5O-Ex-QS2"/>
                 <outlet property="t1ImageView" destination="KDF-nf-soV" id="76t-yG-zlY"/>
                 <outlet property="t1_View" destination="b5T-xw-VXj" id="KNI-Kw-nLM"/>
                 <outlet property="t2ImageView" destination="d26-4d-9tV" id="LwD-dp-e5H"/>
                 <outlet property="t2_View" destination="vOv-3q-XLM" id="fBj-lv-NN4"/>
                 <outlet property="t3ImageView" destination="IQe-Ct-pms" id="r5v-GU-oWd"/>
                 <outlet property="t3_View" destination="zk0-gw-hSX" id="SNe-tS-JTK"/>
+                <outlet property="t4ImageView" destination="7c1-Vl-aQD" id="qxK-ph-Xhz"/>
+                <outlet property="t4_View" destination="pLg-Ol-6Uq" id="bTg-e2-lNb"/>
+                <outlet property="t5ImageView" destination="HOD-jM-sY4" id="Tll-7g-lYY"/>
+                <outlet property="t5_View" destination="6hs-HH-a2E" id="v2X-yN-cyi"/>
+                <outlet property="techniksTipsLabel" destination="gd1-zI-0X5" id="3lm-0j-iI1"/>
                 <outlet property="tp1_containerView" destination="K4M-3B-BYN" id="MXL-C7-3lz"/>
                 <outlet property="tp1_topArrow" destination="ZjZ-aw-3ds" id="8qz-xd-7F1"/>
                 <outlet property="tp2_containerView" destination="qWt-Km-mWL" id="Ahz-ue-E61"/>
@@ -25,21 +32,75 @@
             <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" id="b5T-xw-VXj" userLabel="FirstTipView">
-                    <rect key="frame" x="212" y="4" width="550" height="350"/>
+                <view hidden="YES" contentMode="scaleToFill" id="b5T-xw-VXj" userLabel="FirstTipView">
+                    <rect key="frame" x="40" y="60" width="688" height="456"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" alpha="0.59999999999999964" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="KDF-nf-soV">
-                            <rect key="frame" x="0.0" y="0.0" width="550" height="350"/>
+                        <imageView userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="KDF-nf-soV">
+                            <rect key="frame" x="0.0" y="0.0" width="688" height="456"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </imageView>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Asanas workflow contain 3 steps:" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="G4w-K4-VHB">
+                            <rect key="frame" x="50" y="50" width="588" height="50"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap on asanas images for add them to common work heap." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yeo-e8-7b1">
+                            <rect key="frame" x="50" y="110" width="588" height="298"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="22"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </view>
-                <view contentMode="scaleToFill" id="vOv-3q-XLM" userLabel="SecondTipView">
-                    <rect key="frame" x="250" y="430" width="480" height="150"/>
+                <view hidden="YES" contentMode="scaleToFill" id="pLg-Ol-6Uq" userLabel="FourthTipView">
+                    <rect key="frame" x="40" y="100" width="688" height="200"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" alpha="0.89999997615814209" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="7c1-Vl-aQD">
+                            <rect key="frame" x="0.0" y="0.0" width="688" height="200"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </imageView>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap on technics you need.." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gd1-zI-0X5" userLabel="Label - Technics text">
+                            <rect key="frame" x="50" y="20" width="588" height="160"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="22"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </view>
+                <view hidden="YES" contentMode="scaleToFill" id="6hs-HH-a2E" userLabel="FifthTipView">
+                    <rect key="frame" x="40" y="100" width="688" height="200"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" alpha="0.89999997615814209" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="HOD-jM-sY4">
+                            <rect key="frame" x="0.0" y="0.0" width="688" height="200"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </imageView>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap on technics you need.." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Anb-wx-ZgO" userLabel="Label - Technics text">
+                            <rect key="frame" x="50" y="20" width="588" height="160"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="22"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </view>
+                <view hidden="YES" contentMode="scaleToFill" id="vOv-3q-XLM" userLabel="SecondTipView">
+                    <rect key="frame" x="45" y="430" width="480" height="150"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" alpha="0.60000002384185791" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="d26-4d-9tV">
@@ -47,15 +108,15 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </imageView>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First off, enter client full name and her email address..." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="n6W-8Y-GUw">
-                            <rect key="frame" x="60" y="20" width="360" height="100"/>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First off, enter client's full name and her email address..." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="n6W-8Y-GUw">
+                            <rect key="frame" x="35" y="25" width="430" height="100"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="22"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view alpha="0.80000000000000004" contentMode="scaleToFill" id="K4M-3B-BYN">
-                            <rect key="frame" x="50" y="5" width="40" height="40"/>
+                            <rect key="frame" x="250" y="10" width="40" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="t_Arrow.png" id="ZjZ-aw-3ds">
@@ -69,7 +130,7 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </view>
-                <view contentMode="scaleToFill" id="zk0-gw-hSX" userLabel="ThirdTipView">
+                <view hidden="YES" contentMode="scaleToFill" id="zk0-gw-hSX" userLabel="ThirdTipView">
                     <rect key="frame" x="45" y="750" width="430" height="150"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
@@ -78,15 +139,15 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </imageView>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="...and then tap Asanas tab" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ajq-le-U0W">
-                            <rect key="frame" x="44" y="15" width="370" height="100"/>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="...and then tap Asanas tab" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ajq-le-U0W">
+                            <rect key="frame" x="40" y="25" width="370" height="100"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="22"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view alpha="0.80000001192092896" contentMode="scaleToFill" id="qWt-Km-mWL">
-                            <rect key="frame" x="180" y="90" width="40" height="40"/>
+                            <rect key="frame" x="190" y="100" width="40" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="t_Arrow.png" id="BxO-ZR-jZH">

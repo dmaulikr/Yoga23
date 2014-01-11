@@ -18,10 +18,6 @@
 #import "MainTabbarController.h"
 
 
-
-#define debug NSLog
-
-
 @interface PreviewViewController () <HideNotesViewProtocol> 
 
 @end
@@ -209,7 +205,7 @@
                 
                 
                 CGRect textRect = CGRectMake(40.0, lroundf(currentRange), 532.0, lroundf(682.0 - currentRange));
-                debug(@"currentRange is %f", currentRange);
+                dPrint(@"currentRange is %f", currentRange);
                 
                 currentTextRange = [self renderPageInRect:textRect withTextRange:currentTextRange andFramesetter:textFramesetter];
                 
@@ -237,7 +233,7 @@
     CGContextSetTextMatrix(currentContext, CGAffineTransformIdentity);
     
     // Create a path object to enclose the text.
-    debug(@"rect: %@", NSStringFromCGRect(rect));
+    dPrint(@"rect: %@", NSStringFromCGRect(rect));
     
     CGMutablePathRef framePath = CGPathCreateMutable();
     CGPathAddRect(framePath, NULL, rect);
@@ -284,7 +280,7 @@
     
     tempFileName = [path stringByAppendingPathComponent:shortFileNAme]; // full pdf file name in bundle
     
-    debug(@"path is %@", tempFileName);
+    dPrint(@"path is %@", tempFileName);
     
     
     // Prepare common text assamble
@@ -297,7 +293,7 @@
         [commonText appendString:[appDelegate.theNewProgram objectForKey:@"notes"]];
     }
     
-    debug(@"commonText is %@", commonText);
+    dPrint(@"commonText is %@", commonText);
     
     // create mutable for seting font
     CFMutableAttributedStringRef currentText = CFAttributedStringCreateMutable(kCFAllocatorDefault, 0);
@@ -340,7 +336,7 @@
     
     
     
-    //debug(@"neededSequences is %@", neededSequences);
+    //dPrint(@"neededSequences is %@", neededSequences);
     do {
         
         // Draw a page number at the bottom of each page
@@ -523,7 +519,7 @@
     technics = [appDelegate.theNewProgram objectForKey:@"technics"];
 
     
-    debug(@" technics is %@", [appDelegate.theNewProgram objectForKey:@"technics"]);
+    dPrint(@" technics is %@", [appDelegate.theNewProgram objectForKey:@"technics"]);
     
     
     UIBarButtonItem *sendItem            = [[UIBarButtonItem alloc]
@@ -562,7 +558,7 @@
     if ([sequences count] == 0) {
         // warning massage here
         CustomAlert *noAsanas = [[CustomAlert alloc] initWithTitle:@"No saved sequences .."
-                                                           message:@"You have not created the sequence!" 
+                                                           message:@"You have not created sequences!"
                                                           delegate:nil cancelButtonTitle:@"Ok" 
                                                  otherButtonTitles:nil];
         [noAsanas show];
@@ -601,7 +597,7 @@
     NSArray *directoryContent = [fileManager contentsOfDirectoryAtPath:path error:NULL];
     for (int count = 0; count < (int)[directoryContent count]; count++)
     {
-        debug(@"File %d: %@", (count + 1), [directoryContent objectAtIndex:count]);
+        //dPrint(@"File %d: %@", (count + 1), [directoryContent objectAtIndex:count]);
          [fileManager removeItemAtPath:[directoryContent objectAtIndex:count] error:nil];
     }
 }

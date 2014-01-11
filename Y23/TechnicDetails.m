@@ -31,7 +31,7 @@
     
     }
     return self;
-    NSLog(@"name is %@, elements are %@", technicName, elementsNames);
+    //NSLog(@"name is %@, elements are %@", technicName, elementsNames);
 }
 
 - (void)didReceiveMemoryWarning
@@ -54,8 +54,11 @@
                                             initWithTitle:@"Notes" style:UIBarButtonItemStylePlain
                                             target:self
                                             action:@selector(addNotes)];
+    
+    UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    fixedSpace.width = 83.0;
     self.navigationItem.rightBarButtonItems =
-    [NSArray arrayWithObjects:notesButton, nil];
+    [NSArray arrayWithObjects:fixedSpace,notesButton, nil];
     
     // view for content
     UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, (70 + 70*[elementsNames count]))];

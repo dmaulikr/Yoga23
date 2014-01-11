@@ -7,14 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CSTipsViewController.h"
 
 @class AppDelegate;
 
-@interface DashboardController : UIViewController {
+@interface DashboardController : UIViewController <RemoveTipViewsProtocol> {
     
-    AppDelegate     *appDelegate;
+    AppDelegate             *appDelegate;
+    CSTipsViewController    *tpvc;
 }
 
 @property (nonatomic, weak) NSString *person;
+
+- (void)removeTips;
 
 @end

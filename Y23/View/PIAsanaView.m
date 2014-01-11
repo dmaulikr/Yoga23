@@ -8,9 +8,6 @@
 
 #import "PIAsanaView.h"
 
-#define debug NSLog
-
-
 @implementation PIAsanaView
 
 @synthesize leftNumber = _leftNumber, rightNumber = _rightNumber, labelsValues = _labelsValues;

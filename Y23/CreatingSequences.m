@@ -20,7 +20,6 @@
 
 #define aSViewSize 116
 #define aImageSize 112
-#define debug NSLog
 
 @implementation CreatingSequences
 
@@ -105,7 +104,7 @@
     }
 
     NSArray *allKeys = [appDelegate.selectedAsanas allKeys] ;
-    //debug(@"allNames is %@", allKeys);
+    //dPrint(@"allNames is %@", allKeys);
     NSMutableArray *sortedNumbers = [NSMutableArray array];
     for (NSString *imageName in allKeys) {
         
@@ -115,7 +114,7 @@
 
     NSSortDescriptor *descriptor = [[NSSortDescriptor alloc] initWithKey:nil ascending:YES];
     [sortedNumbers sortUsingDescriptors:[NSArray arrayWithObject:descriptor]];
-    //.debug(@"allNames is %@", sortedNumbers);
+    //.dPrint(@"allNames is %@", sortedNumbers);
     
     
     for (NSNumber *keyNumber in sortedNumbers) {
@@ -186,7 +185,7 @@
     if ([appDelegate.theNewProgram objectForKey:@"asanas"]) {
         sequences = [appDelegate.theNewProgram objectForKey:@"asanas"];
     }
-    //debug(@"sequences is %@", sequences);
+    //dPrint(@"sequences is %@", sequences);
     [scrollView addSubview:contentView];
     return (scrollView);
 }
@@ -273,7 +272,7 @@
 
 
     
-   // debug(@"image number for current sequense %i", [[sender superview] tag]);
+   // dPrint(@"image number for current sequense %i", [[sender superview] tag]);
     
 }
 
@@ -310,7 +309,7 @@
         return;
     }
     SortAsanasController *sac = [[SortAsanasController alloc] init];
-    //debug(@" addedAsanas -  %@", addedAsanas);
+    //dPrint(@" addedAsanas -  %@", addedAsanas);
     sac -> sequence = addedAsanas;
     sac.delegate = self;
     [self.navigationController pushViewController:sac animated:YES];
@@ -331,7 +330,7 @@
    
     [addedAsanas removeAllObjects];
     self.navigationItem.title = [NSString stringWithFormat:@"Creating sequences (%d)", [sequences count]];
-    // debug(@"appDelegate asanas array %@", appDelegate.theNewProgram);
+    // dPrint(@"appDelegate asanas array %@", appDelegate.theNewProgram);
     
 }
 
