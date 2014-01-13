@@ -63,34 +63,39 @@ enum sets {
     //self.navigationItem.title = @"Asanas";
     // adding Notes button
     UIBarButtonItem *notesButton                = [[UIBarButtonItem alloc]
-                                                   initWithTitle:@"Notes" style:UIBarButtonItemStylePlain
+                                                   initWithTitle:NSLocalizedString(@"Notes", @"") style:UIBarButtonItemStylePlain
                                                    target:self
                                                    action:@selector(addNotes)];
     
 
     UIBarButtonItem *nextButton                = [[UIBarButtonItem alloc]
-                                                   initWithTitle:@"    Next    " style:UIBarButtonItemStylePlain
+                                                   initWithTitle:NSLocalizedString(@"Next", @"") style:UIBarButtonItemStylePlain
                                                    target:self
                                                    action:@selector(nextButton)];
+
     
     UIBarButtonItem *clearButton                = [[UIBarButtonItem alloc]
-                                                  initWithTitle:@" Clear All " style:UIBarButtonItemStylePlain
+                                                   initWithTitle:NSLocalizedString(@"Clear All", @"") style:UIBarButtonItemStylePlain
                                                   target:self
                                                   action:@selector(clearAllButton)];
     
     UIBarButtonItem *fixed1                     = [[UIBarButtonItem alloc]
                                                    initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
                                                    target:nil action:nil];
-     [fixed1 setWidth:45.0f];
+    [fixed1 setWidth:47.0f];
     
-    NSArray *items =  @[nextButton,notesButton,fixed1,clearButton];
+    UIBarButtonItem *fixed2                     = [[UIBarButtonItem alloc]
+                                                   initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                                   target:nil action:nil];
+     [fixed2 setWidth:35.0f];
+    
+    NSArray *items =  @[nextButton,fixed1,notesButton,fixed2,clearButton];
     self.navigationItem.rightBarButtonItems = items;
     if (!asanasImages) {
         asanasImages = [NSMutableArray array];
         asanasKeys = [NSMutableArray array];
     }
     [self createToolBar];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -114,9 +119,9 @@ enum sets {
         
         if ([appDelegate.selectedAsanas count] == 0) {
             // warning massage here
-            CustomAlert *noAsanas = [[CustomAlert alloc] initWithTitle:@"No asanas selected.."
-                                                               message:@"You have not selected any asana!"
-                                                              delegate:nil cancelButtonTitle:@"Ok"
+            CustomAlert *noAsanas = [[CustomAlert alloc] initWithTitle:NSLocalizedString(@"No asanas selected..", @"")
+                                                               message:NSLocalizedString(@"You have not selected any asana!", @"")
+                                                              delegate:nil cancelButtonTitle:NSLocalizedString(@"Ok", @"")
                                                      otherButtonTitles:nil];
             [noAsanas show];
             return;
@@ -145,18 +150,18 @@ enum sets {
     if ([appDelegate.selectedAsanas count] > 0) {
     
     CustomAlert *clearAllAlert = [[CustomAlert alloc]
-                                  initWithTitle:@"Warning"
-                                  message:@"All choosed asanas will be cleaned\n(Saved sequences are remain)"
-                                  delegate:self cancelButtonTitle:@"Cancel"
-                                  otherButtonTitles:@"Clear"
+                                  initWithTitle:NSLocalizedString(@"Warning", @"")
+                                  message:NSLocalizedString(@"All choosed asanas will be cleaned\n(Saved sequences are remain)", @"")
+                                  delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"")
+                                  otherButtonTitles:NSLocalizedString(@"Clear", @"")
                                   , nil];
     clearAllAlert.tag = 0;
     [clearAllAlert show];
     }else {
         CustomAlert *clearAllAlert = [[CustomAlert alloc]
                                       initWithTitle:nil
-                                      message:@"Nothing to remove"
-                                      delegate:self cancelButtonTitle:@"Ok"
+                                      message:NSLocalizedString(@"Nothing to remove", @"")
+                                      delegate:self cancelButtonTitle:NSLocalizedString(@"Ok", @"")
                                       otherButtonTitles:nil
                                       , nil];
         clearAllAlert.tag = 0;
@@ -189,10 +194,10 @@ enum sets {
     if ([appDelegate.selectedAsanas count] > 0) {
         
         CustomAlert *changeSetAlert = [[CustomAlert alloc]
-                                       initWithTitle:@"You select a different set of asanas"
-                                       message:@"All choosed asanas will be cleaned\n(Saved sequences are remain)"
-                                       delegate:self cancelButtonTitle:@"Cancel"
-                                       otherButtonTitles:@"Go"
+                                       initWithTitle:NSLocalizedString(@"You select a different set of asanas", @"")
+                                       message:NSLocalizedString(@"All choosed asanas will be cleaned\n(Saved sequences are remain)", @"")
+                                       delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"")
+                                       otherButtonTitles:NSLocalizedString(@"Go", @"")
                                        , nil];
         changeSetAlert.tag = 1;
         [changeSetAlert show];
@@ -315,7 +320,8 @@ enum sets {
                                              initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                              target:self
                                              action:@selector(notesDone)];
-    nmc.navigationItem.title = @"NOTES";
+    
+    nmc.navigationItem.title = NSLocalizedString(@"NOTES", @"");
     
 
     [self presentViewController:navController animated:YES completion:nil];
@@ -491,6 +497,10 @@ enum sets {
         tpvc.viewDelegate = self;
         tpvc.view.frame = CGRectMake(0.0,0.0,768.0,1000.0);
         [self.view addSubview:tpvc.view];
+    }
+    
+    for (UIBarButtonItem *item in self.navigationItem.rightBarButtonItems) {
+        //NSLog(@"bar item - %@, width - %f", item,item.width);
     }
 }
 

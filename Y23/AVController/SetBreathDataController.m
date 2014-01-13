@@ -49,12 +49,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [_done setTitle:NSLocalizedString(@"Done", @"") forState:UIControlStateNormal];
+    breathingLabel.text = NSLocalizedString(@"Breathing:", @"");
+    loopsLabel.text = NSLocalizedString(@"Loops", @"");
+    inhaleLabel.text = NSLocalizedString(@"Inhale", @"");
+    pausa1.text = NSLocalizedString(@"Pausa", @"");
+    exhaleLabel.text = NSLocalizedString(@"Exhale", @"");
+    pausa2.text = NSLocalizedString(@"Pausa", @"");
+
 
 
     
     CGSize popSize = CGSizeMake(400, 400); // size of view in popover
     self.contentSizeForViewInPopover = popSize;
-    self.title = @"Asana manage";
+    self.title = NSLocalizedString(@"Asana managing", @"");
     
     // set up UIPickers
     self.leftPicker.delegate = self;

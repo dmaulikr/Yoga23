@@ -794,6 +794,7 @@
 		93CFAD6717510FBD00715B45 /* 709.png in Resources */ = {isa = PBXBuildFile; fileRef = 93CFAAA217510FBD00715B45 /* 709.png */; };
 		93D98053175A4F0B00ED9FB1 /* CSAsanaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D98051175A4F0B00ED9FB1 /* CSAsanaViewController.m */; };
 		93D98054175A4F0B00ED9FB1 /* CSAsanaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93D98052175A4F0B00ED9FB1 /* CSAsanaViewController.xib */; };
+		93DEB7061881A41900C40B99 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 93DEB7081881A41900C40B99 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -821,7 +822,6 @@
 		783DA20614E691B400E06F10 /* Y23-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Y23-Prefix.pch"; sourceTree = "<group>"; };
 		783DA20714E691B400E06F10 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		783DA20814E691B400E06F10 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		783DA20B14E691B400E06F10 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		783DA22514E694A900E06F10 /* BlackCBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackCBox.png; sourceTree = "<group>"; };
 		783DA22614E694A900E06F10 /* BlackCBoxV.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlackCBoxV.png; sourceTree = "<group>"; };
 		783DA22914E694B800E06F10 /* WhiteAButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WhiteAButton.png; sourceTree = "<group>"; };
@@ -1615,6 +1615,12 @@
 		93D98050175A4F0B00ED9FB1 /* CSAsanaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSAsanaViewController.h; sourceTree = "<group>"; };
 		93D98051175A4F0B00ED9FB1 /* CSAsanaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CSAsanaViewController.m; sourceTree = "<group>"; };
 		93D98052175A4F0B00ED9FB1 /* CSAsanaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CSAsanaViewController.xib; sourceTree = "<group>"; };
+		93DEB7011881A2CC00C40B99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		93DEB7021881A2DE00C40B99 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/MainStoryboard.strings; sourceTree = "<group>"; };
+		93DEB7031881A2DE00C40B99 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		93DEB7071881A41900C40B99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; usesTabs = 0; };
+		93DEB7091881A42200C40B99 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		93DEB70A188472BD00C40B99 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1768,6 +1774,7 @@
 				783DA20114E691B400E06F10 /* InfoPlist.strings */,
 				783DA20414E691B400E06F10 /* main.m */,
 				783DA20614E691B400E06F10 /* Y23-Prefix.pch */,
+				93DEB7081881A41900C40B99 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -2693,6 +2700,8 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
+				ru,
 			);
 			mainGroup = 783DA1E914E691B400E06F10;
 			productRefGroup = 783DA1F514E691B400E06F10 /* Products */;
@@ -2714,6 +2723,7 @@
 				783DA20C14E691B400E06F10 /* MainStoryboard.storyboard in Resources */,
 				783DA22714E694A900E06F10 /* BlackCBox.png in Resources */,
 				783DA22814E694A900E06F10 /* BlackCBoxV.png in Resources */,
+				93DEB7061881A41900C40B99 /* Localizable.strings in Resources */,
 				783DA22C14E694B800E06F10 /* WhiteAButton.png in Resources */,
 				783DA22D14E694B800E06F10 /* WhiteCBox.png in Resources */,
 				783DA22E14E694B800E06F10 /* WhiteCBoxV.png in Resources */,
@@ -3502,6 +3512,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				783DA20214E691B400E06F10 /* en */,
+				93DEB7031881A2DE00C40B99 /* ru */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -3509,9 +3520,21 @@
 		783DA20A14E691B400E06F10 /* MainStoryboard.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				783DA20B14E691B400E06F10 /* en */,
+				93DEB7011881A2CC00C40B99 /* Base */,
+				93DEB7021881A2DE00C40B99 /* ru */,
 			);
 			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+		93DEB7081881A41900C40B99 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				93DEB7071881A41900C40B99 /* Base */,
+				93DEB7091881A42200C40B99 /* ru */,
+				93DEB70A188472BD00C40B99 /* en */,
+			);
+			name = Localizable.strings;
+			path = Locale;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

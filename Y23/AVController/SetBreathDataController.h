@@ -40,6 +40,12 @@
     NSString        *exhalePausa;
     // 
     NSMutableArray *result;
+    __weak IBOutlet UILabel *breathingLabel;
+    __weak IBOutlet UILabel *loopsLabel;
+    __weak IBOutlet UILabel *inhaleLabel;
+    __weak IBOutlet UILabel *pausa1;
+    __weak IBOutlet UILabel *exhaleLabel;
+    __weak IBOutlet UILabel *pausa2;
 }
 
 @property (nonatomic, strong) IBOutlet UIPickerView         *leftPicker;

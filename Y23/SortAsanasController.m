@@ -53,14 +53,14 @@
     appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     
     
-    self.navigationItem.title = @"Sorting sequence asanas";
+    self.navigationItem.title = NSLocalizedString(@"Sorting sequence asanas", @"");
     UIBarButtonItem *notesButton         = [[UIBarButtonItem alloc]
-                                            initWithTitle:@"Notes" style:UIBarButtonItemStylePlain
+                                            initWithTitle:NSLocalizedString(@"Notes", @"") style:UIBarButtonItemStylePlain
                                             target:self
                                             action:@selector(addNotes)];
     
     UIBarButtonItem *saveButton          = [[UIBarButtonItem alloc]
-                                            initWithTitle:@"Save" style:UIBarButtonItemStylePlain
+                                            initWithTitle:NSLocalizedString(@"Save", @"") style:UIBarButtonItemStylePlain
                                             target:self action:@selector(saving)];
     
     UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
@@ -148,7 +148,7 @@
         }
 
     }
-    dPrint(@" _asanasViews %@", _asanasViews);
+    //dPrint(@" _asanasViews %@", _asanasViews);
 
     
     return contentView;
@@ -400,7 +400,7 @@
     
     // Google An
     [appDelegate eventTrackingGA:@"Sorting" andAction:@"Remove asana" andLabel:removedAsana.identificator];
-    NSLog(@"remove asana %@",removedAsana.identificator);
+    //NSLog(@"remove asana %@",removedAsana.identificator);
     // decrease counter
     NSString *asanaID = removedAsana.identificator;
     NSString *number = [appDelegate.asanasCounter objectForKey:asanaID];
@@ -452,7 +452,11 @@
     // snapshot for sequence
     if ([_asanasViews count] == 0) {
         
-        CustomAlert *zeroAsanasAlert = [[CustomAlert alloc] initWithTitle:@"No asanas on the view" message:@"Please tap Cancel and then add asanas" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        CustomAlert *zeroAsanasAlert = [[CustomAlert alloc] initWithTitle:NSLocalizedString(@"No asanas on the view", @"")
+                                                                  message:NSLocalizedString(@"Please go back and add asanas.", @"")
+                                                                 delegate:nil
+                                                        cancelButtonTitle:NSLocalizedString(@"OK", @"")
+                                                        otherButtonTitles:nil];
         [zeroAsanasAlert show];
         return;
     }
@@ -525,7 +529,7 @@
                                              initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                              target:self
                                              action:@selector(notesDone)];
-    nmc.navigationItem.title = @"NOTES";
+    nmc.navigationItem.title = NSLocalizedString(@"NOTES", @"");
     
  
     [self presentViewController:navController animated:YES completion:nil];

@@ -1,0 +1,46 @@
+/* 
+  File.strings
+  Y23
+
+  Created by IgorChe on 1/11/14.
+
+*/
+
+
+"Ok"    = "О'кей";
+"NOTES" = "Блокнот";
+"Here notes" = "Пишите примечания..";
+"Next"  = "Далее";
+"Done"  = "Далее";
+"Notes" = "Блокнот";
+"Clear All" = "Очистка";
+"No asanas selected.."  = "Нет выбранных ассан";
+"You have not selected any asana!" = "Кликните на нужные ассаны для работы с ними!";
+"Ok"    = "Да";
+
+"Warning"   = "Внимание";
+"All choosed asanas will be cleaned\n(Saved sequences are remain)" = "Все выбранные здесь ассаны будут отменены, но сохраненные последовательности остануться в программе.";
+"Clear" = "Очистить";
+"Cancel"    = "Отмена";
+"Nothing to remove" = "Нечего очищать";
+"You select a different set of asanas"  = "Вы выбираете другой набор ассан!";
+"Go" = "Вперед!";
+"To sort" = "Сортировать";
+"Too many asanas selected.."    = "Вы выбрали предельное число ассан..";
+"42 is a limit of asanas number"= "Предельно возможное чосло ассан - 42";
+"No asanas selected.." = "Не выбранно ни одной ассаны";
+"You have not selected any asana!"  = "Отберите ассаны для тренировки и нажмите \"Дальше\"";
+"Creating sequences (%d)"   = "Создание последовательностей (%d)";
+"Sorting sequence asanas"   = "Сортировка поледовательности";
+"Save"  = "Сохранить";
+"No asanas on the view" = "Нечего сохранять";
+"Please go back and add asanas." = "Пожалуйста вернитесъ назад и добавте асаны в последовательность";
+
+
+// Sorting, Asana Popover
+"Asana managing"    = "Параметры";
+"Breathing:"    = "Дыхание:";
+"Loops" = "Циклы";
+"Inhale"= "Вдох";
+"Pausa" = "Пауза";
+"Exhale"= "Выдох";

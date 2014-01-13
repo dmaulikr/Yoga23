@@ -1,0 +1,87 @@
+
+/* Class = "IBUITabBarItem"; title = "Technics"; ObjectID = "6"; */
+"6.title" = "Техники";
+
+/* Class = "IBUILabel"; text = "_________________________"; ObjectID = "03e-yJ-HUX"; */
+"03e-yJ-HUX.text" = "_________________________";
+
+/* Class = "IBUINavigationController"; title = "Technics"; ObjectID = "1fL-ld-VMG"; */
+"1fL-ld-VMG.title" = "Техники";
+
+/* Class = "IBUINavigationController"; title = "Personal"; ObjectID = "2OO-8Q-N3c"; */
+"2OO-8Q-N3c.title" = "";
+
+/* Class = "IBUILabel"; text = "Email"; ObjectID = "9Kw-44-NtE"; */
+"9Kw-44-NtE.text" = "Майл";
+
+/* Class = "IBUISegmentedControl"; Bd6-Yo-cxm.segmentTitles[0] = "First"; ObjectID = "Bd6-Yo-cxm"; */
+"Bd6-Yo-cxm.segmentTitles[0]" = "Пред.";
+
+/* Class = "IBUISegmentedControl"; Bd6-Yo-cxm.segmentTitles[1] = "Next"; ObjectID = "Bd6-Yo-cxm"; */
+"Bd6-Yo-cxm.segmentTitles[1]" = "След.";
+
+/* Class = "IBUISegmentedControl"; ED2-Ve-OeZ.segmentTitles[0] = "Main"; ObjectID = "ED2-Ve-OeZ"; */
+"ED2-Ve-OeZ.segmentTitles[0]" = "Общий";
+
+/* Class = "IBUISegmentedControl"; ED2-Ve-OeZ.segmentTitles[1] = "Express"; ObjectID = "ED2-Ve-OeZ"; */
+"ED2-Ve-OeZ.segmentTitles[1]" = "Экспресс";
+
+/* Class = "IBUISegmentedControl"; ED2-Ve-OeZ.segmentTitles[2] = "Light"; ObjectID = "ED2-Ve-OeZ"; */
+"ED2-Ve-OeZ.segmentTitles[2]" = "Легкий";
+
+/* Class = "IBUITabBarItem"; title = "Personal"; ObjectID = "IIP-sP-Aci"; */
+"IIP-sP-Aci.title" = "Данные";
+
+/* Class = "IBUILabel"; text = "_________________________"; ObjectID = "Iz1-i0-6Xl"; */
+"Iz1-i0-6Xl.text" = "_________________________";
+
+/* Class = "IBUINavigationController"; title = "Dashboard"; ObjectID = "JqT-TD-dZL"; */
+"JqT-TD-dZL.title" = "Dashboard";
+
+/* Class = "IBUIBarButtonItem"; title = "Close"; ObjectID = "MWJ-ZH-0VB"; */
+"MWJ-ZH-0VB.title" = "Закрыть";
+
+/* Class = "IBUINavigationItem"; title = "Asanas"; ObjectID = "P1t-rv-itw"; */
+"P1t-rv-itw.title" = "Ассаны";
+
+/* Class = "IBUITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. "; ObjectID = "RG9-WE-Qw4"; */
+"RG9-WE-Qw4.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. ";
+
+/* Class = "IBUINavigationItem"; title = "Technics"; ObjectID = "SBG-Cy-bzX"; */
+"SBG-Cy-bzX.title" = "Техники";
+
+/* Class = "IBUILabel"; text = "First name"; ObjectID = "SC5-8K-aOB"; */
+"SC5-8K-aOB.text" = "Имя";
+
+/* Class = "IBUINavigationItem"; title = "Preview"; ObjectID = "SRO-K6-BUm"; */
+"SRO-K6-BUm.title" = "Предосмотр";
+
+/* Class = "IBUITabBarItem"; title = "Asanas"; ObjectID = "Sgl-YP-mgt"; */
+"Sgl-YP-mgt.title" = "Ассаны";
+
+/* Class = "IBUILabel"; text = "Last name"; ObjectID = "TFD-je-qHV"; */
+"TFD-je-qHV.text" = "Фамилия";
+
+/* Class = "IBUIViewController"; title = "Technics"; ObjectID = "bJu-CT-Zrp"; */
+"bJu-CT-Zrp.title" = "Техники";
+
+/* Class = "IBUINavigationItem"; title = "Personal data and notes"; ObjectID = "cf0-gu-eHS"; */
+"cf0-gu-eHS.title" = "Персональные данные";
+
+/* Class = "IBUILabel"; text = "First set client full name and email"; ObjectID = "hQO-CA-2RS"; */
+"hQO-CA-2RS.text" = "Во-первых введите имя клиента и его email";
+
+/* Class = "IBUILabel"; text = "_________________________"; ObjectID = "jFX-RS-beH"; */
+"jFX-RS-beH.text" = "_________________________";
+
+/* Class = "IBUINavigationItem"; title = "Dashboard"; ObjectID = "q0p-zY-8sv"; */
+"q0p-zY-8sv.title" = "Dashboard";
+
+/* Class = "IBUITabBarItem"; title = "Dashboard"; ObjectID = "r37-T6-huI"; */
+"r37-T6-huI.title" = "Dashboard";
+
+/* Class = "IBUINavigationController"; title = "Preview"; ObjectID = "tgu-tI-Bgp"; */
+"tgu-tI-Bgp.title" = "Предосмотр";
+
+/* Class = "IBUITabBarItem"; title = "Preview"; ObjectID = "wUi-t7-4Ll"; */
+"wUi-t7-4Ll.title" = "Предосмотр";

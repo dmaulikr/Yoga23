@@ -87,7 +87,7 @@
             break;
         }
     }
-    NSLog(@"prev s - %d", s);
+    //NSLog(@"prev s - %d", s);
     if (s == 2) {
         [self unselectSegmentControl];
     }
@@ -157,7 +157,7 @@
     
     // adding Notes button
     UIBarButtonItem *notesButton         = [[UIBarButtonItem alloc]
-                                            initWithTitle:@"Notes" style:UIBarButtonItemStylePlain
+                                            initWithTitle:NSLocalizedString(@"Notes", @"") style:UIBarButtonItemStylePlain
                                             target:self
                                             action:@selector(addNotes)];
     
@@ -334,7 +334,7 @@
                                               initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                               target:self
                                               action:@selector(notesDone)];
-    nmc.navigationItem.title = @"NOTES";
+    nmc.navigationItem.title = NSLocalizedString(@"NOTES", @"");
     
 
     [self presentViewController:navController animated:YES completion:nil];

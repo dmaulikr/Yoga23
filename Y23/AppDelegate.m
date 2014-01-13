@@ -47,7 +47,7 @@
     [self.theNewProgram setObject:[NSMutableDictionary dictionaryWithCapacity:4] forKey:@"personal"];
     [self.theNewProgram setObject:[NSMutableArray array] forKey:@"asanas"];
     [self.theNewProgram setObject:[NSMutableArray array] forKey:@"technics"];
-    NSMutableString *notesText = [[NSMutableString alloc] initWithString:@"Here notes"];
+    NSMutableString *notesText = [[NSMutableString alloc] initWithString:NSLocalizedString(@"Here write notes..", @"")];
     [self.theNewProgram setObject:notesText forKey:@"notes"];
     _selectedAsanas = [NSMutableDictionary dictionary];
     _asanasCounter = [NSMutableDictionary dictionary];

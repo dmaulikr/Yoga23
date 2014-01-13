@@ -1,0 +1,43 @@
+/* 
+  File.strings
+  Y23
+
+  Created by IgorChe on 1/11/14.
+
+*/
+
+
+"Ok"    = "Ok";
+"NOTES" = "NOTES";
+"Here notes" = "Here notes";
+"Next"  = "Next";
+"Done"  = "Done";
+"Notes" = "Notes";
+"Clear All" = "Clear All";
+"No asanas selected.."  = "No asanas selected..";
+"You have not selected any asana!" = "You have not selected any asana!";
+"Ok"    = "Ok";
+
+"Warning"   = "Warning";
+"All choosed asanas will be cleaned\n(Saved sequences are remain)" = "All choosed asanas will be cleaned\n(Saved sequences are remain)";
+"Clear" = "Clear";
+"Cancel"    = "Cancel";
+"Nothing to remove" = "Nothing to remove";
+"You select a different set of asanas"  = "You select a different set of asanas";
+"Go" = "Go";
+"To sort" = "To sort";
+"Too many asanas selected.."    = "Too many asanas selected..";
+"42 is a limit of asanas number"= "42 is a limit of asanas number";
+"No asanas selected.." = "No asanas selected..";
+"You have not selected any asana!"  = "You have not selected any asana!";
+"Creating sequences (%d)" = "Creating Sequences (%d)";
+"Sorting sequence asanas"   = "Sorting sequence asanas";
+"Save"  = "Save";
+"No asanas on the view" = "No asanas on the view";
+"Please go back and add asanas." = "Please go back and add asanas.";
+"Asana managing"    = "Asana managing";
+"Breathing:"    = "Breathing:";
+"Loops" = "Loops";
+"Inhale"    = "Inhale";
+"Pausa" = "Pausa";
+"Exhale"    = "Exhale";

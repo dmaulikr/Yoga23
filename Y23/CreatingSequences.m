@@ -62,15 +62,15 @@
     // adding "Notes" and "To sort" button
     //appDelegate.unsavedSequence = addedAsanas;
     
-    self.navigationItem.title = [NSString stringWithFormat:@"Creating sequences (%d)", [sequences count]];
+    self.navigationItem.title = [NSString stringWithFormat:NSLocalizedString(@"Creating sequences (%d)", @""), [sequences count]];
     
     UIBarButtonItem *notesButton         = [[UIBarButtonItem alloc]
-                                            initWithTitle:@"Notes" style:UIBarButtonItemStylePlain
+                                            initWithTitle:NSLocalizedString(@"Notes", @"") style:UIBarButtonItemStylePlain
                                              target:self
                                              action:@selector(addNotes)];
     
     UIBarButtonItem *doneButton          = [[UIBarButtonItem alloc] 
-                                            initWithTitle:@"To sort" style:UIBarButtonItemStylePlain
+                                            initWithTitle:NSLocalizedString(@"To sort", @"") style:UIBarButtonItemStylePlain
                                             target:self action:@selector(toSorting)];
     
     UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
@@ -199,9 +199,9 @@
 
     if (asanasNumber == 42) {
         // warning massage here
-        CustomAlert *tooManyAsanas = [[CustomAlert alloc] initWithTitle:@"Too many asanas selected.."
-                                                           message:@"42 is a limit of asanas number" 
-                                                          delegate:nil cancelButtonTitle:@"Ok" 
+        CustomAlert *tooManyAsanas = [[CustomAlert alloc] initWithTitle:NSLocalizedString(@"Too many asanas selected..", @"")
+                                                           message:NSLocalizedString(@"42 is a limit of asanas number", @"")
+                                                          delegate:nil cancelButtonTitle:NSLocalizedString(@"Ok", @"")
                                                  otherButtonTitles:nil];
         [tooManyAsanas show];
         [appDelegate eventTrackingGA:@"Creating sequences" andAction:@"Too many asanas alert" andLabel:nil];
@@ -301,9 +301,9 @@
     
     if ([addedAsanas count] == 0) {
         // warning massage here
-        CustomAlert *noAsanas = [[CustomAlert alloc] initWithTitle:@"No asanas selected.."
-                                                           message:@"You have not selected any asana!"
-                                                          delegate:nil cancelButtonTitle:@"Ok"
+        CustomAlert *noAsanas = [[CustomAlert alloc] initWithTitle:NSLocalizedString(@"No asanas selected..", @"")
+                                                           message:NSLocalizedString(@"You have not selected any asana!", @"")
+                                                          delegate:nil cancelButtonTitle:NSLocalizedString(@"Ok", @"")
                                                  otherButtonTitles:nil];
         [noAsanas show];
         return;
@@ -329,7 +329,7 @@
     [sequences addObject:sortedSequence];
    
     [addedAsanas removeAllObjects];
-    self.navigationItem.title = [NSString stringWithFormat:@"Creating sequences (%d)", [sequences count]];
+    self.navigationItem.title = [NSString stringWithFormat:NSLocalizedString(@"Creating sequences (%d)", @""), [sequences count]];
     // dPrint(@"appDelegate asanas array %@", appDelegate.theNewProgram);
     
 }
@@ -356,7 +356,7 @@
                                              initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                              target:self
                                              action:@selector(notesDone)];
-    nmc.navigationItem.title = @"NOTES";
+    nmc.navigationItem.title = NSLocalizedString(@"NOTES", @"");
     
 
     [self presentViewController:navController animated:YES completion:nil];
