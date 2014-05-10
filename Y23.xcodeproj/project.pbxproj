@@ -39,7 +39,6 @@
 		788F796A15BB33820060620F /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788F796915BB33820060620F /* CoreImage.framework */; };
 		788F796D15BBFD040060620F /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 788F796C15BBFD040060620F /* MessageUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		78976A5115238A7200D4F0E6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78976A5015238A7200D4F0E6 /* QuartzCore.framework */; };
-		78AE455C14ED7DF200A1176A /* 1044x768Chalkboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 78AE455A14ED7DF200A1176A /* 1044x768Chalkboard.png */; };
 		78C1548F158C750B005CCAD7 /* UIView+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 78C1548E158C750B005CCAD7 /* UIView+Animation.m */; };
 		78C154AA158C9C40005CCAD7 /* SetBreathDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78C154A8158C9C40005CCAD7 /* SetBreathDataController.m */; };
 		78CFD92214E699FB00139CD1 /* AsanasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78CFD92114E699FB00139CD1 /* AsanasViewController.m */; };
@@ -66,7 +65,6 @@
 		93063E3D17EDF27500F2E3EF /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 93063E3317EDF27500F2E3EF /* Icon-Small@2x.png */; };
 		932DDA2817073D6000F73F78 /* PIAcanasTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 932DDA2717073D6000F73F78 /* PIAcanasTableViewCell.m */; };
 		932DDA2A17073DD100F73F78 /* PIAsanasTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 932DDA2917073DD100F73F78 /* PIAsanasTableViewCell.xib */; };
-		933F1D431837CE030058DE2A /* NewRelicAgent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 933F1D421837CE030058DE2A /* NewRelicAgent.framework */; };
 		933F1D451837CE530058DE2A /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 933F1D441837CE530058DE2A /* CoreTelephony.framework */; };
 		9359CC7A17F75EC10081C92B /* UIView+SetUserInteraction.m in Sources */ = {isa = PBXBuildFile; fileRef = 9359CC7917F75EC10081C92B /* UIView+SetUserInteraction.m */; };
 		935FAD8F176C9F6E006AD625 /* MainTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 935FAD8E176C9F6E006AD625 /* MainTabbarController.m */; };
@@ -75,6 +73,7 @@
 		936F06291811B2EC00B937B7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 936F06281811B2EC00B937B7 /* SystemConfiguration.framework */; };
 		936F062B1811B2FF00B937B7 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 936F062A1811B2FF00B937B7 /* libz.dylib */; };
 		936F06341811B34000B937B7 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 936F06331811B34000B937B7 /* libGoogleAnalyticsServices.a */; };
+		939C3A9E18CBAF63007D3357 /* yoga_back@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 939C3A9D18CBAF63007D3357 /* yoga_back@2x.jpg */; };
 		939E7DAE183FAA380052E80D /* CSTipsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 939E7DAC183FAA380052E80D /* CSTipsViewController.m */; };
 		939E7DAF183FAA380052E80D /* CSTipsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939E7DAD183FAA380052E80D /* CSTipsViewController.xib */; };
 		939E7DB2183FAC800052E80D /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 939E7DB1183FAC800052E80D /* UIImage+ImageEffects.m */; };
@@ -838,7 +837,6 @@
 		788F796915BB33820060620F /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		788F796C15BBFD040060620F /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		78976A5015238A7200D4F0E6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		78AE455A14ED7DF200A1176A /* 1044x768Chalkboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1044x768Chalkboard.png; sourceTree = "<group>"; };
 		78C1548D158C750B005CCAD7 /* UIView+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Animation.h"; path = "Y23/View/UIView+Animation.h"; sourceTree = "<group>"; };
 		78C1548E158C750B005CCAD7 /* UIView+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Animation.m"; path = "Y23/View/UIView+Animation.m"; sourceTree = "<group>"; };
 		78C154A7158C9C40005CCAD7 /* SetBreathDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetBreathDataController.h; path = AVController/SetBreathDataController.h; sourceTree = "<group>"; };
@@ -875,7 +873,6 @@
 		932DDA2617073D6000F73F78 /* PIAcanasTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PIAcanasTableViewCell.h; path = PIAsanasCell/PIAcanasTableViewCell.h; sourceTree = "<group>"; };
 		932DDA2717073D6000F73F78 /* PIAcanasTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PIAcanasTableViewCell.m; path = PIAsanasCell/PIAcanasTableViewCell.m; sourceTree = "<group>"; };
 		932DDA2917073DD100F73F78 /* PIAsanasTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PIAsanasTableViewCell.xib; sourceTree = "<group>"; };
-		933F1D421837CE030058DE2A /* NewRelicAgent.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NewRelicAgent.framework; path = Y23/Libraries/NewRelicAgent.framework; sourceTree = "<group>"; };
 		933F1D441837CE530058DE2A /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		9359CC7817F75EC10081C92B /* UIView+SetUserInteraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+SetUserInteraction.h"; path = "Y23/View/UIView+SetUserInteraction.h"; sourceTree = "<group>"; };
 		9359CC7917F75EC10081C92B /* UIView+SetUserInteraction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+SetUserInteraction.m"; path = "Y23/View/UIView+SetUserInteraction.m"; sourceTree = "<group>"; };
@@ -892,6 +889,7 @@
 		936F06311811B34000B937B7 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAITrackedViewController.h; path = Y23/Libraries/Google/GAITrackedViewController.h; sourceTree = "<group>"; };
 		936F06321811B34000B937B7 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAITracker.h; path = Y23/Libraries/Google/GAITracker.h; sourceTree = "<group>"; };
 		936F06331811B34000B937B7 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = Y23/Libraries/Google/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		939C3A9D18CBAF63007D3357 /* yoga_back@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "yoga_back@2x.jpg"; path = "Y23/View/yoga_back@2x.jpg"; sourceTree = "<group>"; };
 		939E7DAB183FAA380052E80D /* CSTipsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSTipsViewController.h; path = Tips/CSTipsViewController.h; sourceTree = "<group>"; };
 		939E7DAC183FAA380052E80D /* CSTipsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSTipsViewController.m; path = Tips/CSTipsViewController.m; sourceTree = "<group>"; };
 		939E7DAD183FAA380052E80D /* CSTipsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CSTipsViewController.xib; path = Tips/CSTipsViewController.xib; sourceTree = "<group>"; };
@@ -1637,7 +1635,6 @@
 				788F796A15BB33820060620F /* CoreImage.framework in Frameworks */,
 				7810183415B1BE620086A637 /* CoreText.framework in Frameworks */,
 				78976A5115238A7200D4F0E6 /* QuartzCore.framework in Frameworks */,
-				933F1D431837CE030058DE2A /* NewRelicAgent.framework in Frameworks */,
 				783DA1F914E691B400E06F10 /* UIKit.framework in Frameworks */,
 				936F06341811B34000B937B7 /* libGoogleAnalyticsServices.a in Frameworks */,
 				783DA1FB14E691B400E06F10 /* Foundation.framework in Frameworks */,
@@ -1734,7 +1731,6 @@
 			children = (
 				93677B0A183FB46B0026EDA4 /* Accelerate.framework */,
 				933F1D441837CE530058DE2A /* CoreTelephony.framework */,
-				933F1D421837CE030058DE2A /* NewRelicAgent.framework */,
 				936F062A1811B2FF00B937B7 /* libz.dylib */,
 				936F06281811B2EC00B937B7 /* SystemConfiguration.framework */,
 				936F06261811B2D000B937B7 /* CoreData.framework */,
@@ -1841,8 +1837,8 @@
 		78AE455714ED7DC000A1176A /* Background */ = {
 			isa = PBXGroup;
 			children = (
+				939C3A9D18CBAF63007D3357 /* yoga_back@2x.jpg */,
 				7825DEF314EEC17D000BA5F0 /* 768x1044Chalkboard.png */,
-				78AE455A14ED7DF200A1176A /* 1044x768Chalkboard.png */,
 			);
 			name = Background;
 			sourceTree = "<group>";
@@ -2687,7 +2683,7 @@
 		783DA1EB14E691B400E06F10 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				TargetAttributes = {
 					783DA1F314E691B400E06F10 = {
 						DevelopmentTeam = A2Q6JAYMQF;
@@ -2727,7 +2723,6 @@
 				783DA22C14E694B800E06F10 /* WhiteAButton.png in Resources */,
 				783DA22D14E694B800E06F10 /* WhiteCBox.png in Resources */,
 				783DA22E14E694B800E06F10 /* WhiteCBoxV.png in Resources */,
-				78AE455C14ED7DF200A1176A /* 1044x768Chalkboard.png in Resources */,
 				7825DEF414EEC17D000BA5F0 /* 768x1044Chalkboard.png in Resources */,
 				782486F914FC07F300C0A883 /* Technics.plist in Resources */,
 				78274D531507D8F300FDAA48 /* TechnicDetails.xib in Resources */,
@@ -3060,6 +3055,7 @@
 				93CFABD517510FBD00715B45 /* 307.png in Resources */,
 				93CFABD617510FBD00715B45 /* 308.png in Resources */,
 				93CFABD717510FBD00715B45 /* 309.png in Resources */,
+				939C3A9E18CBAF63007D3357 /* yoga_back@2x.jpg in Resources */,
 				93CFABD817510FBD00715B45 /* 310.png in Resources */,
 				93CFABD917510FBD00715B45 /* 311.png in Resources */,
 				93CFABDA17510FBD00715B45 /* 312.png in Resources */,
@@ -3562,6 +3558,7 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -3570,7 +3567,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos7.0;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
@@ -3590,6 +3587,7 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -3598,7 +3596,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				SDKROOT = iphoneos7.0;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -3623,7 +3621,7 @@
 					/Users/deviMac/Documents/Y23Tabbed/Y23Bandel/Y23/Libraries/Google,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "F383B291-51F1-45E4-9A38-6FDD907203C0";
+				PROVISIONING_PROFILE = "BC80A883-2973-4A5E-816A-F36F6F9ADEE8";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
@@ -3649,7 +3647,7 @@
 					/Users/deviMac/Documents/Y23Tabbed/Y23Bandel/Y23/Libraries/Google,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "F383B291-51F1-45E4-9A38-6FDD907203C0";
+				PROVISIONING_PROFILE = "BC80A883-2973-4A5E-816A-F36F6F9ADEE8";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;

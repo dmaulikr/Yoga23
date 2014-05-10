@@ -9,17 +9,16 @@
 
 "Ok"    = "Ok";
 "NOTES" = "NOTES";
-"Here notes" = "Here notes";
+"Type notes here.." = "Type notes here..";
 "Next"  = "Next";
 "Done"  = "Done";
 "Notes" = "Notes";
 "Clear All" = "Clear All";
 "No asanas selected.."  = "No asanas selected..";
-"You have not selected any asana!" = "You have not selected any asana!";
-"Ok"    = "Ok";
+"Tap to select asanas you need." = "Tap to select asanas you need.";
 
-"Warning"   = "Warning";
-"All choosed asanas will be cleaned\n(Saved sequences are remain)" = "All choosed asanas will be cleaned\n(Saved sequences are remain)";
+"Attention"   = "Attention";
+"All chosen asanas will be cleaned\n(Saved sequences are remain)" = "All chosen asanas will be cleaned\n(Saved sequences are remain)";
 "Clear" = "Clear";
 "Cancel"    = "Cancel";
 "Nothing to remove" = "Nothing to remove";
@@ -28,16 +27,24 @@
 "To sort" = "To sort";
 "Too many asanas selected.."    = "Too many asanas selected..";
 "42 is a limit of asanas number"= "42 is a limit of asanas number";
-"No asanas selected.." = "No asanas selected..";
-"You have not selected any asana!"  = "You have not selected any asana!";
 "Creating sequences (%d)" = "Creating Sequences (%d)";
-"Sorting sequence asanas"   = "Sorting sequence asanas";
+"Sorting and rearrangement"   = "Sorting and rearrangement";
 "Save"  = "Save";
 "No asanas on the view" = "No asanas on the view";
 "Please go back and add asanas." = "Please go back and add asanas.";
+
 "Asana managing"    = "Asana managing";
 "Breathing:"    = "Breathing:";
 "Loops" = "Loops";
 "Inhale"    = "Inhale";
-"Pausa" = "Pausa";
+"Pause" = "Pause";
 "Exhale"    = "Exhale";
+
+"No saved sequences .." = "No saved sequences ..";
+"You have not created sequences!" = "You have not created sequences!";
+"Please create at least one asanas sequence" = "Please create at least one asanas sequence";
+
+// tips sentences
+"Select technics for add to a program" = "Select technics for add to a program";
+"Here is Dashboard. It's a view for working with swing of the pendulum" = "Here is Dashboard. It's a view for working with swing of the pendulum";
+"Asanas tips text" = "1.First screen (current) - tap on asana to add it to the workflow (or remove) and click \"Next\".\n\n2.Second screen: select asanas for first sequence and tap \"To Sort\".\n\n3.Last asanas screen is \"Sorting\". Here you may drag and drop asanas images for change them order and tap on image for define breathing or removing. Аfter you're done, click \"Save\" for saving sequence and doing next one if you need.";

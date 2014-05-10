@@ -190,6 +190,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    self.personalData = [appDelegate.theNewProgram objectForKey:@"personal"];
     //NSLog(@"first name from delegate - %@",[[appDelegate.theNewProgram objectForKey:@"personal"] objectForKey:@"firstName"]);
     _firstName.text = [[appDelegate.theNewProgram objectForKey:@"personal"] objectForKey:@"firstName"];
     _lastName.text = [[appDelegate.theNewProgram objectForKey:@"personal"] objectForKey:@"lastName"];
@@ -277,30 +278,17 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-        
-    if (!self.personalData) {
-        
-        
-        self.personalData = [appDelegate.theNewProgram objectForKey:@"personal"];
-        
-        // set current date
-        NSDate *currDate = [NSDate date];
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
-        [dateFormatter setDateFormat:@"dd/MM/YY HH:mm"];
-        NSString *dateString = [dateFormatter stringFromDate:currDate];
-        [self.personalData setObject:dateString forKey:@"createDate"]; 
-      //  NSLog(@"%@",dateString);
-    }
-    if (textField == self.firstName )
+
+    if (textField == self.firstName && self.firstName.text.length > 0)
     {
         //NSLog(@"personalData 1 from delegate - %@ text - %@",[appDelegate.theNewProgram objectForKey:@"personal"],self.firstName.text);
         [self.personalData setObject:[NSString stringWithString:self.firstName.text] forKey:@"firstName"];
         //NSLog(@"personalData2 from delegate - %@",[appDelegate.theNewProgram objectForKey:@"personal"] );
     }
-    if (textField == self.lastName) {
+    if (textField == self.lastName && self.lastName.text.length > 0) {
        [self.personalData setObject:self.lastName.text forKey:@"lastName"];
     }
-    if (textField == self.eMail) {
+    if (textField == self.eMail && self.eMail.text.length > 0) {
         [self.personalData setObject:self.eMail.text forKey:@"eMail"];
     }
 }

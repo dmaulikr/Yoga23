@@ -120,7 +120,7 @@ enum sets {
         if ([appDelegate.selectedAsanas count] == 0) {
             // warning massage here
             CustomAlert *noAsanas = [[CustomAlert alloc] initWithTitle:NSLocalizedString(@"No asanas selected..", @"")
-                                                               message:NSLocalizedString(@"You have not selected any asana!", @"")
+                                                               message:NSLocalizedString(@"Tap to select asanas you need.", @"")
                                                               delegate:nil cancelButtonTitle:NSLocalizedString(@"Ok", @"")
                                                      otherButtonTitles:nil];
             [noAsanas show];
@@ -150,8 +150,8 @@ enum sets {
     if ([appDelegate.selectedAsanas count] > 0) {
     
     CustomAlert *clearAllAlert = [[CustomAlert alloc]
-                                  initWithTitle:NSLocalizedString(@"Warning", @"")
-                                  message:NSLocalizedString(@"All choosed asanas will be cleaned\n(Saved sequences are remain)", @"")
+                                  initWithTitle:NSLocalizedString(@"Attention", @"")
+                                  message:NSLocalizedString(@"All chosen asanas will be cleaned\n(Saved sequences are remain)", @"")
                                   delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"")
                                   otherButtonTitles:NSLocalizedString(@"Clear", @"")
                                   , nil];
@@ -195,7 +195,7 @@ enum sets {
         
         CustomAlert *changeSetAlert = [[CustomAlert alloc]
                                        initWithTitle:NSLocalizedString(@"You select a different set of asanas", @"")
-                                       message:NSLocalizedString(@"All choosed asanas will be cleaned\n(Saved sequences are remain)", @"")
+                                       message:NSLocalizedString(@"All chosen asanas will be cleaned\n(Saved sequences are remain)", @"")
                                        delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"")
                                        otherButtonTitles:NSLocalizedString(@"Go", @"")
                                        , nil];
@@ -499,9 +499,9 @@ enum sets {
         [self.view addSubview:tpvc.view];
     }
     
-    for (UIBarButtonItem *item in self.navigationItem.rightBarButtonItems) {
-        //NSLog(@"bar item - %@, width - %f", item,item.width);
-    }
+//    for (UIBarButtonItem *item in self.navigationItem.rightBarButtonItems) {
+//        //NSLog(@"bar item - %@, width - %f", item,item.width);
+//    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

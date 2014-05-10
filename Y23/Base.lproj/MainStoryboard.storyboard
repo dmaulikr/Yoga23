@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="4">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Asanas View Controller - Asanas-->
@@ -32,7 +32,7 @@
                                     <barButtonItem width="234" style="plain" systemItem="fixedSpace" id="Lhc-Bv-xoi"/>
                                 </items>
                             </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="768x1044Chalkboard.png" id="CVf-HB-IQ7">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="yoga_back.jpg" id="CVf-HB-IQ7">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="916"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
@@ -104,7 +104,7 @@
                         <rect key="frame" x="0.0" y="64" width="768" height="911"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="768x1044Chalkboard.png" id="cL6-9h-yh6">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="yoga_back.jpg" id="cL6-9h-yh6">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="911"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
@@ -127,7 +127,7 @@
                         <rect key="frame" x="0.0" y="64" width="768" height="911"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="768x1044Chalkboard.png" id="QbU-Cx-Z4y">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="yoga_back.jpg" id="QbU-Cx-Z4y">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="916"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                             </imageView>
@@ -152,7 +152,7 @@
                         <rect key="frame" x="0.0" y="64" width="768" height="911"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="768x1044Chalkboard.png" id="Ofr-OZ-XOH">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="yoga_back.jpg" id="Ofr-OZ-XOH">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="911"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
@@ -178,7 +178,7 @@
                         <rect key="frame" x="0.0" y="64" width="768" height="911"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="768x1044Chalkboard.png" id="ATR-9A-6kq">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="yoga_back.jpg" id="ATR-9A-6kq">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="911"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
@@ -224,7 +224,7 @@
                         <rect key="frame" x="0.0" y="64" width="768" height="911"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="768x1044Chalkboard.png" id="tiq-t2-Pz2">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="yoga_back.jpg" id="tiq-t2-Pz2">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="911"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
@@ -496,9 +496,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="768x1044Chalkboard.png" width="768" height="1044"/>
         <image name="C6.png" width="768" height="998"/>
         <image name="LOGO.png" width="512" height="408"/>
+        <image name="yoga_back.jpg" width="768" height="1024"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackOpaque"/>

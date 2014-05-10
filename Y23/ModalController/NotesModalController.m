@@ -52,6 +52,12 @@
     appDelegate= (AppDelegate*)[[UIApplication sharedApplication] delegate];
     self.notesText = [appDelegate.theNewProgram objectForKey:@"notes"];
     
+    if ([_notesText isEqualToString:NSLocalizedString(@"Type notes here..", @"")]) {
+        _notesTextView.textColor = [UIColor lightGrayColor];
+    }
+    else _notesTextView.textColor = [UIColor blackColor];
+    
+    
     _notesTextView.text = _notesText;
     [_notesTextView setKeyboardAppearance:UIKeyboardAppearanceAlert];
     
@@ -67,12 +73,58 @@
 
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    
+    if (text.length > 1 && [textView.text isEqualToString:NSLocalizedString(@"Type notes here..", @"")]) {
+        textView.text = @"";
+        textView.textColor = [UIColor blackColor];
+    }
+
     return YES;
+}
+
+
+//- (void)textViewDidChangeSelection:(UITextView *)textView{
+//    
+//    if ([_notesTextView.text isEqualToString:NSLocalizedString(@"Type notes here..", @"")] && [_notesTextView.textColor isEqual:[UIColor lightGrayColor]])[_notesTextView setSelectedRange:NSMakeRange(0, 0)];
+//    
+//}
+
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    
+    if ([textView.text isEqualToString:NSLocalizedString(@"Type notes here..", @"")] && [textView.textColor isEqual:[UIColor lightGrayColor]]){
+        [textView setSelectedRange:NSMakeRange(0, 0)];
+        
+    }
+    
+}
+
+- (void)textViewDidChange:(UITextView *)textView
+{
+    if (textView.text.length != 0 && [[textView.text substringFromIndex:1] isEqualToString:NSLocalizedString(@"Type notes here..", @"")] && [textView.textColor isEqual:[UIColor lightGrayColor]]){
+        textView.text = [textView.text substringToIndex:1];
+        textView.textColor = [UIColor blackColor];
+        
+    }
+    else if(textView.text.length == 0){
+        textView.text = NSLocalizedString(@"Type notes here..", @"");
+        textView.textColor = [UIColor lightGrayColor];
+        [textView setSelectedRange:NSMakeRange(0, 0)];
+    }
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    if ([textView.text isEqualToString:@""]) {
+        textView.text = NSLocalizedString(@"Type notes here..", @"");
+        textView.textColor = [UIColor lightGrayColor];
+    }
+    [textView resignFirstResponder];
 }
 
 
 
 - (BOOL)textViewShouldEndEditing:(UITextView *)textView {
+    
     
     if (![self.notesText isEqualToString:textView.text]) {
         self.notesText = [NSMutableString stringWithString:textView.text];

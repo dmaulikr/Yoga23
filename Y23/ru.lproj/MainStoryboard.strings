@@ -9,7 +9,7 @@
 "1fL-ld-VMG.title" = "Техники";
 
 /* Class = "IBUINavigationController"; title = "Personal"; ObjectID = "2OO-8Q-N3c"; */
-"2OO-8Q-N3c.title" = "";
+"2OO-8Q-N3c.title" = "Кому";
 
 /* Class = "IBUILabel"; text = "Email"; ObjectID = "9Kw-44-NtE"; */
 "9Kw-44-NtE.text" = "Майл";
@@ -36,7 +36,7 @@
 "Iz1-i0-6Xl.text" = "_________________________";
 
 /* Class = "IBUINavigationController"; title = "Dashboard"; ObjectID = "JqT-TD-dZL"; */
-"JqT-TD-dZL.title" = "Dashboard";
+"JqT-TD-dZL.title" = "Таблицы";
 
 /* Class = "IBUIBarButtonItem"; title = "Close"; ObjectID = "MWJ-ZH-0VB"; */
 "MWJ-ZH-0VB.title" = "Закрыть";
@@ -75,10 +75,10 @@
 "jFX-RS-beH.text" = "_________________________";
 
 /* Class = "IBUINavigationItem"; title = "Dashboard"; ObjectID = "q0p-zY-8sv"; */
-"q0p-zY-8sv.title" = "Dashboard";
+"q0p-zY-8sv.title" = "Таблицы";
 
 /* Class = "IBUITabBarItem"; title = "Dashboard"; ObjectID = "r37-T6-huI"; */
-"r37-T6-huI.title" = "Dashboard";
+"r37-T6-huI.title" = "Таблицы";
 
 /* Class = "IBUINavigationController"; title = "Preview"; ObjectID = "tgu-tI-Bgp"; */
 "tgu-tI-Bgp.title" = "Предосмотр";

@@ -53,7 +53,7 @@
     appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     
     
-    self.navigationItem.title = NSLocalizedString(@"Sorting sequence asanas", @"");
+    self.navigationItem.title = NSLocalizedString(@"Sorting and rearrangement", @"");
     UIBarButtonItem *notesButton         = [[UIBarButtonItem alloc]
                                             initWithTitle:NSLocalizedString(@"Notes", @"") style:UIBarButtonItemStylePlain
                                             target:self
@@ -71,7 +71,7 @@
     
     UIImageView *backgroundImage = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 768.0, 1024.0)];
     backgroundImage.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    [backgroundImage setImage:[UIImage imageNamed:@"768x1044Chalkboard.png"]];
+    [backgroundImage setImage:[UIImage imageNamed:@"yoga_back.jpg"]];
     [self.view addSubview:backgroundImage];
     
 

@@ -302,7 +302,7 @@
     if ([addedAsanas count] == 0) {
         // warning massage here
         CustomAlert *noAsanas = [[CustomAlert alloc] initWithTitle:NSLocalizedString(@"No asanas selected..", @"")
-                                                           message:NSLocalizedString(@"You have not selected any asana!", @"")
+                                                           message:NSLocalizedString(@"Tap to select asanas you need.", @"")
                                                           delegate:nil cancelButtonTitle:NSLocalizedString(@"Ok", @"")
                                                  otherButtonTitles:nil];
         [noAsanas show];
@@ -322,7 +322,9 @@
 
 - (void)saveSequence:(UIImage *)sortedSequence {
     // Saving sorted sequence to final asanas array
+    sequences = [appDelegate.theNewProgram objectForKey:@"asanas"];
     if (!sequences) {
+        [appDelegate.theNewProgram setObject:[NSMutableArray array] forKey:@"asanas"];
         sequences = [appDelegate.theNewProgram objectForKey:@"asanas"];
     }
     

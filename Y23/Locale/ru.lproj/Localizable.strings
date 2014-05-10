@@ -7,40 +7,44 @@
 */
 
 
-"Ok"    = "О'кей";
+"Ok"    = "Да";
 "NOTES" = "Блокнот";
-"Here notes" = "Пишите примечания..";
+"Type notes here.." = "Пишите примечания здесь..";
 "Next"  = "Далее";
-"Done"  = "Далее";
+"Done"  = "Готово";
 "Notes" = "Блокнот";
 "Clear All" = "Очистка";
-"No asanas selected.."  = "Нет выбранных ассан";
-"You have not selected any asana!" = "Кликните на нужные ассаны для работы с ними!";
-"Ok"    = "Да";
+"No asanas selected.."  = "Вы не выбрали асаны";
+"Tap to select asanas you need." = "Кликните на нужные асаны для работы с ними!";
 
-"Warning"   = "Внимание";
-"All choosed asanas will be cleaned\n(Saved sequences are remain)" = "Все выбранные здесь ассаны будут отменены, но сохраненные последовательности остануться в программе.";
+"Attention"   = "Внимание";
+"All chosen asanas will be cleaned\n(Saved sequences are remain)" = "Все выбранные здесь асаны будут отменены, но сохраненные последовательности останутся в программе.";
 "Clear" = "Очистить";
 "Cancel"    = "Отмена";
 "Nothing to remove" = "Нечего очищать";
-"You select a different set of asanas"  = "Вы выбираете другой набор ассан!";
+"You select a different set of asanas"  = "Вы выбираете другой набор асан!";
 "Go" = "Вперед!";
 "To sort" = "Сортировать";
-"Too many asanas selected.."    = "Вы выбрали предельное число ассан..";
-"42 is a limit of asanas number"= "Предельно возможное чосло ассан - 42";
-"No asanas selected.." = "Не выбранно ни одной ассаны";
-"You have not selected any asana!"  = "Отберите ассаны для тренировки и нажмите \"Дальше\"";
+"Too many asanas selected.."    = "Вы выбрали предельное число асан..";
+"42 is a limit of asanas number"= "Предельно возможное число асан - 42";
 "Creating sequences (%d)"   = "Создание последовательностей (%d)";
-"Sorting sequence asanas"   = "Сортировка поледовательности";
+"Sorting and rearrangement"   = "Сортировка поледовательности";
 "Save"  = "Сохранить";
 "No asanas on the view" = "Нечего сохранять";
 "Please go back and add asanas." = "Пожалуйста вернитесъ назад и добавте асаны в последовательность";
 
-
-// Sorting, Asana Popover
 "Asana managing"    = "Параметры";
 "Breathing:"    = "Дыхание:";
 "Loops" = "Циклы";
 "Inhale"= "Вдох";
-"Pausa" = "Пауза";
+"Pause" = "Пауза";
 "Exhale"= "Выдох";
+
+"No saved sequences .." = "Нет сохраненных последовательностей!";
+"You have not created sequences!" = "Вы не сохранили ни одной последовательности с асанами.";
+"Please create at least one asanas sequence" = "Пожалуйста, создайте хотя бы одну последовательность асан";
+
+// tips sentences
+"Select technics for add to a program" = "Выберите техники дыхания для составляемой программы";
+"Here is Dashboard. It's a view for working with swing of the pendulum" = "Это таблицы для работы с маятником";
+"Asanas tips text" = "";

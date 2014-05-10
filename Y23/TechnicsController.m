@@ -77,10 +77,9 @@
         contentView = nil;
     }
     
+    CGRect cFrame = CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height);
+    contentView = [[UIView alloc] initWithFrame:cFrame];
     
-    contentView = [[UIView alloc] initWithFrame:self.view.frame];
-    
-
     
     // parse plist with technics
     NSString* plistPath = [[NSBundle mainBundle] pathForResource:@"Technics" ofType:@"plist"];
@@ -160,7 +159,7 @@
     
 }
 
-- (void) addProgramItem: (CheckBoxButton *)sender {
+- (void)addProgramItem:(CheckBoxButton *)sender {
     
     [sender onClicked];
     id element = [allTechnics objectAtIndex:sender.tag]; // get an element
@@ -202,7 +201,7 @@
     }
 }
 
-- (void) goTechnicDetails: (UIButton *)sender {
+- (void)goTechnicDetails:(UIButton*)sender {
     
     
     int index = [sender tag];

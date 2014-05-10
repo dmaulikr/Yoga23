@@ -10,7 +10,6 @@
 #import "GAI.h"
 #import "GAIDictionaryBuilder.h"
 #import "GAIFields.h"
-#import <NewRelicAgent/NewRelicAgent.h>
 
 
 @implementation AppDelegate
@@ -24,8 +23,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // NewRelic
-    [NewRelicAgent startWithApplicationToken:@"AA1e6fff42c46f7b5e74b7a67fb2f7eb76b7c5465f"];
     
     // Optional: automatically send uncaught exceptions to Google Analytics.
     [GAI sharedInstance].trackUncaughtExceptions = YES;
@@ -47,7 +44,7 @@
     [self.theNewProgram setObject:[NSMutableDictionary dictionaryWithCapacity:4] forKey:@"personal"];
     [self.theNewProgram setObject:[NSMutableArray array] forKey:@"asanas"];
     [self.theNewProgram setObject:[NSMutableArray array] forKey:@"technics"];
-    NSMutableString *notesText = [[NSMutableString alloc] initWithString:NSLocalizedString(@"Here write notes..", @"")];
+    NSMutableString *notesText = [[NSMutableString alloc] initWithString:NSLocalizedString(@"Type notes here..", @"")];
     [self.theNewProgram setObject:notesText forKey:@"notes"];
     _selectedAsanas = [NSMutableDictionary dictionary];
     _asanasCounter = [NSMutableDictionary dictionary];

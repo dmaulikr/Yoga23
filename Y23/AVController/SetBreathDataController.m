@@ -54,9 +54,9 @@
     breathingLabel.text = NSLocalizedString(@"Breathing:", @"");
     loopsLabel.text = NSLocalizedString(@"Loops", @"");
     inhaleLabel.text = NSLocalizedString(@"Inhale", @"");
-    pausa1.text = NSLocalizedString(@"Pausa", @"");
+    pausa1.text = NSLocalizedString(@"Pause", @"");
     exhaleLabel.text = NSLocalizedString(@"Exhale", @"");
-    pausa2.text = NSLocalizedString(@"Pausa", @"");
+    pausa2.text = NSLocalizedString(@"Pause", @"");
 
 
 

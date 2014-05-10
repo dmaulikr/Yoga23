@@ -287,7 +287,7 @@
     NSMutableString *commonText = technicsList;
     
     NSString *notes = [appDelegate.theNewProgram objectForKey:@"notes"];
-    if (![notes isEqualToString:@"Here notes"]) {
+    if (![notes isEqualToString:NSLocalizedString(@"Type notes here..", @"")] && !notes.length < 2) {
         [commonText appendString:@"\n\n\n"];
         [commonText appendString:@" NOTES: \n\n"];
         [commonText appendString:[appDelegate.theNewProgram objectForKey:@"notes"]];
@@ -474,13 +474,12 @@
     Technics *techController = (Technics*)[[[[mtc viewControllers] objectAtIndex:2] viewControllers] objectAtIndex:0] ;
     techController.clearing = YES;
    
-    appDelegate.theNewProgram = [[NSMutableDictionary alloc] init];
-    [appDelegate.theNewProgram setObject:[NSMutableDictionary dictionaryWithCapacity:4] forKey:@"personal"];
-    [[appDelegate.theNewProgram objectForKey:@"asanas" ]  removeAllObjects];
-    [[appDelegate.theNewProgram objectForKey:@"technics" ]  removeAllObjects];
+    [[appDelegate.theNewProgram objectForKey:@"personal"]  removeAllObjects];
+    [[appDelegate.theNewProgram objectForKey:@"asanas"]  removeAllObjects];
+    [[appDelegate.theNewProgram objectForKey:@"technics"]  removeAllObjects];
     [appDelegate.selectedAsanas removeAllObjects];
     [appDelegate.asanasCounter removeAllObjects];
-    NSMutableString *notesText = [[NSMutableString alloc] initWithString:@"Here notes"];
+    NSMutableString *notesText = [[NSMutableString alloc] initWithString:NSLocalizedString(@"Type notes here..", @"")];
     [appDelegate.theNewProgram setObject:notesText forKey:@"notes"];
     [appDelegate.unsavedSequence removeAllObjects];
     
@@ -494,16 +493,24 @@
     if (alertView.tag == 10) {
         switch (buttonIndex) {
             case 0:
-               
+                [presentWebView loadHTMLString:@"<html><head></head><body></body></html>" baseURL:nil];
+                self.tabBarController.selectedIndex = 0;
                 break;
             case 1:
                 [self clearAll];
+                [presentWebView loadHTMLString:@"<html><head></head><body></body></html>" baseURL:nil];
+                self.tabBarController.selectedIndex = 0;
                 break;
                 
             default:
                 break;
         }
+    }else if (alertView.tag == 20){
+        NSLog(@"self.tabBarController.selectedIndex = 1");
+        self.tabBarController.selectedIndex = 1;
     }
+
+        
 }
 
 #pragma mark - View LifeCicle
@@ -514,12 +521,6 @@
     if (!appDelegate) {
         appDelegate= (AppDelegate*)[[UIApplication sharedApplication] delegate];
     }
-    
-    sequences = [appDelegate.theNewProgram objectForKey:@"asanas"];
-    technics = [appDelegate.theNewProgram objectForKey:@"technics"];
-
-    
-    dPrint(@" technics is %@", [appDelegate.theNewProgram objectForKey:@"technics"]);
     
     
     UIBarButtonItem *sendItem            = [[UIBarButtonItem alloc]
@@ -553,14 +554,21 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     
+    sequences = [appDelegate.theNewProgram objectForKey:@"asanas"];
+    technics = [appDelegate.theNewProgram objectForKey:@"technics"];
+    
+    //dPrint(@" technics is %@", [appDelegate.theNewProgram objectForKey:@"technics"]);
+    
     [self createTechnicsList]; // creating technics text for PDF 
         
     if ([sequences count] == 0) {
         // warning massage here
-        CustomAlert *noAsanas = [[CustomAlert alloc] initWithTitle:@"No saved sequences .."
-                                                           message:@"You have not created sequences!"
-                                                          delegate:nil cancelButtonTitle:@"Ok" 
+        CustomAlert *noAsanas = [[CustomAlert alloc] initWithTitle:NSLocalizedString(@"No saved sequences ..", @"")
+                                                           message:NSLocalizedString(@"Please create at least one asanas sequence", @"")
+                                                          delegate:nil cancelButtonTitle:NSLocalizedString(@"Ok", @"")
                                                  otherButtonTitles:nil];
+        noAsanas.delegate = self;
+        noAsanas.tag = 20;
         [noAsanas show];
         
 //    }else if ([technicsList length] < 1) {
@@ -571,7 +579,15 @@
 //                                                 otherButtonTitles:nil];
 //        [noTechnics show];
 //        
-    }else {[self createPDFforPreview];}
+    }else {
+        // set current date
+        NSDate *currDate = [NSDate date];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+        [dateFormatter setDateFormat:@"dd/MM/YY HH:mm"];
+        NSString *dateString = [dateFormatter stringFromDate:currDate];
+        [[appDelegate.theNewProgram objectForKey:@"personal"] setObject:dateString forKey:@"createDate"];
+        [self createPDFforPreview];
+    }
     
 }
 

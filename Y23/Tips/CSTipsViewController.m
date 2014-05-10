@@ -133,10 +133,8 @@
 
 - (void)asanasTips {
     
-    asanasTipsLabel.text = @"1.First screen (current) - tap on asana to add it to the workflow (or remove) and click \"Next\".\n\n2.Second screen: select asanas for first sequence and tap \"To Sort\".\n\n3.Last asanas screen is \"Sorting\". Here you may drag and drop asanas images for change them order and tap on image for define breathing or removing. Аfter you're done, click \"Save\" for saving sequence and doing next one if you need.";
-    
-    
-    
+    asanasTipsLabel.text = NSLocalizedString(@"Asanas tips text", @"");
+
     t1_View.alpha = 0.0;
     [t1_View setHidden:NO];
     [UIView animateWithDuration:1.2 animations:^{
@@ -149,7 +147,7 @@
 
 - (void)technicsTips {
     
-    techniksTipsLabel.text = @"Select technics for add to your program";
+    techniksTipsLabel.text = NSLocalizedString(@"Select technics for add to a program", @"");
     
     
     
@@ -162,7 +160,7 @@
 
 - (void)dashboardTips {
     
-    techniksTipsLabel.text = @"Here is Dashboard. It's a view for working with swing of the pendulum";
+    techniksTipsLabel.text = NSLocalizedString(@"Here is Dashboard. It's a view for working with swing of the pendulum", @"");
     
     
     

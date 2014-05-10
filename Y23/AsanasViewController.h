@@ -13,7 +13,7 @@
 @class AppDelegate;
 
 
-@interface AsanasViewController : UIViewController <UIScrollViewDelegate, UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,RemoveTipViewsProtocol> {
+@interface AsanasViewController : UITableViewController <UIScrollViewDelegate, UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,RemoveTipViewsProtocol> {
     
     __weak IBOutlet UIToolbar               *toolBar;
     __weak IBOutlet UISegmentedControl      *segmentCotrol;

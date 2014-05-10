@@ -23,7 +23,7 @@
     UIView                  *seqContentView;
     UIView                  *saveSequence;
     SortAsanasController    *sortController;
-    NSMutableArray          *addedAsanas; // curent choosed asanas
+    NSMutableArray          *addedAsanas; // curent chosen asanas
     BOOL                    saved; // for saving event
     UIImage                 *counterBG;
     NSMutableArray          *trackedObjects; // all View Objects wiyh asanas buttons and views
