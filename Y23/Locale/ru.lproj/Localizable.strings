@@ -8,14 +8,17 @@
 
 
 "Ok"    = "Да";
+"NO"    = "Отменить";
 "NOTES" = "Блокнот";
 "Type notes here.." = "Пишите примечания здесь..";
 "Next"  = "Далее";
 "Done"  = "Готово";
 "Notes" = "Блокнот";
-"Clear All" = "Очистка";
+"Clear All" = "Очистить все";
+"Clear Selected" = "Очистить";
 "No asanas selected.."  = "Вы не выбрали асаны";
 "Tap to select asanas you need." = "Кликните на нужные асаны для работы с ними!";
+"All program details will be removed" = "Вся программа будет удалена";
 
 "Attention"   = "Внимание";
 "All chosen asanas will be cleaned\n(Saved sequences are remain)" = "Все выбранные здесь асаны будут отменены, но сохраненные последовательности останутся в программе.";
@@ -46,5 +49,6 @@
 
 // tips sentences
 "Select technics for add to a program" = "Выберите техники дыхания для составляемой программы";
-"Here is Dashboard. It's a view for working with swing of the pendulum" = "Это таблицы для работы с маятником";
-"Asanas tips text" = "";
+"Here is Dashboard. It's a view for working with swings of the pendulum" = "Это таблицы для работы с маятником";
+"The asanas workflow contains 3 steps:" = "Работа с асанами – 3 экрана:";
+"Asanas tips text" = "1. Тот, который перед Вами. Определяем и отмечаем асаны, которые нам необходимы. Второе касание отменяет выбор. Закончив жмем \"Далее\".\n\n2. Приступаем к сборке последовательностей. Так же коснитесь асаны, чтобы добавить ее в последовательность.\n\n3. На последнем экране Вы можете менять порядок асан - просто перетаскивайте их на нужное место. Коснитесь асаны, чтобы ввести параметры дыхания или удалить ее из данной последовательности.";

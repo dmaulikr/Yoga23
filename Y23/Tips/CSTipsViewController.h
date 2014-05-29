@@ -38,9 +38,10 @@
     __weak IBOutlet UIImageView     *tp2_downArrow;
     __weak IBOutlet UIView          *tp2_containerView;
     
+    __weak IBOutlet UILabel         *asanasTipHeader;
     __weak IBOutlet UILabel         *asanasTipsLabel;
     __weak IBOutlet UILabel         *techniksTipsLabel;
-    __weak IBOutlet UILabel         *dashboardTipsLabels;
+    __weak IBOutlet UILabel         *dashboardTipsLabel;
 }
 
 @property (nonatomic,weak) IBOutlet UIImageView                         *contentBGView;

@@ -42,7 +42,6 @@
     UIEdgeInsets insets = UIEdgeInsetsMake(20.0, 20.0, 20.0, 20.0);
     UIImage *stretchableImage = [originalImage resizableImageWithCapInsets:insets];
 
-    
     // temporary
     if ([parentController isEqualToString:@"Personal"]) {
         t2ImageView.image = stretchableImage;
@@ -133,6 +132,7 @@
 
 - (void)asanasTips {
     
+    asanasTipHeader.text = NSLocalizedString(@"The asanas workflow contains 3 steps:", @"");
     asanasTipsLabel.text = NSLocalizedString(@"Asanas tips text", @"");
 
     t1_View.alpha = 0.0;
@@ -148,9 +148,7 @@
 - (void)technicsTips {
     
     techniksTipsLabel.text = NSLocalizedString(@"Select technics for add to a program", @"");
-    
-    
-    
+
     t4_View.alpha = 0.0;
     [t4_View setHidden:NO];
     [UIView animateWithDuration:1.2 animations:^{
@@ -160,9 +158,7 @@
 
 - (void)dashboardTips {
     
-    techniksTipsLabel.text = NSLocalizedString(@"Here is Dashboard. It's a view for working with swing of the pendulum", @"");
-    
-    
+    dashboardTipsLabel.text = NSLocalizedString(@"Here is Dashboard. It's a view for working with swings of the pendulum", @"");
     
     t5_View.alpha = 0.0;
     [t5_View setHidden:NO];

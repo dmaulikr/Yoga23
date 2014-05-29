@@ -45,9 +45,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-
-
+    
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7")) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
     // adding "Notes" button
     
     appDelegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
@@ -96,6 +97,7 @@
 #pragma mark - Asanas Images Scrollview adding 
 
 - (UIView *)addSortView {
+    
     asanasCount = [sequence count];
     
     unsigned lineCount; // define line count for each 9 asanas
@@ -462,7 +464,7 @@
     }
     
     // Google An
-    [appDelegate eventTrackingGA:@"Sorting" andAction:@"Save Sequence" andLabel:[NSString stringWithFormat:@"sequence contain %d asanas",[_asanasViews count]]];
+    [appDelegate eventTrackingGA:@"Sorting" andAction:@"Save Sequence" andLabel:[NSString stringWithFormat:@"sequence contains %d asanas",[_asanasViews count]]];
     
     
     UIImage *sequenceImage = [contentView imageFromView];

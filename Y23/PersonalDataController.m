@@ -130,28 +130,29 @@
     appDelegate= (AppDelegate*)[[UIApplication sharedApplication] delegate];
     
     // set image icons for Personal Tab
-    UIImage *personalIcon = [UIImage imageNamed:@"Personal@2x.png"];
+    UIImage *personalIcon = [UIImage imageNamed:@"Personal"];
     UITabBar *tabBar = self.tabBarController.tabBar;
+  
     UITabBarItem *item0 = [tabBar.items objectAtIndex:0];
     item0.image = personalIcon;
     
     // set image icons for Asanas Tab
-    UIImage *asanasIcon = [UIImage imageNamed:@"Asanas@2x.png"];
+    UIImage *asanasIcon = [UIImage imageNamed:@"Asanas"];
     UITabBarItem *item1 = [tabBar.items objectAtIndex:1];
     item1.image = asanasIcon;
     
     // set image icons for Technics Tab
-    UIImage *technicsIcon = [UIImage imageNamed:@"Technics@2x.png"];
+    UIImage *technicsIcon = [UIImage imageNamed:@"Technics"];
     UITabBarItem *item2 = [tabBar.items objectAtIndex:2];
     item2.image = technicsIcon;
     
     // set image icons for Dashboard Tab
-    UIImage *dashboardIcon = [UIImage imageNamed:@"Dashboard@2x.png"];
+    UIImage *dashboardIcon = [UIImage imageNamed:@"Dashboard"];
     UITabBarItem *item3 = [tabBar.items objectAtIndex:3];
     item3.image = dashboardIcon;
     
     // set image icons for Preview Tab
-    UIImage *previewIcon = [UIImage imageNamed:@"Preview@2x.png"];
+    UIImage *previewIcon = [UIImage imageNamed:@"Preview"];
     UITabBarItem *item4 = [tabBar.items objectAtIndex:4];
     item4.image = previewIcon;
     

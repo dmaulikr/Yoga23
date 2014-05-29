@@ -13,18 +13,20 @@
 @class AppDelegate;
 
 
-@interface AsanasViewController : UITableViewController <UIScrollViewDelegate, UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,RemoveTipViewsProtocol> {
+@interface AsanasViewController : UIViewController <UIScrollViewDelegate, UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,RemoveTipViewsProtocol> {
     
     __weak IBOutlet UIToolbar               *toolBar;
     __weak IBOutlet UISegmentedControl      *segmentCotrol;
     __weak IBOutlet UINavigationItem        *navigationItem;
-    __weak IBOutlet UITableView             *table;
+
     
     NSArray                                 *namesArray;
     NSMutableArray                          *setsArray;
     NSMutableArray                          *asanasImages;
     NSMutableArray                          *asanasKeys;
     NSMutableDictionary                     *choosedResult;
+    
+    UITableView                             *table;
     
     unsigned                                loadedImages;
     unsigned                                linesCount;

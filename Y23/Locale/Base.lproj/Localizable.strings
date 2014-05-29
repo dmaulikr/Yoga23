@@ -8,14 +8,17 @@
 
 
 "Ok"    = "Ok";
+"NO"    = "NO";
 "NOTES" = "NOTES";
 "Type notes here.." = "Type notes here..";
 "Next"  = "Next";
 "Done"  = "Done";
 "Notes" = "Notes";
 "Clear All" = "Clear All";
+"Clear Selected" = "Clear Selected";
 "No asanas selected.."  = "No asanas selected..";
 "Tap to select asanas you need." = "Tap to select asanas you need.";
+"All program details will be removed" = "All program details will be removed";
 
 "Attention"   = "Attention";
 "All chosen asanas will be cleaned\n(Saved sequences are remain)" = "All chosen asanas will be cleaned\n(Saved sequences are remain)";
@@ -46,5 +49,6 @@
 
 // tips sentences
 "Select technics for add to a program" = "Select technics for add to a program";
-"Here is Dashboard. It's a view for working with swing of the pendulum" = "Here is Dashboard. It's a view for working with swing of the pendulum";
+"Here is Dashboard. It's a view for working with swings of the pendulum" = "Here is Dashboard. It's a view for working with swings of the pendulum";
+"The asanas workflow contains 3 steps:"  = "The asanas workflow contains 3 steps:";
 "Asanas tips text" = "1.First screen (current) - tap on asana to add it to the workflow (or remove) and click \"Next\".\n\n2.Second screen: select asanas for first sequence and tap \"To Sort\".\n\n3.Last asanas screen is \"Sorting\". Here you may change asanas order and tap on image for define breathing or removing. Аfter you're done, click \"Save\" for saving sequence and doing next one if you need.";

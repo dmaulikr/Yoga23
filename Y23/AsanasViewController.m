@@ -75,7 +75,7 @@ enum sets {
 
     
     UIBarButtonItem *clearButton                = [[UIBarButtonItem alloc]
-                                                   initWithTitle:NSLocalizedString(@"Clear All", @"") style:UIBarButtonItemStylePlain
+                                                   initWithTitle:NSLocalizedString(@"Clear Selected", @"") style:UIBarButtonItemStylePlain
                                                   target:self
                                                   action:@selector(clearAllButton)];
     
@@ -96,6 +96,14 @@ enum sets {
         asanasKeys = [NSMutableArray array];
     }
     [self createToolBar];
+    
+    table = [[UITableView alloc] initWithFrame:CGRectMake(36.0, 44.0, 730.0, 863.0)];
+    table.backgroundColor = [UIColor clearColor];
+    table.separatorColor = [UIColor clearColor];
+    table.delegate = self;
+    table.dataSource = self;
+    [self.view addSubview:table];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -145,7 +153,7 @@ enum sets {
 - (void)clearAllButton {
     
     // Google An
-    [appDelegate eventTrackingGA:@"Asanas Main" andAction:@"Clear" andLabel:@"Clear All"];
+    [appDelegate eventTrackingGA:@"Asanas Main" andAction:@"Clear" andLabel:@"Clear Selected"];
     
     if ([appDelegate.selectedAsanas count] > 0) {
     

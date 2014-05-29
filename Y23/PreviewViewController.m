@@ -403,7 +403,7 @@
         case MFMailComposeResultCancelled:
             // Google An
             [appDelegate eventTrackingGA:@"Preview" andAction:@"Send programm" andLabel:@"Cancel"];
-            NSLog(@"cancelled");
+            //NSLog(@"cancelled");
             break;
         case MFMailComposeResultSaved:
             // Google An
@@ -459,7 +459,7 @@
 }
 
 - (void)afterSendingAlert {
-    UIAlertView *requestForClearAlert = [[UIAlertView alloc] initWithTitle:@"Purge it?" message:nil delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"Clear", nil];
+    UIAlertView *requestForClearAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"All program details will be removed", @"") message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"NO", @"") otherButtonTitles:NSLocalizedString(@"Clear", @""), nil];
     requestForClearAlert.tag = 10;
     [requestForClearAlert show];
 }
@@ -474,6 +474,7 @@
     Technics *techController = (Technics*)[[[[mtc viewControllers] objectAtIndex:2] viewControllers] objectAtIndex:0] ;
     techController.clearing = YES;
    
+    [appDelegate.unsavedSequence removeAllObjects];
     [[appDelegate.theNewProgram objectForKey:@"personal"]  removeAllObjects];
     [[appDelegate.theNewProgram objectForKey:@"asanas"]  removeAllObjects];
     [[appDelegate.theNewProgram objectForKey:@"technics"]  removeAllObjects];
@@ -526,7 +527,17 @@
     UIBarButtonItem *sendItem            = [[UIBarButtonItem alloc]
                                             initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(sendingProgrammToEmile)];
     
-    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:sendItem, nil];
+    UIBarButtonItem *clearButton        = [[UIBarButtonItem alloc]
+                                           initWithTitle:NSLocalizedString(@"Clear All", @"") style:UIBarButtonItemStylePlain
+                                           target:self
+                                           action:@selector(afterSendingAlert)];
+    
+    UIBarButtonItem *fixed1                     = [[UIBarButtonItem alloc]
+                                                   initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                                   target:nil action:nil];
+    [fixed1 setWidth:47.0f];
+    
+    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:sendItem,fixed1,clearButton, nil];
     
     if(!presentWebView){
         // 
