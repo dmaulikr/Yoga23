@@ -10,11 +10,13 @@
 #import "GAI.h"
 #import "GAIDictionaryBuilder.h"
 #import "GAIFields.h"
+#import "Flurry.h"
+
+#define kGoogleAnalyticsKey @"UA-44975470-1"
+#define kFlurryAPIKey @"P7R8KNDDJRDFBHYHZQ74"
 
 
 @implementation AppDelegate
-
-#define kGoogleAnalyticsKey @"UA-44975470-1"
 
 @synthesize window = _window;
 @synthesize theNewProgram = _theNewProgram, asanasCatalog = _asanasCatalog, selectedAsanas = _selectedAsanas;
@@ -25,7 +27,7 @@
 {
     
     // Optional: automatically send uncaught exceptions to Google Analytics.
-    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    [GAI sharedInstance].trackUncaughtExceptions = NO;
     
     // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
     [GAI sharedInstance].dispatchInterval = 10;
@@ -38,6 +40,12 @@
     // Set the new tracker as the default tracker, globally.
     [GAI sharedInstance].defaultTracker = tracker;
     
+    // Flurry
+    [Flurry setCrashReportingEnabled:YES];
+    // Replace YOUR_API_KEY with the api key in the downloaded package
+    [Flurry startSession:kFlurryAPIKey];
+    
+    // Staff
     [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
     [[UITabBar appearance] setBackgroundImage:nil];
     self.theNewProgram = [[NSMutableDictionary alloc] init];
@@ -63,7 +71,7 @@
     NSString *csvString = [[NSString stringWithContentsOfFile:file
                                                      encoding:NSUTF8StringEncoding error:NULL] stringByTrimmingCharactersInSet:
                            [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    NSArray *stringValues = [csvString componentsSeparatedByString:@","];
+    stringValues = [csvString componentsSeparatedByString:@","];
     
        
     
@@ -72,15 +80,13 @@
     _asanasCatalog = [[NSMutableDictionary alloc] initWithCapacity:[stringValues count]];
     
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0ul);
-    
     for (NSString *name in stringValues) {
         dispatch_async(queue, ^{
             
-            UIImage *asanaImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@.%@",name, @"png"]];
+            NSString *aName = [NSString stringWithFormat:@"%@",name];
+            UIImage *asanaImage = [UIImage imageNamed:aName];
             
-            dispatch_async(dispatch_get_main_queue(), ^{
                 [_asanasCatalog setObject:asanaImage forKey:name];
-            });
         });
     }
     
@@ -131,20 +137,30 @@
 
 - (void)pageTrackingGA:(NSString*)page {
     
+    // GoogleAn
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:page];
-    
     [tracker send:[[GAIDictionaryBuilder createAppView]  build]];
+    
+    // Flurry page
+    NSDictionary *pageParams = @{@"pageName":page};
+    [Flurry logEvent:@"Page opened" withParameters:pageParams];
     
 }
 
 - (void)eventTrackingGA:(NSString*)event andAction:(NSString*)action andLabel:(NSString*)label {
     
+    // GoogleAn
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
     [tracker send:[[GAIDictionaryBuilder createEventWithCategory:event     // Event category (required)
                                                           action:action  // Event action (required)
                                                            label:label          // Event label
                                                            value:nil] build]];    // Event value
+    
+    // Flurry event
+    NSDictionary *articleParams = @{@"action":action?action:@"nil",
+                                    @"label":label?label:@"nil"};
+    [Flurry logEvent:event withParameters:articleParams];
 }
 
 - (void)saveToUserDefaults:(id)object forKey:(NSString*)key {

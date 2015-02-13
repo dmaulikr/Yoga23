@@ -73,10 +73,13 @@
 		936F06291811B2EC00B937B7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 936F06281811B2EC00B937B7 /* SystemConfiguration.framework */; };
 		936F062B1811B2FF00B937B7 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 936F062A1811B2FF00B937B7 /* libz.dylib */; };
 		936F06341811B34000B937B7 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 936F06331811B34000B937B7 /* libGoogleAnalyticsServices.a */; };
+		93946B7D194C7EC700F3F4F2 /* LaunchImages in Resources */ = {isa = PBXBuildFile; fileRef = 93946B7C194C7EC700F3F4F2 /* LaunchImages */; };
+		93946B7F194C823100F3F4F2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93946B7E194C823100F3F4F2 /* Images.xcassets */; };
 		939C3A9E18CBAF63007D3357 /* yoga_back@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 939C3A9D18CBAF63007D3357 /* yoga_back@2x.jpg */; };
 		939E7DAE183FAA380052E80D /* CSTipsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 939E7DAC183FAA380052E80D /* CSTipsViewController.m */; };
 		939E7DAF183FAA380052E80D /* CSTipsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 939E7DAD183FAA380052E80D /* CSTipsViewController.xib */; };
 		939E7DB2183FAC800052E80D /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 939E7DB1183FAC800052E80D /* UIImage+ImageEffects.m */; };
+		93C08AC71943206E00CAF919 /* libFlurry_5.0.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C08AC61943206E00CAF919 /* libFlurry_5.0.0.a */; };
 		93C4F3971708A873006821DC /* light.csv in Resources */ = {isa = PBXBuildFile; fileRef = 93C4F3961708A873006821DC /* light.csv */; };
 		93C4F39D1708AB74006821DC /* FFTransAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 93C4F39C1708AB74006821DC /* FFTransAlertView.m */; };
 		93C79E141758DC470094FAB6 /* numberPic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 93C79E131758DC470094FAB6 /* numberPic@2x.png */; };
@@ -889,12 +892,16 @@
 		936F06311811B34000B937B7 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAITrackedViewController.h; path = Y23/Libraries/Google/GAITrackedViewController.h; sourceTree = "<group>"; };
 		936F06321811B34000B937B7 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GAITracker.h; path = Y23/Libraries/Google/GAITracker.h; sourceTree = "<group>"; };
 		936F06331811B34000B937B7 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = Y23/Libraries/Google/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		93946B7C194C7EC700F3F4F2 /* LaunchImages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = LaunchImages; sourceTree = "<group>"; };
+		93946B7E194C823100F3F4F2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		939C3A9D18CBAF63007D3357 /* yoga_back@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "yoga_back@2x.jpg"; path = "Y23/View/yoga_back@2x.jpg"; sourceTree = "<group>"; };
 		939E7DAB183FAA380052E80D /* CSTipsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CSTipsViewController.h; path = Tips/CSTipsViewController.h; sourceTree = "<group>"; };
 		939E7DAC183FAA380052E80D /* CSTipsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CSTipsViewController.m; path = Tips/CSTipsViewController.m; sourceTree = "<group>"; };
 		939E7DAD183FAA380052E80D /* CSTipsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CSTipsViewController.xib; path = Tips/CSTipsViewController.xib; sourceTree = "<group>"; };
 		939E7DB0183FAC800052E80D /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+ImageEffects.h"; path = "Tips/UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		939E7DB1183FAC800052E80D /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ImageEffects.m"; path = "Tips/UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		93C08AC51943206E00CAF919 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		93C08AC61943206E00CAF919 /* libFlurry_5.0.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_5.0.0.a; sourceTree = "<group>"; };
 		93C4F3961708A873006821DC /* light.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = light.csv; sourceTree = "<group>"; };
 		93C4F39B1708AB74006821DC /* FFTransAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FFTransAlertView.h; path = Y23/View/FFTransAlertView.h; sourceTree = "<group>"; };
 		93C4F39C1708AB74006821DC /* FFTransAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FFTransAlertView.m; path = Y23/View/FFTransAlertView.m; sourceTree = "<group>"; };
@@ -1627,6 +1634,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				93677B0B183FB46B0026EDA4 /* Accelerate.framework in Frameworks */,
+				93C08AC71943206E00CAF919 /* libFlurry_5.0.0.a in Frameworks */,
 				933F1D451837CE530058DE2A /* CoreTelephony.framework in Frameworks */,
 				936F062B1811B2FF00B937B7 /* libz.dylib in Frameworks */,
 				936F06291811B2EC00B937B7 /* SystemConfiguration.framework in Frameworks */,
@@ -1755,6 +1763,7 @@
 				784981631503CF3D006D3746 /* View */,
 				78CFD92414E6AB8800139CD1 /* Controllers */,
 				783DA20A14E691B400E06F10 /* MainStoryboard.storyboard */,
+				93946B7E194C823100F3F4F2 /* Images.xcassets */,
 				783DA1FF14E691B400E06F10 /* Supporting Files */,
 			);
 			path = Y23;
@@ -1778,6 +1787,7 @@
 		783DA22014E6946500E06F10 /* Pictures */ = {
 			isa = PBXGroup;
 			children = (
+				93946B7C194C7EC700F3F4F2 /* LaunchImages */,
 				93C79E121758DC0B0094FAB6 /* SupportingImages */,
 				788B114A161743D60006DFF4 /* LOGO@2x.png */,
 				7855AB8A14EADBA600F02166 /* TabBarImages */,
@@ -2614,13 +2624,8 @@
 		936F062C1811B31E00B937B7 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				936F062D1811B34000B937B7 /* GAI.h */,
-				936F062E1811B34000B937B7 /* GAIDictionaryBuilder.h */,
-				936F062F1811B34000B937B7 /* GAIFields.h */,
-				936F06301811B34000B937B7 /* GAILogger.h */,
-				936F06311811B34000B937B7 /* GAITrackedViewController.h */,
-				936F06321811B34000B937B7 /* GAITracker.h */,
-				936F06331811B34000B937B7 /* libGoogleAnalyticsServices.a */,
+				93C08AC41943206E00CAF919 /* Flurry */,
+				93C08AC21943204100CAF919 /* GoogleAn */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -2637,6 +2642,30 @@
 				939E7DAD183FAA380052E80D /* CSTipsViewController.xib */,
 			);
 			name = Tips;
+			sourceTree = "<group>";
+		};
+		93C08AC21943204100CAF919 /* GoogleAn */ = {
+			isa = PBXGroup;
+			children = (
+				936F062D1811B34000B937B7 /* GAI.h */,
+				936F062E1811B34000B937B7 /* GAIDictionaryBuilder.h */,
+				936F062F1811B34000B937B7 /* GAIFields.h */,
+				936F06301811B34000B937B7 /* GAILogger.h */,
+				936F06311811B34000B937B7 /* GAITrackedViewController.h */,
+				936F06321811B34000B937B7 /* GAITracker.h */,
+				936F06331811B34000B937B7 /* libGoogleAnalyticsServices.a */,
+			);
+			name = GoogleAn;
+			sourceTree = "<group>";
+		};
+		93C08AC41943206E00CAF919 /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				93C08AC51943206E00CAF919 /* Flurry.h */,
+				93C08AC61943206E00CAF919 /* libFlurry_5.0.0.a */,
+			);
+			name = Flurry;
+			path = Y23/Flurry;
 			sourceTree = "<group>";
 		};
 		93C79E121758DC0B0094FAB6 /* SupportingImages */ = {
@@ -2683,7 +2712,7 @@
 		783DA1EB14E691B400E06F10 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0610;
 				TargetAttributes = {
 					783DA1F314E691B400E06F10 = {
 						DevelopmentTeam = A2Q6JAYMQF;
@@ -3059,6 +3088,7 @@
 				93CFABD817510FBD00715B45 /* 310.png in Resources */,
 				93CFABD917510FBD00715B45 /* 311.png in Resources */,
 				93CFABDA17510FBD00715B45 /* 312.png in Resources */,
+				93946B7F194C823100F3F4F2 /* Images.xcassets in Resources */,
 				93CFABDB17510FBD00715B45 /* 313.png in Resources */,
 				93CFABDC17510FBD00715B45 /* 314.png in Resources */,
 				93CFABDD17510FBD00715B45 /* 315.png in Resources */,
@@ -3223,6 +3253,7 @@
 				93CFAC7A17510FBD00715B45 /* 472.png in Resources */,
 				93CFAC7B17510FBD00715B45 /* 473.png in Resources */,
 				93CFAC7C17510FBD00715B45 /* 474.png in Resources */,
+				93946B7D194C7EC700F3F4F2 /* LaunchImages in Resources */,
 				93CFAC7D17510FBD00715B45 /* 475.png in Resources */,
 				93CFAC7E17510FBD00715B45 /* 476.png in Resources */,
 				93CFAC7F17510FBD00715B45 /* 477.png in Resources */,
@@ -3546,9 +3577,11 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -3582,9 +3615,11 @@
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -3608,7 +3643,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Igor Tcherny (7US428BKG6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Igor Tcherny (7US428BKG6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/deviMac/Documents/Y23Tabbed/Y23Bandel/Y23/Libraries,
@@ -3616,12 +3651,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Y23/Y23-Prefix.pch";
 				INFOPLIST_FILE = "Y23/Y23-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/deviMac/Documents/Y23Tabbed/Y23Bandel/Y23/Libraries/Google,
+					"$(PROJECT_DIR)/Y23/Flurry",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "BC80A883-2973-4A5E-816A-F36F6F9ADEE8";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
@@ -3634,7 +3671,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Igor Tcherny (7US428BKG6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Igor Tcherny (7US428BKG6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/deviMac/Documents/Y23Tabbed/Y23Bandel/Y23/Libraries,
@@ -3642,12 +3679,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Y23/Y23-Prefix.pch";
 				INFOPLIST_FILE = "Y23/Y23-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/deviMac/Documents/Y23Tabbed/Y23Bandel/Y23/Libraries/Google,
+					"$(PROJECT_DIR)/Y23/Flurry",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "BC80A883-2973-4A5E-816A-F36F6F9ADEE8";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;

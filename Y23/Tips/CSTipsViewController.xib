@@ -10,6 +10,8 @@
                 <outlet property="asanasTipHeader" destination="G4w-K4-VHB" id="Ldl-6A-0S9"/>
                 <outlet property="asanasTipsLabel" destination="yeo-e8-7b1" id="4tE-hF-rQ1"/>
                 <outlet property="dashboardTipsLabel" destination="Anb-wx-ZgO" id="PF8-tH-bYO"/>
+                <outlet property="personalDownLabel" destination="Ajq-le-U0W" id="rUD-A7-Ird"/>
+                <outlet property="personalUpLabel" destination="n6W-8Y-GUw" id="QEQ-V3-vg6"/>
                 <outlet property="t1ImageView" destination="KDF-nf-soV" id="76t-yG-zlY"/>
                 <outlet property="t1_View" destination="b5T-xw-VXj" id="KNI-Kw-nLM"/>
                 <outlet property="t2ImageView" destination="d26-4d-9tV" id="LwD-dp-e5H"/>

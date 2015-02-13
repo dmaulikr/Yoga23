@@ -104,7 +104,8 @@
         t3_View.alpha = 0.8;
     }];
     
-    
+    personalUpLabel.text    = NSLocalizedString(@"", @"");
+    personalDownLabel.text  = NSLocalizedString(@"", @"");
     
     [UIView animateWithDuration:1.2
                           delay:1.5

@@ -100,7 +100,7 @@
     
     asanasCount = [sequence count];
     
-    unsigned lineCount; // define line count for each 9 asanas
+    NSInteger lineCount; // define line count for each 9 asanas
     lineCount = asanasCount / 6;
     if (asanasCount%6 != 0) {
         lineCount ++;
@@ -134,10 +134,7 @@
                 [asanaLayer setBorderWidth:1.0];
                 [asanaLayer setBorderColor:[[UIColor grayColor] CGColor]];
                 
-                // set action for moving asana
-                UIPanGestureRecognizer *recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
-                recognizer.delegate = self;
-                [asanaView addGestureRecognizer:recognizer];
+                
                 [[sequence objectAtIndex:c] setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleWidth];
                 //[asanaView addSubview:[sequence objectAtIndex:c]]; // add asana imageview to button
                 [contentView addSubview:asanaView];
@@ -154,6 +151,24 @@
 
     
     return contentView;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    // if all has removed 
+    if ([appDelegate.selectedAsanas count] == 0) {
+        
+        [self.navigationController popToRootViewControllerAnimated:NO];
+        return;
+    }
+    
+    for (PIAsanaView *aView in _asanasViews) {
+        // set action for moving asana
+        UIPanGestureRecognizer *recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+        recognizer.delegate = self;
+        [aView addGestureRecognizer:recognizer];
+    }
 }
 
 
@@ -185,8 +200,8 @@
     // delimitation
     float limitCenterX;
     float limitCenterY;
-    unsigned rest = [_asanasViews count]%6;
-    unsigned rows = [_asanasViews count]/6;
+    NSInteger rest = [_asanasViews count]%6;
+    NSInteger rows = [_asanasViews count]/6;
     
     
     if (rest != 0 && [_asanasViews count] > 6) {
@@ -291,7 +306,7 @@
         if ((recognizer.view.center.y - currLocation.y > aSViewSize/2) && currLocation.y < limitCenterY){
             if (!(currLocation.x > limitCenterX && currLocation.y == limitCenterY - aSViewSize)) {
                 unsigned movedCount = 6;
-                for (int i = (recognizer.view.tag +1); i <= (recognizer.view.tag + movedCount); i++) {
+                for (int i = ((int)recognizer.view.tag + 1); i <= ((int)recognizer.view.tag + movedCount); i++) {
                     movedView = [_asanasViews objectAtIndex:i];
                     if (movedView.center.x > aSViewSize/2) {
                         [movedView moveTo:CGPointMake(movedView.center.x - aSViewSize, movedView.center.y) duration:0.1
@@ -315,7 +330,7 @@
         // moving views row if drag view in -y direction
         if (currLocation.y - recognizer.view.center.y > aSViewSize/2 && currLocation.y > aSViewSize/2 ) { 
             
-            for (int i = (recognizer.view.tag - 6); i < recognizer.view.tag; i++) {
+            for (int i = ((int)recognizer.view.tag - 6); i < recognizer.view.tag; i++) {
                 movedView = [_asanasViews objectAtIndex:i];
                 if (movedView.center.x < 638.0) {
                     [movedView moveTo:CGPointMake(movedView.center.x + aSViewSize, movedView.center.y) duration:0.1
@@ -395,9 +410,9 @@
 }
 
 
-- (void) removeAsanaView:(UIView *)view {
+- (void)removeAsanaView:(UIView *)view {
     
-    int tag = view.tag;
+    int tag = (int)view.tag;
     PIAsanaView *removedAsana = [self.asanasViews objectAtIndex:tag];
     
     // Google An
@@ -406,7 +421,7 @@
     // decrease counter
     NSString *asanaID = removedAsana.identificator;
     NSString *number = [appDelegate.asanasCounter objectForKey:asanaID];
-    NSString *newNumber = [NSString stringWithFormat:@"%d",([number integerValue] - 1)];
+    NSString *newNumber = [NSString stringWithFormat:@"%d",(int)([number integerValue] - 1)];
     
     if ([newNumber isEqualToString:@"0"]) {
         [appDelegate.asanasCounter removeObjectForKey:asanaID];
@@ -464,7 +479,7 @@
     }
     
     // Google An
-    [appDelegate eventTrackingGA:@"Sorting" andAction:@"Save Sequence" andLabel:[NSString stringWithFormat:@"sequence contains %d asanas",[_asanasViews count]]];
+    [appDelegate eventTrackingGA:@"Sorting" andAction:@"Save Sequence" andLabel:[NSString stringWithFormat:@"sequence contains %d asanas",(int)[_asanasViews count]]];
     
     
     UIImage *sequenceImage = [contentView imageFromView];

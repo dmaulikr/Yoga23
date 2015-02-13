@@ -57,7 +57,7 @@
 
 - (void)nextField {
     
-    int s;
+    NSUInteger s;
     
     for (UITextField *field in fieldsArray) {
         if ([field isEditing]) {
@@ -79,7 +79,7 @@
 
 - (void)prevField {
     
-    int s;
+    NSUInteger s;
     
     for (UITextField *field in fieldsArray) {
         if ([field isEditing]) {
@@ -184,6 +184,14 @@
     
     fieldsArray = @[_firstName,_lastName,_eMail];
     
+    
+    UILabel *infoLabel = [[UILabel alloc] initWithFrame:CGRectMake(100.0, 680.0, 568.0, 180.0)];
+    infoLabel.numberOfLines = 0;
+    infoLabel.textColor = [UIColor lightGrayColor];
+    infoLabel.font = [UIFont systemFontOfSize:16.0];
+    infoLabel.text = @"here will be disclaimer";
+    
+    [self.view addSubview:infoLabel];
 }
 
 

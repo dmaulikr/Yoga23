@@ -20,7 +20,7 @@
 
 
 
-- (id)initWithName:(NSString *)name elements:(NSArray *)elements tag:(int) tag;
+- (id)initWithName:(NSString *)name elements:(NSArray *)elements tag:(NSInteger)tag;
 - (void)addProgramSubItem:(CheckBoxButton *)sender;
 
 @end

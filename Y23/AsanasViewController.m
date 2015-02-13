@@ -219,11 +219,11 @@ enum sets {
 }
 
 
-- (void)fetchAsanas:(int)sender {
+- (void)fetchAsanas:(NSInteger)sender {
     
     loadedImages = 0;
     NSString*   namesFile = nil;
-    int         setNumber = sender;
+    NSInteger   setNumber = sender;
     
     switch (setNumber) {
         case kMainSet:
@@ -253,7 +253,7 @@ enum sets {
     namesArray = [setsArray objectAtIndex:setNumber];
     //dPrint(@"namesArray is %@ setsArray is %@",namesArray, setsArray);
     // number of cells
-    int imagesCount = [namesArray count];
+    NSInteger imagesCount = [namesArray count];
     // define line count for each 6 asanas
     linesCount = imagesCount / 6;
     if (imagesCount%6 != 0) {
@@ -382,12 +382,14 @@ enum sets {
        
     }
     cell.backgroundColor = [UIColor clearColor];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     if ([asanasImages count] != 0) {
         
         // set cell images
-        int lineIndex = indexPath.row;
+        NSInteger lineIndex = indexPath.row;
         int i = 1;
-        int  imageIndex;
+        NSInteger  imageIndex;
         
         while (i <= 6)
         {
@@ -424,7 +426,7 @@ enum sets {
                 oneCellButton.tag = indexPath.row * 6 + i;
                 [[oneCellButton layer] setBorderWidth:1.0f];
                 
-                if ([appDelegate.selectedAsanas objectForKey:[NSString stringWithFormat:@"%d",oneCellButton.tag]]) {
+                if ([appDelegate.selectedAsanas objectForKey:[NSString stringWithFormat:@"%d",(int)oneCellButton.tag]]) {
                     
                     [[oneCellButton layer] setBorderColor:[UIColor redColor].CGColor];
                     
@@ -457,14 +459,14 @@ enum sets {
     //dPrint(@"image is %@ tag is %@", image,imageKey);
     if (image) {
         // Google An
-        [appDelegate eventTrackingGA:@"Asanas Main" andAction:@"Asana Unchecked" andLabel:[NSString stringWithFormat:@"Asana number is %d",pressedButton.tag]];
+        [appDelegate eventTrackingGA:@"Asanas Main" andAction:@"Asana Unchecked" andLabel:[NSString stringWithFormat:@"Asana number is %d",(int)pressedButton.tag]];
         [[pressedButton layer] setBorderColor:[UIColor lightGrayColor].CGColor];
         [appDelegate.selectedAsanas removeObjectForKey:asanaNumber];
         
         
     }else {
         // Google An
-        [appDelegate eventTrackingGA:@"Asanas Main" andAction:@"Asana checked" andLabel:[NSString stringWithFormat:@"Asana number is %d",pressedButton.tag]];
+        [appDelegate eventTrackingGA:@"Asanas Main" andAction:@"Asana checked" andLabel:[NSString stringWithFormat:@"Asana number is %d",(int)pressedButton.tag]];
         //dPrint(@"[asanasImages objectAtIndex:(pressedButton.tag - 1)] is %@", [asanasImages objectAtIndex:(pressedButton.tag - 1)]);
         [appDelegate.selectedAsanas setObject:[asanasImages objectAtIndex:(pressedButton.tag - 1)] forKey:asanaNumber];
         [[pressedButton layer] setBorderColor:[UIColor redColor].CGColor];

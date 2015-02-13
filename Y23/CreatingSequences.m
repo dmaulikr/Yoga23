@@ -130,7 +130,7 @@
     controllersContainer = [NSMutableArray array];
     
     
-    unsigned lineCount; // define line count for each 9 asanas
+    NSInteger lineCount; // define line count for each 9 asanas
     lineCount = asanasCount / 6;
     if (asanasCount%6 != 0) {
         lineCount ++;
@@ -199,7 +199,7 @@
 - (void)checkAsanaForSequence:(id)sender {
     
    
-    int asanasNumber = [addedAsanas count];
+    NSInteger asanasNumber = [addedAsanas count];
 
     if (asanasNumber == 42) {
         // warning massage here
@@ -215,7 +215,7 @@
     
     // create asana object
     UIButton *senderButton = (UIButton*)sender;
-    [appDelegate eventTrackingGA:@"Creating sequences" andAction:@"Added to sequence" andLabel:[NSString stringWithFormat:@"Asana number is %d",(senderButton.tag + 1)]];
+    [appDelegate eventTrackingGA:@"Creating sequences" andAction:@"Added to sequence" andLabel:[NSString stringWithFormat:@"Asana number is %d",(int)(senderButton.tag + 1)]];
     CSAsanaViewController *asController = [trackedObjects objectAtIndex:senderButton.tag];
     UIImage *asanaImage = [asController.button imageForState:UIControlStateNormal];
     CGRect asanaImageViewFrame = CGRectMake( 0, 0, aImageSize, aImageSize );
@@ -240,7 +240,7 @@
     
     }else {
         number = [appDelegate.asanasCounter objectForKey:asanaKey];
-        NSString *newNumber = [NSString stringWithFormat:@"%d",([number integerValue] +1)];
+        NSString *newNumber = [NSString stringWithFormat:@"%d",(int)([number integerValue] +1)];
         [appDelegate.asanasCounter setObject:newNumber forKey:asanaKey];
          asController.countLabel.alpha = 0.0;
         asController.countLabel.text = newNumber;
@@ -289,7 +289,7 @@
         
     }else {
         number = [appDelegate.asanasCounter objectForKey:number];
-        NSString *newNumber = [NSString stringWithFormat:@"%d",([number integerValue] +1)];
+        NSString *newNumber = [NSString stringWithFormat:@"%d",(int)([number integerValue] +1)];
         [appDelegate.asanasCounter setObject:newNumber forKey:number];
         
     }
@@ -301,7 +301,7 @@
 
 - (void)toSorting {
     
-    [appDelegate eventTrackingGA:@"Creating sequences" andAction:@"To Sorting" andLabel:[NSString stringWithFormat:@"Number of asanas %d",[addedAsanas count]]];
+    [appDelegate eventTrackingGA:@"Creating sequences" andAction:@"To Sorting" andLabel:[NSString stringWithFormat:@"Number of asanas %d",(int)[addedAsanas count]]];
     
     if ([addedAsanas count] == 0) {
         // warning massage here
@@ -383,6 +383,15 @@
 
 
 - (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    // if all has removed
+    if ([appDelegate.selectedAsanas count] == 0) {
+        
+        [self.navigationController popViewControllerAnimated:NO];
+        return;
+    }
+    
     for (CSAsanaViewController *asanaController in controllersContainer) {
         NSString *number = [appDelegate.asanasCounter objectForKey:asanaController.asanaKey];
         if (!number) {

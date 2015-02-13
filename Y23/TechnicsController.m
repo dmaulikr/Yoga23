@@ -175,7 +175,7 @@
         if ([element isKindOfClass:[NSDictionary class]]) { 
             // if there are nested elements - activated arrow button after checking
             // Google An
-            [appDelegate eventTrackingGA:@"Technics" andAction:@"Technic group Checked" andLabel:[NSString stringWithFormat:@"tag %d",sender.tag]];
+            [appDelegate eventTrackingGA:@"Technics" andAction:@"Technic group Checked" andLabel:[NSString stringWithFormat:@"tag %d",(int)sender.tag]];
             UIView *viewAtTag = (UIView*)[self.view viewWithTag:sender.tag];
             UIButton *arrow = [[viewAtTag subviews] objectAtIndex:0];
             [arrow setEnabled:YES];            
@@ -191,7 +191,7 @@
         
         if ([element isKindOfClass:[NSDictionary class]]) {
             // Google An
-            [appDelegate eventTrackingGA:@"Technics" andAction:@"Technic group Unchecked" andLabel:[NSString stringWithFormat:@"tag %d",sender.tag]];
+            [appDelegate eventTrackingGA:@"Technics" andAction:@"Technic group Unchecked" andLabel:[NSString stringWithFormat:@"tag %d",(int)sender.tag]];
             // if there are nested elements - deactivated arrow button after unchecking
             UIView *viewAtTag = (UIView*)[self.view viewWithTag:sender.tag];
             UIButton *arrow = [[viewAtTag subviews] objectAtIndex:0];
@@ -204,7 +204,7 @@
 - (void)goTechnicDetails:(UIButton*)sender {
     
     
-    int index = [sender tag];
+    NSInteger index = [sender tag];
     NSString *name = [[[allTechnics objectAtIndex:index] allKeys] objectAtIndex:0];
     NSArray *elements = [[allTechnics objectAtIndex:index] valueForKey:name];
    

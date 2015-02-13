@@ -17,6 +17,9 @@
 
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
+{
+    NSArray *stringValues;
+}
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) NSMutableDictionary *theNewProgram;

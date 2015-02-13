@@ -125,7 +125,7 @@
     if (pageNum == 1) {
         // Header withe owner name and currend date
         CFGregorianDate currentDate = CFAbsoluteTimeGetGregorianDate(CFAbsoluteTimeGetCurrent(), CFTimeZoneCopySystem());
-        NSString *createDate = [NSString stringWithFormat:@"%02d:%02d:%02.0ld", currentDate.day, currentDate.month, currentDate.year];
+        NSString *createDate = [NSString stringWithFormat:@"%02d:%02d:%02.0d", currentDate.day, currentDate.month, (int)currentDate.year];
         NSString *firstname = [[appDelegate.theNewProgram objectForKey:@"personal"] objectForKey:@"firstName"];
         NSString *lastName = [[appDelegate.theNewProgram objectForKey:@"personal"] objectForKey:@"lastName"];
         NSString* textToDraw = [NSString stringWithFormat:@" %@ %@  %@", firstname?firstname:@"",lastName?lastName:@"", createDate];
@@ -141,7 +141,7 @@
         [textToDraw drawInRect:headRect withFont:[UIFont systemFontOfSize:15]];
     }
     
-    NSString* pageString = [NSString stringWithFormat:@"Page %d", pageNum];
+    NSString* pageString = [NSString stringWithFormat:@"Page %d", (int)pageNum];
 
     CGSize pageStringSize = [pageString sizeWithFont:theFont
                                    constrainedToSize:maxSize
@@ -172,7 +172,7 @@
         [seqImages removeObjectAtIndex:0];
         
         // sequence number text
-        int numberOfSequence = sequenceNumber - [seqImages count];
+        int numberOfSequence = sequenceNumber - (int)[seqImages count];
         NSString* numberString = [NSString stringWithFormat:@"Sequence number %d", numberOfSequence];
         
         CGSize numberStringSize = [numberString sizeWithFont:[UIFont systemFontOfSize:12]
@@ -264,7 +264,7 @@
 - (void)createPDFforPreview {
     
     CFGregorianDate currentDate = CFAbsoluteTimeGetGregorianDate(CFAbsoluteTimeGetCurrent(), CFTimeZoneCopySystem());
-    NSString *createDate = [NSString stringWithFormat:@"%02d:%02d:%02.0ld", currentDate.day, currentDate.month, currentDate.year];
+    NSString *createDate = [NSString stringWithFormat:@"%02d:%02d:%02.0d", currentDate.day, currentDate.month, (int)currentDate.year];
     NSString *firstname = [[appDelegate.theNewProgram objectForKey:@"personal"] objectForKey:@"firstName"];
     if ([firstname length] < 1) firstname = @"Disciple";
     NSString *lastName = [[appDelegate.theNewProgram objectForKey:@"personal"] objectForKey:@"lastName"];
@@ -332,7 +332,7 @@
     BOOL done = NO;
     
     NSMutableArray *neededSequences = [[NSMutableArray alloc] initWithArray:sequences copyItems:YES];
-    sequenceNumber = [neededSequences count];
+    sequenceNumber = (int)[neededSequences count];
     
     
     
@@ -458,6 +458,12 @@
     [self presentViewController:email animated:YES completion:nil];
 }
 
+- (void)removeAllTaped {
+    UIAlertView *requestForClearAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"All program details will be removed", @"") message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"NO", @"") otherButtonTitles:NSLocalizedString(@"Clear", @""), nil];
+    requestForClearAlert.tag = 30;
+    [requestForClearAlert show];
+}
+
 - (void)afterSendingAlert {
     UIAlertView *requestForClearAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"All program details will be removed", @"") message:nil delegate:self cancelButtonTitle:NSLocalizedString(@"NO", @"") otherButtonTitles:NSLocalizedString(@"Clear", @""), nil];
     requestForClearAlert.tag = 10;
@@ -492,26 +498,55 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     
     if (alertView.tag == 10) {
+        // after sent
         switch (buttonIndex) {
-            case 0:
+            case 0: {
                 [presentWebView loadHTMLString:@"<html><head></head><body></body></html>" baseURL:nil];
-                self.tabBarController.selectedIndex = 0;
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    self.tabBarController.selectedIndex = 0;
+                });
+            }
                 break;
-            case 1:
+            case 1: {
                 [self clearAll];
                 [presentWebView loadHTMLString:@"<html><head></head><body></body></html>" baseURL:nil];
-                self.tabBarController.selectedIndex = 0;
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    self.tabBarController.selectedIndex = 0;
+                });
+            }
                 break;
                 
             default:
                 break;
         }
     }else if (alertView.tag == 20){
-        NSLog(@"self.tabBarController.selectedIndex = 1");
-        self.tabBarController.selectedIndex = 1;
-    }
-
+        // no saved sequences alert
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            self.tabBarController.selectedIndex = 1;
+        });
         
+    }else if (alertView.tag == 30){
+        // remove all button
+        switch (buttonIndex) {
+            case 0:
+                break;
+            case 1: {
+                [self clearAll];
+                [presentWebView loadHTMLString:@"<html><head></head><body></body></html>" baseURL:nil];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    self.tabBarController.selectedIndex = 0;
+                });
+            }
+                break;
+            default:
+                break;
+        }
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+
+
 }
 
 #pragma mark - View LifeCicle
@@ -530,7 +565,7 @@
     UIBarButtonItem *clearButton        = [[UIBarButtonItem alloc]
                                            initWithTitle:NSLocalizedString(@"Clear All", @"") style:UIBarButtonItemStylePlain
                                            target:self
-                                           action:@selector(afterSendingAlert)];
+                                           action:@selector(removeAllTaped)];
     
     UIBarButtonItem *fixed1                     = [[UIBarButtonItem alloc]
                                                    initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace

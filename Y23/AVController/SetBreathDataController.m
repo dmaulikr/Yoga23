@@ -89,7 +89,7 @@
         rPicker3Values = [[NSMutableArray alloc] initWithCapacity:10];
     }
 
-    for (NSUInteger i = 1; i <=35; i++) {
+    for (int i = 1; i <=35; i++) {
         
         NSString *aNumber = [NSString stringWithFormat:@"%d", i];
         [lPickerValues addObject:aNumber];
@@ -97,7 +97,7 @@
         [rPicker2Values addObject:aNumber];
     }
     
-    for (NSUInteger i = 0; i <=9; i++) {
+    for (int i = 0; i <=9; i++) {
         
         NSString *aNumber = [NSString stringWithFormat:@"%d", i];
         [rPicker1Values addObject:aNumber];

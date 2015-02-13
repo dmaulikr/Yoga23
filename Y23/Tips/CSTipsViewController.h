@@ -38,6 +38,8 @@
     __weak IBOutlet UIImageView     *tp2_downArrow;
     __weak IBOutlet UIView          *tp2_containerView;
     
+    __weak IBOutlet UILabel         *personalUpLabel;
+    __weak IBOutlet UILabel         *personalDownLabel;
     __weak IBOutlet UILabel         *asanasTipHeader;
     __weak IBOutlet UILabel         *asanasTipsLabel;
     __weak IBOutlet UILabel         *techniksTipsLabel;

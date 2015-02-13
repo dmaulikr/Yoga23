@@ -37,7 +37,7 @@
 {
     UINavigationController *nc = (UINavigationController*) viewController;
     
-    NSLog(@"selected %d nc - %@",tabBarController.selectedIndex,nc);
+    //NSLog(@"selecte%lu%d nc - %@(unsigned long)",tabBarController.selectedIndex,nc);
     
     if (tabBarController.selectedIndex == 1 && _asanasCleaning) {
         _asanasCleaning = NO;

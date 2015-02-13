@@ -29,9 +29,9 @@
     UITableView                             *table;
     
     unsigned                                loadedImages;
-    unsigned                                linesCount;
+    NSInteger                                linesCount;
     
-    int                                     previousSegment;
+    NSInteger                               previousSegment;
     int                                     newSegment;
     
     AppDelegate                             *appDelegate;

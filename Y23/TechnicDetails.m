@@ -21,7 +21,7 @@
 
 
 
-- (id)initWithName:(NSString *)name elements:(NSArray *)elements tag:(int)tag
+- (id)initWithName:(NSString *)name elements:(NSArray *)elements tag:(NSInteger)tag
 {
     self = [super init];
     if (self) {
