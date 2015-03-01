@@ -86,7 +86,10 @@
             NSString *aName = [NSString stringWithFormat:@"%@",name];
             UIImage *asanaImage = [UIImage imageNamed:aName];
             
+            dispatch_sync(dispatch_get_main_queue(), ^{
                 [_asanasCatalog setObject:asanaImage forKey:name];
+            });
+            
         });
     }
     
