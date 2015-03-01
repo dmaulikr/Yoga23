@@ -399,7 +399,7 @@
     }else {
          direction = UIPopoverArrowDirectionDown;
     }
-    
+
     [popController presentPopoverFromRect:[[sender superview] frame] inView:contentView permittedArrowDirections:direction animated:YES];
 
 }

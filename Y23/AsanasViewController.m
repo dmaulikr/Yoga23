@@ -187,7 +187,6 @@ enum sets {
     
     segmentCotrol.selectedSegmentIndex = kMainSet;
     previousSegment = kMainSet;
-    segmentCotrol.segmentedControlStyle = UISegmentedControlStyleBar;
     segmentCotrol.backgroundColor = [UIColor clearColor];
     [segmentCotrol setSelectedSegmentIndex:0];
     

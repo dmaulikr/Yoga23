@@ -36,14 +36,13 @@
     return self;
 }
 
-- (void)viewDidUnload {
+- (void)dealloc {
     
     self.leftPicker = nil;
     self.rightPicker = nil;
 
     self.done = nil;
     self.deleteAsanaFromSequence = nil;    
-    [super viewDidUnload];
 }
 
 - (void)viewDidLoad
@@ -58,11 +57,8 @@
     exhaleLabel.text = NSLocalizedString(@"Exhale", @"");
     pausa2.text = NSLocalizedString(@"Pause", @"");
 
-
-
-    
     CGSize popSize = CGSizeMake(400, 400); // size of view in popover
-    self.contentSizeForViewInPopover = popSize;
+    self.preferredContentSize = popSize;
     self.title = NSLocalizedString(@"Asana managing", @"");
     
     // set up UIPickers
@@ -241,10 +237,10 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-        CGSize currentSetSizeForPopover = self.contentSizeForViewInPopover;
+        CGSize currentSetSizeForPopover = self.preferredContentSize;
         CGSize fakeMomentarySize = CGSizeMake(currentSetSizeForPopover.width - 1.0f, currentSetSizeForPopover.height - 1.0f);
-        self.contentSizeForViewInPopover = fakeMomentarySize;
-        self.contentSizeForViewInPopover = currentSetSizeForPopover;
+        self.preferredContentSize = fakeMomentarySize;
+        self.preferredContentSize = currentSetSizeForPopover;
 
 	// self.contentSizeForViewInPopover = CGSizeMake(400,400);     // size popover to what you wish, this may change yet aggain?
 	
